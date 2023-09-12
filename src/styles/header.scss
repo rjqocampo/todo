@@ -1,0 +1,73 @@
+@use 'index';
+
+body {
+  #content {
+    header {
+      padding: 0px 20px;
+      background-color: index.$theme-dark;
+      border-bottom: 1px solid index.$border-dark;
+
+      grid-column: 2 / 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h2 {
+        font-size: 1.7rem;
+        color: index.$font-white;
+      }
+      div {
+        display: flex;
+        gap: 20px;
+
+
+        button {
+          transition: all 0.2s;
+          &:hover {
+            transform: scale(95%);
+          }
+          &:active {
+            transform: scale(90%);
+          }
+          @include index.button-styling();
+        }
+        .button-add-todo {
+          padding: 8px 25px;
+          border-radius: 25px;
+          background-color: index.$theme-purple;
+
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          p {
+            color: index.$font-white;
+            font-weight: bold;
+            font-size: 1rem;
+          }
+          img {
+            @include index.icon-size(20px);
+          }
+        }
+        .button-edit-board {
+          padding: 15px;
+          background-color: index.$theme-gray;
+          border-radius: 50px;
+
+          @include index.flex-center();
+          img {
+            @include index.icon-size(20px);
+          }
+        }
+        .button-unhide {
+          padding: 15px;
+          background-color: index.$theme-gray;
+          border-radius: 50px;
+          @include index.flex-center();
+          img {
+            @include index.icon-size(20px);
+            transform: scale(120%);
+          }
+        }
+      }
+    }
+  }
+}
