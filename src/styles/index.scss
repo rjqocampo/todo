@@ -1,4 +1,5 @@
 $theme-dark: #37363e;
+$theme-darker: #29292e;
 $theme-purple: #8570fc;
 $theme-gray: #414146;
 $font-white: #f0f0f0;
@@ -77,19 +78,7 @@ body {
   min-height: 100vh;
   #content {
   display: grid;
-  grid-template-columns: 240px 1fr 1fr 1fr;
-  grid-template-rows: 1fr 6fr;
-    header {
-      background-color: $theme-dark;
-
-      grid-column: 2 / 5;
-    }
-    main {
-      background-color: blanchedalmond;
-      // background-color: $theme-dark;
-
-
-      grid-column: 2 / 5;
-    }
+  grid-template-columns: 240px 1fr;
+  grid-template-rows: 100px 1fr;
   }
 }

@@ -53,7 +53,7 @@
       <header>
         <h2>Board Header</h1>
         <div>
-          <button class="button-add-todo">
+          <button class="button-add-task">
             <img src="assets/images/plus.svg" alt="Plus icon">
             <p>Add Task</p>
           </button>
@@ -67,7 +67,43 @@
       </header>
 
       <main>
-        <h4>LIST GOES HERE</h4>
+        <div class="column">
+          <div class="column__header column__header-todo">
+            <div></div>
+            <h3>TODO (0)</h3>
+          </div>
+          <ul>
+            <li>
+              <h4>My Task</h4>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.</p>
+              <div class="task-footer">
+                <div class="task-footer__container">
+                  <img src="assets/images/flag.svg" alt="Flag icon">
+                  <span>medium</span>
+                </div>
+                <h5>due 9/13</h5>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="column">
+          <div class="column__header column__header-doing">
+            <div></div>
+            <h3>DOING (0)</h3>
+          </div>
+          <ul>
+            
+          </ul>
+        </div>
+        <div class="column">
+          <div class=" column__header column__header-done">
+            <div></div>
+            <h3>DONE (0)</h3>
+          </div>
+          <ul>
+            
+          </ul>
+        </div>
       </main>
     </div>
   </body>

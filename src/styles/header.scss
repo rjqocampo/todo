@@ -3,16 +3,16 @@
 body {
   #content {
     header {
-      padding: 0px 20px;
+      padding: 0px 35px;
       background-color: index.$theme-dark;
       border-bottom: 1px solid index.$border-dark;
 
-      grid-column: 2 / 5;
+      grid-column: 2;
       display: flex;
       justify-content: space-between;
       align-items: center;
       h2 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
         color: index.$font-white;
       }
       div {
@@ -30,8 +30,8 @@ body {
           }
           @include index.button-styling();
         }
-        .button-add-todo {
-          padding: 8px 25px;
+        .button-add-task {
+          padding: 0px 22px;
           border-radius: 25px;
           background-color: index.$theme-purple;
 
@@ -48,7 +48,7 @@ body {
           }
         }
         .button-edit-board {
-          padding: 15px;
+          padding: 12px;
           background-color: index.$theme-gray;
           border-radius: 50px;
 
@@ -58,7 +58,7 @@ body {
           }
         }
         .button-unhide {
-          padding: 15px;
+          padding: 12px;
           background-color: index.$theme-gray;
           border-radius: 50px;
           @include index.flex-center();
