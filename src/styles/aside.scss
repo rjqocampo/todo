@@ -51,7 +51,48 @@ body {
             font-size: 0.7rem;
             font-weight: bold;
             letter-spacing: 3px;
-            margin: 30px 0px;
+            margin: 30px 0px 10px 0px;
+          }
+          ul {
+            li {
+              padding: 10px 0px;
+              list-style: none;
+              button {
+                @include index.button-styling();
+                padding: 0;
+
+                display: flex;
+                align-items: center;;
+                gap: 10px;
+                p {
+                  color: index.$font-white;
+                }
+              }
+            }
+          }
+          .button-create-board {
+            @include index.button-styling();
+            margin: 5px 0px;
+            padding: 10px 0px;
+            border-radius: 10px;;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+
+            transition: all 0.3s;
+            &:hover {
+              background-color: index.$theme-darker;
+            }
+            img {
+              @include index.icon-size(15px);
+            }
+            p {
+              font-size: 0.8rem;
+              letter-spacing: 1px;
+              color: index.$theme-purple;
+            }
           }
         }
       }

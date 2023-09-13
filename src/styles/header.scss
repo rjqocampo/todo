@@ -23,7 +23,7 @@ body {
         button {
           transition: all 0.2s;
           &:hover {
-            transform: scale(95%);
+            filter: brightness(120%);
           }
           &:active {
             transform: scale(90%);
