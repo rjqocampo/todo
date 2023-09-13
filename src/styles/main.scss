@@ -14,6 +14,7 @@ body {
         display: flex;
         flex-direction: column;
         &__header {
+          margin-bottom: 20px;
           h3 {
             color: index.$font-gray;
             font-size: 0.8rem;
@@ -52,14 +53,18 @@ body {
           }
         }
         ul {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
           li {
             color: index.$font-white;
             list-style: none;
             background-color: index.$theme-dark;
             border-radius: 7px;
-            padding: 10px 20px;
+            padding: 15px 20px 15px 20px;
             h4 {
-              font-size: 1.1rem;
+              font-size: 1rem;
+              margin-bottom: 10px;
             }
             p {
               font-size: 0.9rem;
@@ -77,6 +82,7 @@ body {
                 border-radius: 70px;
                 img {
                   @include index.icon-size(15px);
+                  fill: red;
                 }
                 span  {
                   font-size: 0.8rem;
