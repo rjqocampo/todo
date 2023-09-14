@@ -15,7 +15,7 @@ import {
 } from './display-module';
 import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { addNewBoard, editBoard, deleteBoard } from './data-handler';
-import { formCheck, formCheckTasks } from './form-handler';
+import { formCheckBoards, formCheckTasks } from './form-handler';
 
 const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
 const buttonOpenDialogCreateBoard = document.querySelector('.button-open-create-board');
@@ -41,7 +41,7 @@ buttonDeleteBoard.addEventListener('click', () => {
 })
 
 buttonEditBoard.addEventListener('click', () => {
-  if (!formCheck('edit-board')) {
+  if (!formCheckBoards('edit-board')) {
     return;
   }
   editBoard();
@@ -71,7 +71,7 @@ buttonsDialogClose.forEach((button) => {
 })
 
 buttonCreateBoard.addEventListener('click', (e) => {
-  if (!formCheck('create-board')) {
+  if (!formCheckBoards('create-board')) {
     return;
   }
   removeBoards();

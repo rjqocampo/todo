@@ -1,3 +1,9 @@
+const inputDate = document.querySelector('input[type="date"]');
+
+inputDate.addEventListener('click', () => {
+  inputDate.showPicker();
+})
+
 function showDialog(str) {
   const dialog = document.querySelector(`.dialog-${str}`);
 
@@ -16,8 +22,6 @@ function exitDialog(e) {
   dialog.close();
 }
 
-document.querySelector('input[type="date"').addEventListener('focus', (e) => {
-  e.target.showPicker();
-})
+
 
 export { showDialog, closeDialog, exitDialog };

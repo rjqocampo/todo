@@ -1,4 +1,4 @@
-function formCheck(str) {
+function formCheckBoards(str) {
   const input = document.querySelector(`.dialog-${str} input`);
   const span = document.querySelector(`.dialog-${str} span`)
 
@@ -17,8 +17,10 @@ function formCheck(str) {
 function formCheckTasks(str) {
   const input = document.querySelector(`.container-input-${str}-title input`);
   const spanInput = document.querySelector(`.container-input-${str}-title span`);
-  const textArea = document.querySelector(`.container-input-${str}-description textarea`)
-  const spanTextArea = document.querySelector(`.container-input-${str}-description span`)
+  const textArea = document.querySelector(`.container-input-${str}-description textarea`);
+  const spanTextArea = document.querySelector(`.container-input-${str}-description span`);
+  const inputDate = document.querySelector(`.container-input-${str}-due-date input`);
+  const spanInputDate = document.querySelector(`.container-input-${str}-due-date span`);
 
   console.log(spanTextArea)
   function checkInput() {
@@ -47,13 +49,27 @@ function formCheckTasks(str) {
     }
   }
 
+  function checkInputDate() {
+    if (inputDate.validity.valueMissing) {
+      spanInputDate.textContent = 'This field is required';
+      return false;
+    } else if (inputDate.validity.tooShort) {
+      spanInputDate.textContent = 'Input is too short';
+      return false;
+    } else {
+      spanInputDate.textContent = '';
+      return true;
+    }
+  }
+
   console.log(checkInput());
   console.log(checkTextArea());
+  console.log(checkInputDate());
 
-  if (checkInput() && checkTextArea()) {
+  if (checkInput() && checkTextArea() && checkInputDate()) {
     return true;
   } else 
     return false;
 }
 
-export { formCheck, formCheckTasks };
+export { formCheckBoards, formCheckTasks };
