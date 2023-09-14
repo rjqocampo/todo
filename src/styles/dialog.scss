@@ -140,7 +140,7 @@ body {
       form {
         ul {
           display: grid;
-          gap: 15px;
+          gap: 10px;
           li {
             list-style: none;
             div {
@@ -187,6 +187,13 @@ body {
               }
               &:focus {
                 outline: none;
+              }
+            }
+            input[type="date"] {
+              width: 100%;
+              cursor: pointer;
+              &::-webkit-calendar-picker-indicator {
+                filter: invert(1);
               }
             }
             select {

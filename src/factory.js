@@ -5,4 +5,14 @@ function factoryBoard(title) {
   }
 }
 
-export { factoryBoard };
+function factoryTask(title, description, dueDate, priority) {
+  return {
+    title,
+    description,
+    dueDate,
+    priority,
+    status: 'todo'
+  }
+}
+
+export { factoryBoard, factoryTask };

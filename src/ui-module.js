@@ -16,4 +16,8 @@ function exitDialog(e) {
   dialog.close();
 }
 
+document.querySelector('input[type="date"').addEventListener('focus', (e) => {
+  e.target.showPicker();
+})
+
 export { showDialog, closeDialog, exitDialog };
