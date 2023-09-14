@@ -15,7 +15,7 @@ import {
 } from './display-module';
 import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { addNewBoard, editBoard, deleteBoard } from './data-handler';
-import { formCheck } from './form-handler';
+import { formCheck, formCheckTasks } from './form-handler';
 
 const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
 const buttonOpenDialogCreateBoard = document.querySelector('.button-open-create-board');
@@ -23,6 +23,12 @@ const buttonCreateBoard = document.querySelector('#button-create-board');
 const buttonOpenDialogEditBoard = document.querySelector('.button-open-edit-board');
 const buttonEditBoard = document.querySelector('#button-edit-board');
 const buttonDeleteBoard = document.querySelector('.button-delete-board');
+const buttonOpenDialogAddTask = document.querySelector('.button-open-add-task');
+const buttonAddTask = document.querySelector('#button-add-task');
+
+buttonAddTask.addEventListener('click', () => {
+  formCheckTasks('add-task');
+})
 
 buttonDeleteBoard.addEventListener('click', () => {
   deleteBoard();
@@ -47,13 +53,17 @@ buttonEditBoard.addEventListener('click', () => {
   displayActiveBoard();
 })
 
+buttonOpenDialogCreateBoard.addEventListener('click', () => {
+  showDialog('create-board');
+})
+
 buttonOpenDialogEditBoard.addEventListener('click', () => {
   showDialog('edit-board');
   displayBoardEditValues();
 })
 
-buttonOpenDialogCreateBoard.addEventListener('click', () => {
-  showDialog('create-board');
+buttonOpenDialogAddTask.addEventListener('click', () => {
+  showDialog('add-task');
 })
 
 buttonsDialogClose.forEach((button) => {

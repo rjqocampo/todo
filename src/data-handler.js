@@ -86,7 +86,6 @@ function editBoard() {
 
 function deleteBoard() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-  const input = document.querySelector('#input-edit-board-title');
   
   activeBoard = null;
 

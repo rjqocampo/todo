@@ -28,7 +28,7 @@ body {
           }
           @include index.button-styling();
         }
-        .button-add-task {
+        .button-open-add-task {
           padding: 0px 22px;
           border-radius: 25px;
           background-color: index.$theme-purple;
