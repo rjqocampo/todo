@@ -43,11 +43,19 @@ body {
       }
       form {
         display: grid;
-        label {
-          color: index.$font-white;
-          font-size: 0.8rem;
-          margin: 2px;
+        div {
+          label {
+            color: index.$font-white;
+            font-size: 0.8rem;
+            margin: 2px;
+          }
+          span {
+            color: #ff5c5c;
+            font-size: 0.8rem;
+            margin: 2px;
+          }
         }
+
         input {
           color: index.$font-white;
           background-color: index.$theme-dark;

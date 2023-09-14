@@ -28,6 +28,8 @@ function displayBoards() {
 }
 
 function displayActiveBoard() {
+  const boardHeader = document.querySelector('header > h2');
+
   const board = getActiveBoard();
 
   boardHeader.textContent = board.title;

@@ -1,4 +1,4 @@
-function displayCreateBoardDialog() {
+function showCreateBoardDialog() {
   const dialog = document.querySelector('.dialog-create-board');
 
   dialog.showModal();
@@ -10,4 +10,4 @@ function closeCreateBoardDialog() {
   dialog.close();
 }
 
-export { displayCreateBoardDialog, closeCreateBoardDialog };
+export { showCreateBoardDialog, closeCreateBoardDialog };
