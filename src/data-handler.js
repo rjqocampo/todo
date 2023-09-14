@@ -1,4 +1,4 @@
-import { factoryBoard } from "./board-handler";
+import { factoryBoard } from "./factory";
 
 let activeBoard = null;
 
@@ -78,6 +78,13 @@ function editBoard() {
   const newBoard = factoryBoard(input.value);
 
   boards.splice(indexOfActiveBoard, 1, newBoard);
+}
+
+function deleteBoard() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const input = document.querySelector('#input-edit-board-title');
+
+  boards.splice(indexOfActiveBoard, 1);
   console.log(boards);
 }
 
@@ -87,4 +94,4 @@ function setActiveBoard(e) {
   activeBoard = boards[index];
 }
 
-export { getBoards, getBoardsTotal, addNewBoard, setActiveBoard, getActiveBoard, editBoard };
+export { getBoards, getBoardsTotal, addNewBoard, setActiveBoard, getActiveBoard, editBoard, deleteBoard };
