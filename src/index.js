@@ -6,7 +6,7 @@ import './styles/dialog.scss';
 import './styles/breakpoints.scss';
 
 import { displayBoards, displayBoardsTotal, removeBoards, clearInputFields, displayBoardEditValues } from './display-module';
-import { showDialogCreateBoard, openDialogEditBoard, closeDialogCreateBoard, closeDialog, closeDialogEditBoard } from './ui-module';
+import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { addNewBoard, editBoard } from './data-handler';
 import { formCheck } from './form-handler';
 
@@ -17,29 +17,32 @@ const buttonOpenDialogEditBoard = document.querySelector('.button-open-edit-boar
 const buttonEditBoard = document.querySelector('#button-edit-board');
 
 buttonEditBoard.addEventListener('click', () => {
+  if (!formCheck('edit-board')) {
+    return;
+  }
   removeBoards();
   editBoard();
   displayBoards();
   displayBoardsTotal();
   clearInputFields();
-  closeDialogEditBoard();
+  closeDialog('edit-board');
 })
 
 buttonOpenDialogEditBoard.addEventListener('click', () => {
-  openDialogEditBoard();
+  showDialog('edit-board');
   displayBoardEditValues();
 })
 
 buttonOpenDialogCreateBoard.addEventListener('click', () => {
-  showDialogCreateBoard();
+  showDialog('create-board');
 })
 
 buttonsDialogClose.forEach((button) => {
-  button.addEventListener('click', (e) => { closeDialog(e) })
+  button.addEventListener('click', (e) => { exitDialog(e) })
 })
 
 buttonCreateBoard.addEventListener('click', (e) => {
-  if (!formCheck()) {
+  if (!formCheck('create-board')) {
     return;
   }
   removeBoards();
@@ -47,7 +50,7 @@ buttonCreateBoard.addEventListener('click', (e) => {
   displayBoards();
   displayBoardsTotal();
   clearInputFields();
-  closeDialogCreateBoard();
+  closeDialog('create-board');
 })
 
 displayBoards();

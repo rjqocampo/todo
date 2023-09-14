@@ -1,31 +1,19 @@
-function showDialogCreateBoard() {
-  const dialog = document.querySelector('.dialog-create-board');
+function showDialog(str) {
+  const dialog = document.querySelector(`.dialog-${str}`);
 
   dialog.showModal();
 }
 
-function closeDialogCreateBoard() {
-  const dialog = document.querySelector('.dialog-create-board');
+function closeDialog(str) {
+  const dialog = document.querySelector(`.dialog-${str}`);
 
   dialog.close();
 }
 
-function openDialogEditBoard() {
-  const dialog = document.querySelector('.dialog-edit-board');
-
-  dialog.showModal();
-}
-
-function closeDialog(e) {
+function exitDialog(e) {
   const dialog = e.target.closest('dialog');
 
   dialog.close();
 }
 
-function closeDialogEditBoard() {
-  const dialog = document.querySelector('.dialog-edit-board');
-
-  dialog.close();
-}
-
-export { showDialogCreateBoard, closeDialogCreateBoard, openDialogEditBoard, closeDialog, closeDialogEditBoard };
+export { showDialog, closeDialog, exitDialog };

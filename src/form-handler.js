@@ -1,6 +1,6 @@
-function formCheck() {
-  const input = document.querySelector('.dialog-create-board input');
-  const span = document.querySelector('.dialog-create-board span')
+function formCheck(dialog) {
+  const input = document.querySelector(`.dialog-${dialog} input`);
+  const span = document.querySelector(`.dialog-${dialog} span`)
 
   if (input.validity.valueMissing) {
     span.textContent = 'This field is required';
