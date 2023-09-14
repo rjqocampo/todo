@@ -29,7 +29,7 @@
             <ul>
               <!-- Rendered boards go here-->
             </ul>
-            <button class="button-create-board">
+            <button class="button-open-create-board">
               <img src="assets/images/plus-circle.svg" alt="Plus Icon">
               <p>CREATE BOARD</p>
             </button>
@@ -154,7 +154,12 @@
       </main>
 
       <dialog class="dialog-create-board">
-        <h6>Create New Board</h6>
+        <div>
+          <h6>Create New Board</h6>
+          <button type="button" class="button-close-board-modal">
+            <img src="assets/images/x.svg" alt="Close icon">
+          </button>
+        </div>
         <form>
           <label for="input-board-title">Title</label>
           <input type="text" id="input-board-title" minlength="2" max="100" placeholder="e.g. My Weekend Project">
