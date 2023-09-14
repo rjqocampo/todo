@@ -6,15 +6,24 @@ import './styles/dialog.scss';
 import './styles/breakpoints.scss';
 
 import { displayBoards, displayBoardsTotal, removeBoards, clearInputFields, displayBoardEditValues } from './display-module';
-import { showDialogCreateBoard, openDialogEditBoard, closeDialogCreateBoard, closeDialog } from './ui-module';
-import { addNewBoard } from './data-handler';
+import { showDialogCreateBoard, openDialogEditBoard, closeDialogCreateBoard, closeDialog, closeDialogEditBoard } from './ui-module';
+import { addNewBoard, editBoard } from './data-handler';
 import { formCheck } from './form-handler';
 
+const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
 const buttonOpenDialogCreateBoard = document.querySelector('.button-open-create-board');
-
 const buttonCreateBoard = document.querySelector('#button-create-board');
 const buttonOpenDialogEditBoard = document.querySelector('.button-open-edit-board');
-const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
+const buttonEditBoard = document.querySelector('#button-edit-board');
+
+buttonEditBoard.addEventListener('click', () => {
+  removeBoards();
+  editBoard();
+  displayBoards();
+  displayBoardsTotal();
+  clearInputFields();
+  closeDialogEditBoard();
+})
 
 buttonOpenDialogEditBoard.addEventListener('click', () => {
   openDialogEditBoard();

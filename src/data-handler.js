@@ -65,19 +65,26 @@ function getActiveBoard() {
 }
 
 function addNewBoard() {
-  const input = document.querySelector('#input-board-title');  
+  const input = document.querySelector('#input-create-board-title');  
   const newBoard = factoryBoard(input.value);
 
   boards.unshift(newBoard);
   console.log(boards);
 }
 
+function editBoard() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const input = document.querySelector('#input-edit-board-title');
+  const newBoard = factoryBoard(input.value);
+
+  boards.splice(indexOfActiveBoard, 1, newBoard);
+  console.log(boards);
+}
+
 function setActiveBoard(e) {
-  // console.log(e.target.closest('li').getAttribute('data-index'));
   const index = e.target.closest('li').getAttribute('data-index');
 
   activeBoard = boards[index];
-  // console.log(activeBoard);
 }
 
-export { getBoards, getBoardsTotal, addNewBoard, setActiveBoard, getActiveBoard };
+export { getBoards, getBoardsTotal, addNewBoard, setActiveBoard, getActiveBoard, editBoard };

@@ -22,4 +22,10 @@ function closeDialog(e) {
   dialog.close();
 }
 
-export { showDialogCreateBoard, closeDialogCreateBoard, openDialogEditBoard, closeDialog };
+function closeDialogEditBoard() {
+  const dialog = document.querySelector('.dialog-edit-board');
+
+  dialog.close();
+}
+
+export { showDialogCreateBoard, closeDialogCreateBoard, openDialogEditBoard, closeDialog, closeDialogEditBoard };
