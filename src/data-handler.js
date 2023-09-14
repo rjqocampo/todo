@@ -52,4 +52,8 @@ function getBoards() {
   })
 }
 
-export { getBoards };
+function getBoardsTotal() {
+  return boards.length;
+}
+
+export { getBoards, getBoardsTotal };

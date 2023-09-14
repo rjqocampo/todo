@@ -72,7 +72,7 @@ body {
           }
           .button-create-board {
             @include index.button-styling();
-            margin: 5px 0px;
+            margin: 5px 8px;
             padding: 10px 0px;
             border-radius: 10px;;
 
@@ -86,7 +86,7 @@ body {
               background-color: index.$theme-darker;
             }
             img {
-              @include index.icon-size(15px);
+              @include index.icon-size(18px);
             }
             p {
               font-size: 0.8rem;

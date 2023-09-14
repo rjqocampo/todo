@@ -1,4 +1,4 @@
-import { getBoards } from "./data-handler";
+import { getBoards, getBoardsTotal } from "./data-handler";
 
 console.log(getBoards());
 
@@ -22,4 +22,10 @@ function displayBoards() {
   })
 }
 
-export { displayBoards };
+function displayBoardsTotal() {
+  const span = document.querySelector('.board-total');
+
+  span.textContent = getBoardsTotal();
+}
+
+export { displayBoards, displayBoardsTotal };
