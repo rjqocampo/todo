@@ -57,7 +57,7 @@
       <header>
         <h2>&nbsp;</h1>
         <div>
-          <button class="button-add-task">
+          <button class="button-open-add-task">
             <img src="assets/images/plus.svg" alt="Plus icon">
             <p>Add Task</p>
           </button>
@@ -191,6 +191,48 @@
           </div>
           <input type="text" id="input-edit-board-title" minlength="5" maxlength="50" placeholder="e.g. My Weekend Project" required>
           <button type="button" id="button-edit-board">Confirm Edit</button>
+        </form>
+      </dialog>
+
+      <dialog class="dialog-add-task">
+        <div>
+          <h6>Create New Task</h6>
+          <div>
+            <button type="button" class="button-close-dialog">
+              <img src="assets/images/x.svg" alt="Close icon">
+            </button>
+          </div>
+        </div>
+        <form>
+          <ul>
+            <li class="container-input-add-task-title">
+              <div>
+                <label for="input-add-task-title">Title</label>
+                <span></span>
+              </div>
+              <input type="text" id="input-add-task-title" minlength="5" maxlength="50" placeholder="e.g. Take a Coffee Break" required>
+            </li>
+            <li class="container-input-add-task-description">
+              <div>
+                <label for="input-add-task-description">Description</label>
+                <span></span>
+              </div>
+              <textarea rows="7" id="input-add-task-description" minlength="5" maxlength="200" placeholder="e.g. Taking regular breaks is very important as it prevents mental fatigue and resets your focus. It also aids your brain in retaining information." required></textarea>
+            </li>
+            <li>
+              <div>
+                <label for="input-add-task-priority">Priority</label>
+              </div>
+              <select id="input-add-task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </li>
+            <li>
+              <button type="button" id="button-add-task">Add Task</button>
+            </li>
+          </ul>
         </form>
       </dialog>
 
