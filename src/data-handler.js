@@ -77,12 +77,18 @@ function editBoard() {
   const input = document.querySelector('#input-edit-board-title');
   const newBoard = factoryBoard(input.value);
 
+  activeBoard = newBoard; // to display updated board after editing
+
   boards.splice(indexOfActiveBoard, 1, newBoard);
+  console.log(boards[indexOfActiveBoard]);
+  console.log(boards);
 }
 
 function deleteBoard() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
   const input = document.querySelector('#input-edit-board-title');
+  
+  activeBoard = null;
 
   boards.splice(indexOfActiveBoard, 1);
   console.log(boards);
@@ -94,4 +100,12 @@ function setActiveBoard(e) {
   activeBoard = boards[index];
 }
 
-export { getBoards, getBoardsTotal, addNewBoard, setActiveBoard, getActiveBoard, editBoard, deleteBoard };
+
+export { 
+  getBoards, 
+  getBoardsTotal, 
+  addNewBoard, 
+  setActiveBoard, 
+  getActiveBoard, 
+  editBoard, 
+  deleteBoard };

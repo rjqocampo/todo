@@ -32,7 +32,11 @@ function displayActiveBoard() {
 
   const board = getActiveBoard();
 
-  boardHeader.textContent = board.title;
+  if (board === null) {
+    boardHeader.textContent = '';
+  } else {
+    boardHeader.textContent = board.title;
+  }
 }
 
 function displayBoardsTotal() {
@@ -63,4 +67,11 @@ function displayBoardEditValues() {
   input.value = getActiveBoard().title;
 }
 
-export { displayBoards, displayBoardsTotal, removeBoards, clearInputFields, displayBoardEditValues };
+export { 
+  displayBoards,
+  displayBoardsTotal,
+  removeBoards,
+  clearInputFields,
+  displayBoardEditValues,
+  displayActiveBoard
+ };

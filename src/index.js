@@ -5,7 +5,14 @@ import './styles/main.scss';
 import './styles/dialog.scss';
 import './styles/breakpoints.scss';
 
-import { displayBoards, displayBoardsTotal, removeBoards, clearInputFields, displayBoardEditValues } from './display-module';
+import { 
+  displayBoards, 
+  displayBoardsTotal, 
+  removeBoards, 
+  clearInputFields, 
+  displayBoardEditValues, 
+  displayActiveBoard 
+} from './display-module';
 import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { addNewBoard, editBoard, deleteBoard } from './data-handler';
 import { formCheck } from './form-handler';
@@ -18,24 +25,26 @@ const buttonEditBoard = document.querySelector('#button-edit-board');
 const buttonDeleteBoard = document.querySelector('.button-delete-board');
 
 buttonDeleteBoard.addEventListener('click', () => {
-  removeBoards();
   deleteBoard();
+  removeBoards();
   displayBoards();
   displayBoardsTotal();
   clearInputFields();
   closeDialog('edit-board');
+  displayActiveBoard();
 })
 
 buttonEditBoard.addEventListener('click', () => {
   if (!formCheck('edit-board')) {
     return;
   }
-  removeBoards();
   editBoard();
+  removeBoards();
   displayBoards();
   displayBoardsTotal();
   clearInputFields();
   closeDialog('edit-board');
+  displayActiveBoard();
 })
 
 buttonOpenDialogEditBoard.addEventListener('click', () => {
