@@ -1,7 +1,13 @@
-function displayCreateBoard() {
+function displayCreateBoardDialog() {
   const dialog = document.querySelector('.dialog-create-board');
 
   dialog.showModal();
 }
 
-export { displayCreateBoard };
+function closeCreateBoardDialog() {
+  const dialog = document.querySelector('.dialog-create-board');
+
+  dialog.close();
+}
+
+export { displayCreateBoardDialog, closeCreateBoardDialog };

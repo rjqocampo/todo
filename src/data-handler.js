@@ -1,3 +1,5 @@
+import { factoryBoard } from "./board-handler";
+
 const boards = [
   {
     title: 'Kanban Project',
@@ -56,4 +58,12 @@ function getBoardsTotal() {
   return boards.length;
 }
 
-export { getBoards, getBoardsTotal };
+function addNewBoard() {
+  const input = document.querySelector('#input-board-title');  
+  const newBoard = factoryBoard(input.value);
+
+  boards.unshift(newBoard);
+  console.log(boards);
+}
+
+export { getBoards, getBoardsTotal, addNewBoard };

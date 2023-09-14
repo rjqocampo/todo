@@ -28,4 +28,21 @@ function displayBoardsTotal() {
   span.textContent = getBoardsTotal();
 }
 
-export { displayBoards, displayBoardsTotal };
+function removeBoards() {
+  const ul = document.querySelector('.boards-list > ul');
+  
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+}
+
+function clearInputFields() {
+  const inputFields = document.querySelectorAll('input');
+  console.log(inputFields);
+
+  inputFields.forEach((input) => {
+    input.value = '';
+  })
+}
+
+export { displayBoards, displayBoardsTotal, removeBoards, clearInputFields };

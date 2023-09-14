@@ -12,10 +12,34 @@ body {
         background-color: black;
         opacity: 0.6;
       }
-      h6 {
-        color: index.$font-white;
-        font-weight: bold;
-        padding: 10px 0px;
+      div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h6 {
+          color: index.$font-white;
+          font-weight: bold;
+          padding: 10px 0px;
+        }
+        button {
+          background-color: transparent;
+          border: none;
+          background-color: index.$theme-gray;
+          border-radius: 50px;
+          padding: 5px;
+          cursor: pointer;
+
+          display: flex;
+          align-items: center;
+
+          transition: all 0.2s;
+          &:hover {
+            filter: brightness(120%);
+          }
+          img {
+            @include index.icon-size(20px);
+          }
+        }
       }
       form {
         display: grid;
@@ -48,6 +72,12 @@ body {
           border-radius: 50px;
           padding: 5px 0px;
           margin: 20px 0px;
+          cursor: pointer;
+
+          transition: all 0.2s;
+          &:hover {
+            filter: brightness(120%);
+          }
         }
       }
     }
