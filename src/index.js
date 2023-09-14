@@ -30,10 +30,6 @@ buttonCreateBoard.addEventListener('click', () => {
   closeCreateBoardDialog();
 })
 
-
-
-
-
 displayBoards();
 displayBoardsTotal();
 

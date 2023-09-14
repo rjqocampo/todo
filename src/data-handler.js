@@ -1,5 +1,7 @@
 import { factoryBoard } from "./board-handler";
 
+let activeBoard = null;
+
 const boards = [
   {
     title: 'Kanban Project',
@@ -58,6 +60,10 @@ function getBoardsTotal() {
   return boards.length;
 }
 
+function getActiveBoard() {
+  return activeBoard;
+}
+
 function addNewBoard() {
   const input = document.querySelector('#input-board-title');  
   const newBoard = factoryBoard(input.value);
@@ -66,4 +72,12 @@ function addNewBoard() {
   console.log(boards);
 }
 
-export { getBoards, getBoardsTotal, addNewBoard };
+function setActiveBoard(e) {
+  // console.log(e.target.closest('li').getAttribute('data-index'));
+  const index = e.target.closest('li').getAttribute('data-index');
+
+  activeBoard = boards[index];
+  // console.log(activeBoard);
+}
+
+export { getBoards, getBoardsTotal, addNewBoard, setActiveBoard, getActiveBoard };
