@@ -5,21 +5,28 @@ import './styles/main.scss';
 import './styles/dialog.scss';
 import './styles/breakpoints.scss';
 
-import { displayBoards, displayBoardsTotal, removeBoards, clearInputFields } from './display-module';
-import { closeCreateBoardDialog, showCreateBoardDialog } from './ui-module';
+import { displayBoards, displayBoardsTotal, removeBoards, clearInputFields, displayBoardEditValues } from './display-module';
+import { showDialogCreateBoard, openDialogEditBoard, closeDialogCreateBoard, closeDialog } from './ui-module';
 import { addNewBoard } from './data-handler';
+import { formCheck } from './form-handler';
 
-const buttonOpenCreateBoardDialog = document.querySelector('.button-open-create-board');
-const buttonCloseCreateBoardDialog = document.querySelector('.button-close-board-modal');
+const buttonOpenDialogCreateBoard = document.querySelector('.button-open-create-board');
+
 const buttonCreateBoard = document.querySelector('#button-create-board');
-const formCreateBoard = document.querySelector('.dialog-create-board > form');
+const buttonOpenDialogEditBoard = document.querySelector('.button-open-edit-board');
+const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
 
-buttonOpenCreateBoardDialog.addEventListener('click', () => {
-  showCreateBoardDialog();
+buttonOpenDialogEditBoard.addEventListener('click', () => {
+  openDialogEditBoard();
+  displayBoardEditValues();
 })
 
-buttonCloseCreateBoardDialog.addEventListener('click', () => {
-  closeCreateBoardDialog();
+buttonOpenDialogCreateBoard.addEventListener('click', () => {
+  showDialogCreateBoard();
+})
+
+buttonsDialogClose.forEach((button) => {
+  button.addEventListener('click', (e) => { closeDialog(e) })
 })
 
 buttonCreateBoard.addEventListener('click', (e) => {
@@ -31,24 +38,8 @@ buttonCreateBoard.addEventListener('click', (e) => {
   displayBoards();
   displayBoardsTotal();
   clearInputFields();
-  closeCreateBoardDialog();
+  closeDialogCreateBoard();
 })
-
-function formCheck() {
-  const input = document.querySelector('.dialog-create-board input');
-  const span = document.querySelector('.dialog-create-board span')
-
-  if (input.validity.valueMissing) {
-    span.textContent = 'This field is required';
-    return false;
-  } else if (input.validity.tooShort) {
-    span.textContent = 'Input is too short';
-    return false;
-  } else {
-    span.textContent = '';
-    return true;
-  }
-}
 
 displayBoards();
 displayBoardsTotal();

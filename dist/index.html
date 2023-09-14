@@ -61,7 +61,7 @@
             <img src="assets/images/plus.svg" alt="Plus icon">
             <p>Add Task</p>
           </button>
-          <button class="button-edit-board">
+          <button class="button-open-edit-board">
             <img src="assets/images/edit.svg" alt="Pen icon">
           </button>
           <button class="button-unhide">
@@ -156,9 +156,11 @@
       <dialog class="dialog-create-board">
         <div>
           <h6>Create New Board</h6>
-          <button type="button" class="button-close-board-modal">
-            <img src="assets/images/x.svg" alt="Close icon">
-          </button>
+          <div>
+            <button type="button" class="button-close-dialog">
+              <img src="assets/images/x.svg" alt="Close icon">
+            </button>
+          </div>
         </div>
         <form>
           <div>
@@ -170,7 +172,29 @@
         </form>
       </dialog>
 
-      <dialog class="dialog-create-task">
+      <dialog class="dialog-edit-board">
+        <div>
+          <h6>Edit Board</h6>
+          <div>
+            <button type="button" class="button-delete-board">
+              <img src="assets/images/trash.svg" alt="Trashcan icon">
+            </button>
+            <button type="button" class="button-close-dialog">
+              <img src="assets/images/x.svg" alt="Close icon">
+            </button>
+          </div>
+        </div>
+        <form>
+          <div>
+            <label for="input-board-title">Title</label>
+            <span></span>
+          </div>
+          <input type="text" id="input-board-title" minlength="5" maxlength="50" placeholder="e.g. My Weekend Project" required>
+          <button type="button" id="button-create-board">Create Board</button>
+        </form>
+      </dialog>
+
+      <!-- <dialog class="dialog-create-task">
         <h6>Create New Task</h6>
         <for>
           <label for="input-task-title">Title</label>
@@ -180,7 +204,7 @@
           <label for="input-task-prio">Priority</label>
           <input type="selection" id="input-task-prio">
         </form>
-      </dialog>
+      </dialog> -->
     </div>
   </body>
 </html>

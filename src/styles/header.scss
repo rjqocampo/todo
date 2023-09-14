@@ -18,8 +18,6 @@ body {
       div {
         display: flex;
         gap: 20px;
-
-
         button {
           transition: all 0.2s;
           &:hover {
@@ -47,7 +45,7 @@ body {
             @include index.icon-size(20px);
           }
         }
-        .button-edit-board {
+        .button-open-edit-board {
           padding: 12px;
           background-color: index.$theme-gray;
           border-radius: 50px;

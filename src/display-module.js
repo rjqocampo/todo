@@ -57,4 +57,10 @@ function clearInputFields() {
   })
 }
 
-export { displayBoards, displayBoardsTotal, removeBoards, clearInputFields };
+function displayBoardEditValues() {
+  const input = document.querySelector('.dialog-edit-board input')
+
+  input.value = getActiveBoard().title;
+}
+
+export { displayBoards, displayBoardsTotal, removeBoards, clearInputFields, displayBoardEditValues };
