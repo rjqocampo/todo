@@ -50,6 +50,16 @@ const boards = [
   },
 ]
 
+function getTasks() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+
+  const todo = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'todo');
+  const doing = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'doing');
+  const done = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'done');
+
+  return {todo, doing, done}
+}
+
 function getBoards() {
   return boards.map((board) => {
     return board.title;
@@ -72,23 +82,14 @@ function addNewTask() {
   const inputDate = document.querySelector('#input-add-task-due-date');
   const inputPriority = document.querySelector('#input-add-task-priority');
 
-  console.log(inputTitle.value);
-  console.log(inputDescription.value);
-  console.log(inputDate.value);
-  console.log(inputPriority.value);
   const newTask = factoryTask(
     inputTitle.value,
     inputDescription.value,
     inputDate.value,
     inputPriority.value
   );
-  console.log(newTask);
-  console.log(activeBoard);
-  console.log(indexOfActiveBoard);
   
   boards[indexOfActiveBoard].tasks.unshift(newTask);
-  
-  console.log(boards);
 }
 
 function addNewBoard() {
@@ -126,7 +127,6 @@ function setActiveBoard(e) {
   activeBoard = boards[index];
 }
 
-
 export { 
   getBoards, 
   getBoardsTotal, 
@@ -135,5 +135,6 @@ export {
   getActiveBoard, 
   editBoard, 
   deleteBoard,
-  addNewTask
+  addNewTask,
+  getTasks
 };

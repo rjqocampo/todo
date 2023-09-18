@@ -87,6 +87,3 @@ buttonOpenDialogAddTask.addEventListener('click', () => {
 buttonsDialogClose.forEach((button) => {
   button.addEventListener('click', (e) => { exitDialog(e) })
 })
-
-displayBoards();
-displayBoardsTotal();

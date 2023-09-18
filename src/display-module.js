@@ -1,4 +1,4 @@
-import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard } from "./data-handler";
+import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks } from "./data-handler";
 import { toggleHeaderButtons } from "./ui-module";
 
 function displayBoards() {
@@ -24,6 +24,7 @@ function displayBoards() {
     li.addEventListener('click', (e) => {
       setActiveBoard(e);
       displayActiveBoard();
+      displayTasks();
     })
   })
 }
@@ -40,6 +41,14 @@ function displayActiveBoard() {
   }
 
   toggleHeaderButtons();
+}
+
+function displayTasks() {
+  const {todo, doing, done} = getTasks();
+  console.log(todo);
+  console.log(doing);
+  console.log(done);
+
 }
 
 function displayBoardsTotal() {
@@ -61,6 +70,9 @@ function displayBoardEditValues() {
 
   input.value = getActiveBoard().title;
 }
+
+displayBoards();
+displayBoardsTotal();
 
 export { 
   displayBoards,
