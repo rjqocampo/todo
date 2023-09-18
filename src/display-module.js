@@ -25,7 +25,7 @@ function displayBoards() {
       setActiveBoard(e);
       displayActiveBoard();
       removeTasks();
-      displayTasks();
+      displayTasks(getTasks());
     })
   })
 }
@@ -43,23 +43,11 @@ function displayActiveBoard() {
   toggleHeaderButtons();
 }
 
-function displayTasks() {
-  const tasks = getTasks();
-
-  const todo = tasks.filter(task => task.status === 'todo');
-  const doing = tasks.filter(task => task.status === 'doing');
-  const done = tasks.filter(task => task.status === 'done');
-
+function displayTasks(arrList) {
   const ulTodo = document.querySelector('.list-todo');
   const ulDoing = document.querySelector('.list-doing');
   const ulDone = document.querySelector('.list-done');
 
-  createCards(todo, ulTodo);
-  createCards(doing, ulDoing);
-  createCards(done, ulDone);
-}
-
-function createCards(arrList, nameOfList) {
   arrList.forEach((item, index) => {
     const li = document.createElement('li');
     const h4 = document.createElement('h4');
@@ -73,6 +61,7 @@ function createCards(arrList, nameOfList) {
     divFooter.classList.add('task-footer');
     divFooterContainer.classList.add('task-footer__container');
     h5.textContent = item.dueDate;
+    li.setAttribute('data-index', index);
 
     if (item.priority === 'low') {
       img.setAttribute('src', 'assets/images/flag.svg');
@@ -94,10 +83,21 @@ function createCards(arrList, nameOfList) {
     divFooterContainer.appendChild(img);
     divFooterContainer.appendChild(span);
     divFooter.appendChild(h5);
-    nameOfList.appendChild(li);
+
+    if (item.status === 'todo') {
+      li.classList.add('todo');
+      ulTodo.appendChild(li);
+    } else if (item.status === 'doing') {
+      li.classList.add('doing');
+      ulDoing.appendChild(li);
+    } else if (item.status === 'done') {
+      li.classList.add('done');
+      ulDone.appendChild(li);
+    }
 
     li.addEventListener('click', () => {
       showDialog('read-task');
+      displayReadTaskValues();
     })
   })
 }
@@ -141,7 +141,7 @@ function displayBoardEditValues() {
 }
 
 function displayReadTaskValues() {
-
+  console.log(getTasks());
 
   const h5 = document.querySelector('.dialog-read-task h5');
   
