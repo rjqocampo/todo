@@ -9,13 +9,12 @@ import {
   displayBoards, 
   displayBoardsTotal, 
   removeBoards, 
-  clearInputFields, 
   displayBoardEditValues, 
   displayActiveBoard 
 } from './display-module';
 import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { addNewBoard, editBoard, deleteBoard, addNewTask } from './data-handler';
-import { formCheckBoards, formCheckTasks } from './form-handler';
+import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
 
 const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
 const buttonOpenDialogCreateBoard = document.querySelector('.button-open-create-board');
@@ -32,6 +31,9 @@ buttonAddTask.addEventListener('click', () => {
     return;
   }
   addNewTask();
+  clearInputFields();
+  closeDialog('add-task');
+
 })
 
 buttonDeleteBoard.addEventListener('click', () => {

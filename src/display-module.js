@@ -53,14 +53,6 @@ function removeBoards() {
   }
 }
 
-function clearInputFields() {
-  const inputFields = document.querySelectorAll('input');
-
-  inputFields.forEach((input) => {
-    input.value = '';
-  })
-}
-
 function displayBoardEditValues() {
   const input = document.querySelector('.dialog-edit-board input')
 
@@ -71,7 +63,6 @@ export {
   displayBoards,
   displayBoardsTotal,
   removeBoards,
-  clearInputFields,
   displayBoardEditValues,
   displayActiveBoard
  };

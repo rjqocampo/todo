@@ -67,4 +67,20 @@ function formCheckTasks(str) {
     return false;
 }
 
-export { formCheckBoards, formCheckTasks };
+function clearInputFields() {
+  const inputFields = document.querySelectorAll('input');
+  const inputTextArea = document.querySelector('#input-add-task-description');
+  const inputDate = document.querySelector('option[value="low"');
+
+  console.log(inputDate);
+
+  inputFields.forEach((input) => {
+    input.value = '';
+  })
+
+  inputTextArea.value = '';
+
+  inputDate.selected = 'true';
+}
+
+export { formCheckBoards, formCheckTasks, clearInputFields };
