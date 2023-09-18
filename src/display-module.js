@@ -25,7 +25,7 @@ function displayBoards() {
       setActiveBoard(e);
       displayActiveBoard();
       removeTasks();
-      displayTasks(getTasks());
+      displayTasks();
     })
   })
 }
@@ -43,7 +43,13 @@ function displayActiveBoard() {
   toggleHeaderButtons();
 }
 
-function displayTasks(arrList) {
+function displayTasks() {
+  const tasks = getTasks();
+
+  createCards(tasks);
+}
+
+function createCards(arrList) {
   const ulTodo = document.querySelector('.list-todo');
   const ulDoing = document.querySelector('.list-doing');
   const ulDone = document.querySelector('.list-done');
@@ -68,11 +74,11 @@ function displayTasks(arrList) {
       span.classList.add('task-footer__prio--low');
       span.textContent = 'low';
     } else if (item.priority === 'medium') {
-      img.setAttribute('src', 'assets/images/flag.svg');
+      img.setAttribute('src', 'assets/images/flag-purple.svg');
       span.classList.add('task-footer__prio--medium');
       span.textContent = 'medium';
     } else if (item.priority === 'high') {
-      img.setAttribute('src', 'assets/images/flag.svg');
+      img.setAttribute('src', 'assets/images/flag-orange.svg');
       span.classList.add('task-footer__prio--high');
       span.textContent = 'high';
     }
@@ -95,9 +101,9 @@ function displayTasks(arrList) {
       ulDone.appendChild(li);
     }
 
-    li.addEventListener('click', () => {
+    li.addEventListener('click', (e) => {
       showDialog('read-task');
-      displayReadTaskValues();
+      displayReadTaskValues(e);
     })
   })
 }
@@ -140,12 +146,31 @@ function displayBoardEditValues() {
   input.value = getActiveBoard().title;
 }
 
-function displayReadTaskValues() {
+function displayReadTaskValues(e) {
   console.log(getTasks());
+  console.log(e.target.closest('li').getAttribute('data-index'));
+
+  const tasks = getTasks();
+  const index = e.target.closest('li').getAttribute('data-index');
 
   const h5 = document.querySelector('.dialog-read-task h5');
+  const p = document.querySelector('.dialog-read-task p');
+  const h6 = document.querySelector('.dialog-read-task h6');
+  const img = document.querySelector('.dialog-read-task__info img');
+  const span = document.querySelector('.dialog-read-task span');
   
+  h5.textContent = tasks[index].title;
+  p.textContent = tasks[index].description;
+  h6.textContent = tasks[index].dueDate;
+  span.textContent = tasks[index].priority;
 
+  if (tasks[index].priority === 'low') {
+    img.setAttribute('src', 'assets/images/flag.svg')
+  } else if (tasks[index].priority === 'medium') {
+    img.setAttribute('src', 'assets/images/flag-purple.svg')
+  } else if (tasks[index].priority === 'high') {
+    img.setAttribute('src', 'assets/images/flag-orange.svg')
+  }
 }
 
 displayBoards();
