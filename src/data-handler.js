@@ -53,11 +53,11 @@ const boards = [
 function getTasks() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
 
-  const todo = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'todo');
-  const doing = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'doing');
-  const done = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'done');
+  // const todo = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'todo');
+  // const doing = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'doing');
+  // const done = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'done');
 
-  return {todo, doing, done}
+  return boards[indexOfActiveBoard].tasks;
 }
 
 function getBoards() {
@@ -103,7 +103,9 @@ function addNewBoard() {
 function editBoard() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
   const input = document.querySelector('#input-edit-board-title');
-  const newBoard = factoryBoard(input.value);
+  const newBoard = getActiveBoard();
+
+  newBoard.title = input.value;
 
   activeBoard = newBoard; // to display updated board after editing
 

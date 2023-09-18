@@ -44,10 +44,11 @@ function displayActiveBoard() {
 }
 
 function displayTasks() {
-  const {todo, doing, done} = getTasks();
-  console.log(todo);
-  console.log(doing);
-  console.log(done);
+  const tasks = getTasks();
+
+  const todo = tasks.filter(task => task.status === 'todo');
+  const doing = tasks.filter(task => task.status === 'doing');
+  const done = tasks.filter(task => task.status === 'done');
 
   const ulTodo = document.querySelector('.list-todo');
   const ulDoing = document.querySelector('.list-doing');
@@ -59,7 +60,7 @@ function displayTasks() {
 }
 
 function createCards(arrList, nameOfList) {
-  arrList.forEach((item) => {
+  arrList.forEach((item, index) => {
     const li = document.createElement('li');
     const h4 = document.createElement('h4');
     const divFooter = document.createElement('div');
@@ -137,6 +138,14 @@ function displayBoardEditValues() {
   const input = document.querySelector('.dialog-edit-board input')
 
   input.value = getActiveBoard().title;
+}
+
+function displayReadTaskValues() {
+
+
+  const h5 = document.querySelector('.dialog-read-task h5');
+  
+
 }
 
 displayBoards();
