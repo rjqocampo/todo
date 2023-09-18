@@ -1,4 +1,4 @@
-import { factoryBoard } from "./factory";
+import { factoryBoard, factoryTask } from "./factory";
 
 let activeBoard = null;
 
@@ -64,6 +64,33 @@ function getActiveBoard() {
   return activeBoard;
 }
 
+function addNewTask() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+
+  const inputTitle = document.querySelector('#input-add-task-title');
+  const inputDescription = document.querySelector('#input-add-task-description');
+  const inputDate = document.querySelector('#input-add-task-due-date');
+  const inputPriority = document.querySelector('#input-add-task-priority');
+
+  console.log(inputTitle.value);
+  console.log(inputDescription.value);
+  console.log(inputDate.value);
+  console.log(inputPriority.value);
+  const newTask = factoryTask(
+    inputTitle.value,
+    inputDescription.value,
+    inputDate.value,
+    inputPriority.value
+  );
+  console.log(newTask);
+  console.log(activeBoard);
+  console.log(indexOfActiveBoard);
+  
+  boards[indexOfActiveBoard].tasks.unshift(newTask);
+  
+  console.log(boards);
+}
+
 function addNewBoard() {
   const input = document.querySelector('#input-create-board-title');  
   const newBoard = factoryBoard(input.value);
@@ -107,4 +134,6 @@ export {
   setActiveBoard, 
   getActiveBoard, 
   editBoard, 
-  deleteBoard };
+  deleteBoard,
+  addNewTask
+};

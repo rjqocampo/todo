@@ -22,7 +22,6 @@ function formCheckTasks(str) {
   const inputDate = document.querySelector(`.container-input-${str}-due-date input`);
   const spanInputDate = document.querySelector(`.container-input-${str}-due-date span`);
 
-  console.log(spanTextArea)
   function checkInput() {
     if (input.validity.valueMissing) {
       spanInput.textContent = 'This field is required';
@@ -60,11 +59,7 @@ function formCheckTasks(str) {
       spanInputDate.textContent = '';
       return true;
     }
-  }
-
-  console.log(checkInput());
-  console.log(checkTextArea());
-  console.log(checkInputDate());
+  };
 
   if (checkInput() && checkTextArea() && checkInputDate()) {
     return true;
