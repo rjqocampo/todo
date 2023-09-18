@@ -90,4 +90,3 @@ buttonsDialogClose.forEach((button) => {
 
 displayBoards();
 displayBoardsTotal();
-toggleHeaderButtons();

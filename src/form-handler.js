@@ -83,4 +83,18 @@ function clearInputFields() {
   inputDate.selected = 'true';
 }
 
+function preventEnterKey() {
+  const forms =  document.querySelectorAll('form');
+
+  forms.forEach((form) => {
+    form.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+      }
+    })
+  })
+}
+
+preventEnterKey();
+
 export { formCheckBoards, formCheckTasks, clearInputFields };

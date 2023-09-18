@@ -114,7 +114,7 @@ function editBoard() {
 function deleteBoard() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
   
-  activeBoard = null;
+  activeBoard = null; // to display no board after deleting
 
   boards.splice(indexOfActiveBoard, 1);
   console.log(boards);

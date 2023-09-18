@@ -1,11 +1,5 @@
 import { getActiveBoard } from "./data-handler";
 
-const inputDate = document.querySelector('input[type="date"]');
-
-inputDate.addEventListener('click', () => {
-  inputDate.showPicker();
-})
-
 function showDialog(str) {
   const dialog = document.querySelector(`.dialog-${str}`);
 
@@ -35,5 +29,15 @@ function toggleHeaderButtons() {
     }
   })
 }
+
+function spanDatePicker() {
+  const inputDate = document.querySelector('input[type="date"]');
+
+  inputDate.addEventListener('click', () => {
+    inputDate.showPicker();
+  })
+}
+
+spanDatePicker();
 
 export { showDialog, closeDialog, exitDialog, toggleHeaderButtons };

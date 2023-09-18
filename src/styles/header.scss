@@ -21,7 +21,7 @@ body {
         button {
           transition: all 0.2s;
           &[disabled] {
-            visibility: hidden;
+            display: none;
           }
           &:hover {
             filter: brightness(120%);
