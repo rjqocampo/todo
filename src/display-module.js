@@ -24,6 +24,7 @@ function displayBoards() {
     li.addEventListener('click', (e) => {
       setActiveBoard(e);
       displayActiveBoard();
+      removeTasks();
       displayTasks();
     })
   })
@@ -53,7 +54,13 @@ function displayTasks() {
   const ulDoing = document.querySelector('.list-doing');
   const ulDone = document.querySelector('.list-done');
 
-  todo.forEach((item) => {
+  createCards(todo, ulTodo);
+  createCards(doing, ulDoing);
+  createCards(done, ulDone);
+}
+
+function createCards(arrList, nameOfList) {
+  arrList.forEach((item) => {
     const li = document.createElement('li');
     const h4 = document.createElement('h4');
     const divFooter = document.createElement('div');
@@ -66,7 +73,7 @@ function displayTasks() {
     divFooter.classList.add('task-footer');
     divFooterContainer.classList.add('task-footer__container');
     h5.textContent = item.dueDate;
-    
+
     if (item.priority === 'low') {
       img.setAttribute('src', 'assets/images/flag.svg');
       span.classList.add('task-footer__prio--low');
@@ -87,7 +94,7 @@ function displayTasks() {
     divFooterContainer.appendChild(img);
     divFooterContainer.appendChild(span);
     divFooter.appendChild(h5);
-    ulTodo.appendChild(li);
+    nameOfList.appendChild(li);
   })
 }
 
@@ -102,6 +109,24 @@ function removeBoards() {
   
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild);
+  }
+}
+
+function removeTasks() {
+  const ulTodo = document.querySelector('.list-todo');
+  const ulDoing = document.querySelector('.list-doing');
+  const ulDone = document.querySelector('.list-done');
+
+  while (ulTodo.firstChild) {
+    ulTodo.removeChild(ulTodo.firstChild);
+  }
+
+  while (ulDoing.firstChild) {
+    ulDoing.removeChild(ulDoing.firstChild);
+  }
+
+  while (ulDone.firstChild) {
+    ulDone.removeChild(ulDone.firstChild);
   }
 }
 
