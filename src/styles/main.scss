@@ -89,7 +89,6 @@ body {
                 border-radius: 70px;
                 img {
                   @include index.icon-size(15px);
-                  fill: red;
                 }
                 span  {
                   font-size: 0.8rem;

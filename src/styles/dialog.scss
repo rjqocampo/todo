@@ -230,5 +230,106 @@ body {
         }
       }
     }
+    .dialog-read-task {
+      background-color: index.$theme-dark;
+      border: none;
+      border-radius: 10px;;
+      padding: 10px 25px;
+      &[open] {
+        display: grid;
+      }
+      &::backdrop {
+        background-color: black;
+        opacity: 0.6;
+      }
+      h5 {
+        color: index.$font-white;
+        font-weight: bold;
+        width: 350px;
+        margin: 20px 0px 5px 0px;
+      }
+
+      p {
+        color: index.$font-gray;
+        font-size: 0.8rem;
+        width: 350px;
+        line-height: 25px;
+        margin: 10px 0px;
+      }
+      &__info {
+        margin: 5px 0px 10px 0px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        h6 {
+          color: index.$font-white;
+          font-size: 0.8rem;
+          width: max-content;
+          background-color: index.$theme-gray;
+          padding: 4px 15px;
+          border-radius: 70px;
+  
+          display: flex;
+          align-items: center;
+        }
+        div {
+          width: min-content;
+          background-color: index.$theme-gray;
+          padding: 4px 15px;
+          border-radius: 70px;
+  
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          img {
+            @include index.icon-size(15px);
+          }
+          span {
+            color: index.$font-white;
+            font-size: 0.8rem;
+          }
+        }
+      }
+      &__buttons {
+        margin: 20px 0px;
+
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 90px;
+        gap: 10px;
+        button {
+          color: index.$font-white;
+          font-weight: bold;
+          background-color: index.$theme-purple;
+          border: none;
+          border-radius: 50px;
+          height: 40px;
+          cursor: pointer;
+
+          transition: all 0.2s;
+          &:hover {
+            filter: brightness(120%);
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        div {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          button {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            img {
+              @include index.icon-size(20px);
+            }
+          }
+        }
+      }
+    }
   }
 }

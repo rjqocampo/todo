@@ -1,5 +1,5 @@
 import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks } from "./data-handler";
-import { toggleHeaderButtons } from "./ui-module";
+import { toggleHeaderButtons, showDialog } from "./ui-module";
 
 function displayBoards() {
   const ul = document.querySelector('.boards-list > ul');
@@ -32,7 +32,6 @@ function displayBoards() {
 
 function displayActiveBoard() {
   const boardHeader = document.querySelector('header > h2');
-
   const board = getActiveBoard();
 
   if (board === null) {
@@ -95,6 +94,10 @@ function createCards(arrList, nameOfList) {
     divFooterContainer.appendChild(span);
     divFooter.appendChild(h5);
     nameOfList.appendChild(li);
+
+    li.addEventListener('click', () => {
+      showDialog('read-task');
+    })
   })
 }
 
@@ -141,6 +144,8 @@ displayBoardsTotal();
 
 export { 
   displayBoards,
+  displayTasks,
+  removeTasks,
   displayBoardsTotal,
   removeBoards,
   displayBoardEditValues,

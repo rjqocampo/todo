@@ -7,12 +7,14 @@ import './styles/breakpoints.scss';
 
 import { 
   displayBoards, 
+  displayTasks,
+  removeTasks,
   displayBoardsTotal, 
   removeBoards, 
   displayBoardEditValues, 
   displayActiveBoard 
 } from './display-module';
-import { showDialog, closeDialog, exitDialog, toggleHeaderButtons } from './ui-module';
+import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { addNewBoard, editBoard, deleteBoard, addNewTask } from './data-handler';
 import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
 
@@ -33,7 +35,8 @@ buttonAddTask.addEventListener('click', () => {
   addNewTask();
   clearInputFields();
   closeDialog('add-task');
-
+  removeTasks();
+  displayTasks();
 })
 
 buttonDeleteBoard.addEventListener('click', () => {
