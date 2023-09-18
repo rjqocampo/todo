@@ -49,6 +49,46 @@ function displayTasks() {
   console.log(doing);
   console.log(done);
 
+  const ulTodo = document.querySelector('.list-todo');
+  const ulDoing = document.querySelector('.list-doing');
+  const ulDone = document.querySelector('.list-done');
+
+  todo.forEach((item) => {
+    const li = document.createElement('li');
+    const h4 = document.createElement('h4');
+    const divFooter = document.createElement('div');
+    const divFooterContainer = document.createElement('div');
+    const img = document.createElement('img');
+    const span = document.createElement('span');
+    const h5 = document.createElement('h5');
+
+    h4.textContent = item.title;
+    divFooter.classList.add('task-footer');
+    divFooterContainer.classList.add('task-footer__container');
+    h5.textContent = item.dueDate;
+    
+    if (item.priority === 'low') {
+      img.setAttribute('src', 'assets/images/flag.svg');
+      span.classList.add('task-footer__prio--low');
+      span.textContent = 'low';
+    } else if (item.priority === 'medium') {
+      img.setAttribute('src', 'assets/images/flag.svg');
+      span.classList.add('task-footer__prio--medium');
+      span.textContent = 'medium';
+    } else if (item.priority === 'high') {
+      img.setAttribute('src', 'assets/images/flag.svg');
+      span.classList.add('task-footer__prio--high');
+      span.textContent = 'high';
+    }
+
+    li.appendChild(h4);
+    li.appendChild(divFooter);
+    divFooter.appendChild(divFooterContainer);
+    divFooterContainer.appendChild(img);
+    divFooterContainer.appendChild(span);
+    divFooter.appendChild(h5);
+    ulTodo.appendChild(li);
+  })
 }
 
 function displayBoardsTotal() {
