@@ -20,6 +20,9 @@ body {
         gap: 20px;
         button {
           transition: all 0.2s;
+          &[disabled] {
+            visibility: hidden;
+          }
           &:hover {
             filter: brightness(120%);
           }

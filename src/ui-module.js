@@ -1,3 +1,5 @@
+import { getActiveBoard } from "./data-handler";
+
 const inputDate = document.querySelector('input[type="date"]');
 
 inputDate.addEventListener('click', () => {
@@ -22,6 +24,16 @@ function exitDialog(e) {
   dialog.close();
 }
 
+function toggleHeaderButtons() {
+  const buttons = document.querySelectorAll('.header-buttons');
 
+  buttons.forEach((button) => {
+    if (getActiveBoard() === null) {
+      button.disabled = true;
+    } else {
+      button.disabled = false;
+    }
+  })
+}
 
-export { showDialog, closeDialog, exitDialog };
+export { showDialog, closeDialog, exitDialog, toggleHeaderButtons };

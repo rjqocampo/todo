@@ -1,4 +1,5 @@
 import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard } from "./data-handler";
+import { toggleHeaderButtons } from "./ui-module";
 
 function displayBoards() {
   const ul = document.querySelector('.boards-list > ul');
@@ -37,6 +38,8 @@ function displayActiveBoard() {
   } else {
     boardHeader.textContent = board.title;
   }
+
+  toggleHeaderButtons();
 }
 
 function displayBoardsTotal() {

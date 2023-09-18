@@ -12,7 +12,7 @@ import {
   displayBoardEditValues, 
   displayActiveBoard 
 } from './display-module';
-import { showDialog, closeDialog, exitDialog } from './ui-module';
+import { showDialog, closeDialog, exitDialog, toggleHeaderButtons } from './ui-module';
 import { addNewBoard, editBoard, deleteBoard, addNewTask } from './data-handler';
 import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
 
@@ -59,6 +59,18 @@ buttonEditBoard.addEventListener('click', () => {
   displayActiveBoard();
 })
 
+buttonCreateBoard.addEventListener('click', (e) => {
+  if (!formCheckBoards('create-board')) {
+    return;
+  }
+  removeBoards();
+  addNewBoard();
+  displayBoards();
+  displayBoardsTotal();
+  clearInputFields();
+  closeDialog('create-board');
+})
+
 buttonOpenDialogCreateBoard.addEventListener('click', () => {
   showDialog('create-board');
 })
@@ -76,19 +88,6 @@ buttonsDialogClose.forEach((button) => {
   button.addEventListener('click', (e) => { exitDialog(e) })
 })
 
-buttonCreateBoard.addEventListener('click', (e) => {
-  if (!formCheckBoards('create-board')) {
-    return;
-  }
-  removeBoards();
-  addNewBoard();
-  displayBoards();
-  displayBoardsTotal();
-  clearInputFields();
-  closeDialog('create-board');
-})
-
 displayBoards();
 displayBoardsTotal();
-
-console.log('Hello world')
+toggleHeaderButtons();
