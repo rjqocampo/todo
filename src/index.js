@@ -13,7 +13,8 @@ import {
   removeBoards, 
   displayEditBoardValues, 
   displayActiveBoard,
-  displayEditTaskValues
+  displayEditTaskValues,
+  displayReadTaskValues
 } from './display-module';
 import { 
   addNewBoard, 
@@ -22,6 +23,7 @@ import {
   addNewTask, 
   proceedTask, 
   storeIndex,
+  editTask
 } from './data-handler';
 import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
@@ -39,11 +41,16 @@ const buttonOpenDialogEditTask = document.querySelector('#button-open-edit-task'
 const buttonEditTask = document.querySelector('#button-edit-task');
 
 buttonEditTask.addEventListener('click', (e) => {
-  // if (!formCheckTasks('edit-task')) {
-  //   console.log('Invalid form');
-  //   return;
-  // }
-
+  if (!formCheckTasks('edit-task')) {
+    console.log('Invalid form');
+    return;
+  }
+  editTask(e);
+  closeDialog('edit-task');
+  removeTasks();
+  displayTasks();
+  showDialog('read-task');
+  displayReadTaskValues(e, 'dialog');
 })
 
 buttonOpenDialogEditTask.addEventListener('click', (e) => {

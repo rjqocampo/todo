@@ -103,7 +103,7 @@ function createCards(arrList) {
 
     li.addEventListener('click', (e) => {
       showDialog('read-task');
-      displayReadTaskValues(e);
+      displayReadTaskValues(e, 'li');
     })
   })
 }
@@ -146,9 +146,9 @@ function displayEditBoardValues() {
   input.value = getActiveBoard().title;
 }
 
-function displayReadTaskValues(e) {
+function displayReadTaskValues(e, indexHolder) {
   const tasks = getTasks();
-  const index = e.target.closest('li').getAttribute('data-index');
+  const index = e.target.closest(indexHolder).getAttribute('data-index');
 
   const dialog = document.querySelector('.dialog-read-task');
   const h5 = document.querySelector('.dialog-read-task h5');
@@ -192,11 +192,13 @@ function displayEditTaskValues(e) {
   const inputDescription = document.querySelector('#input-edit-task-description');
   const inputDate = document.querySelector('#input-edit-task-due-date');
   const inputPriority = document.querySelector('#input-edit-task-priority');
+  const inputStatus = document.querySelector('#input-edit-task-status');
 
   inputTitle.value = tasks[index].title;
   inputDescription.value = tasks[index].description;
   inputDate.value = tasks[index].dueDate;
   inputPriority.value = tasks[index].priority;
+  inputStatus.value = tasks[index].status;
 }
 
 displayBoards();
@@ -210,5 +212,6 @@ export {
   removeBoards,
   displayEditBoardValues,
   displayActiveBoard,
-  displayEditTaskValues
+  displayEditTaskValues,
+  displayReadTaskValues
  };

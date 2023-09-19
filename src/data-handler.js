@@ -112,6 +112,31 @@ function editBoard() {
   console.log(boards);
 }
 
+function editTask(e) {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+  const newTask = boards[indexOfActiveBoard].tasks[indexOfTask];
+
+  const inputTitle = document.querySelector('#input-edit-task-title');
+  const inputDescription = document.querySelector('#input-edit-task-description');
+  const inputDate = document.querySelector('#input-edit-task-due-date');
+  const inputPriority = document.querySelector('#input-edit-task-priority');
+  const inputStatus = document.querySelector('#input-edit-task-status');
+
+  newTask.title = inputTitle.value;
+  newTask.description = inputDescription.value;
+  newTask.dueDate = inputDate.value;
+  newTask.priority = inputPriority.value;
+  newTask.status = inputStatus.value;
+
+  console.log(indexOfActiveBoard);
+  console.log(indexOfTask);
+  console.log(newTask);
+
+  boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1, newTask);
+  console.log(boards[indexOfActiveBoard]);
+}
+
 function deleteBoard() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
   
@@ -167,5 +192,6 @@ export {
   addNewTask,
   getTasks,
   proceedTask,
-  storeIndex
+  storeIndex,
+  editTask
 };
