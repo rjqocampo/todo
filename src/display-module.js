@@ -140,7 +140,7 @@ function removeTasks() {
   }
 }
 
-function displayBoardEditValues() {
+function displayEditBoardValues() {
   const input = document.querySelector('.dialog-edit-board input')
 
   input.value = getActiveBoard().title;
@@ -184,6 +184,21 @@ function displayReadTaskValues(e) {
   }
 }
 
+function displayEditTaskValues(e) {
+  const index = e.target.closest('dialog').getAttribute('data-index');
+  const tasks = getTasks();
+
+  const inputTitle = document.querySelector('#input-edit-task-title');
+  const inputDescription = document.querySelector('#input-edit-task-description');
+  const inputDate = document.querySelector('#input-edit-task-due-date');
+  const inputPriority = document.querySelector('#input-edit-task-priority');
+
+  inputTitle.value = tasks[index].title;
+  inputDescription.value = tasks[index].description;
+  inputDate.value = tasks[index].dueDate;
+  inputPriority.value = tasks[index].priority;
+}
+
 displayBoards();
 displayBoardsTotal();
 
@@ -193,6 +208,7 @@ export {
   removeTasks,
   displayBoardsTotal,
   removeBoards,
-  displayBoardEditValues,
-  displayActiveBoard
+  displayEditBoardValues,
+  displayActiveBoard,
+  displayEditTaskValues
  };

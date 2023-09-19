@@ -11,11 +11,19 @@ import {
   removeTasks,
   displayBoardsTotal, 
   removeBoards, 
-  displayBoardEditValues, 
-  displayActiveBoard 
+  displayEditBoardValues, 
+  displayActiveBoard,
+  displayEditTaskValues
 } from './display-module';
+import { 
+  addNewBoard, 
+  editBoard, 
+  deleteBoard, 
+  addNewTask, 
+  proceedTask, 
+  storeIndex,
+} from './data-handler';
 import { showDialog, closeDialog, exitDialog } from './ui-module';
-import { addNewBoard, editBoard, deleteBoard, addNewTask, proceedTask } from './data-handler';
 import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
 
 const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
@@ -30,16 +38,19 @@ const buttonProceedTask = document.querySelector('#button-proceed-task');
 const buttonOpenDialogEditTask = document.querySelector('#button-open-edit-task');
 const buttonEditTask = document.querySelector('#button-edit-task');
 
-buttonEditTask.addEventListener('click', () => {
-  if (!formCheckTasks('edit-task')) {
-    console.log('Invalid form');
-    return;
-  }
+buttonEditTask.addEventListener('click', (e) => {
+  // if (!formCheckTasks('edit-task')) {
+  //   console.log('Invalid form');
+  //   return;
+  // }
+
 })
 
 buttonOpenDialogEditTask.addEventListener('click', (e) => {
   closeDialog('read-task');
   showDialog('edit-task');
+  storeIndex(e);
+  displayEditTaskValues(e);
 })
 
 buttonProceedTask.addEventListener('click', (e) => {
@@ -102,7 +113,7 @@ buttonOpenDialogCreateBoard.addEventListener('click', () => {
 
 buttonOpenDialogEditBoard.addEventListener('click', () => {
   showDialog('edit-board');
-  displayBoardEditValues();
+  displayEditBoardValues();
 })
 
 buttonOpenDialogAddTask.addEventListener('click', () => {

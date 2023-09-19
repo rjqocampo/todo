@@ -9,21 +9,21 @@ const boards = [
       {
         title: 'Build UI for Project',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: 'This Week',
+        dueDate: '2023-09-30',
         priority: 'low',
         status: 'todo',
       },
       {
         title: 'Restructure Code into Modules',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: 'Today',
+        dueDate: '2023-09-28',
         priority: 'medium',
         status: 'todo',
       },
       {
         title: 'Make project responsive to all devices',
         description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-        dueDate: 'Today',
+        dueDate: '2023-09-26',
         priority: 'high',
         status: 'doing',
       },
@@ -35,14 +35,14 @@ const boards = [
       {
         title: 'Create Figma prototype',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: 'This Week',
+        dueDate: '2023-10-01',
         priority: 'high',
         status: 'todo',
       },
       {
         title: 'Make environments for development and production',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: 'Today',
+        dueDate: '2023-10-03',
         priority: 'low',
         status: 'done',
       },
@@ -52,10 +52,6 @@ const boards = [
 
 function getTasks() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-
-  // const todo = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'todo');
-  // const doing = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'doing');
-  // const done = boards[indexOfActiveBoard].tasks.filter(task => task.status === 'done');
 
   return boards[indexOfActiveBoard].tasks;
 }
@@ -90,6 +86,8 @@ function addNewTask() {
   );
   
   boards[indexOfActiveBoard].tasks.unshift(newTask);
+
+  console.log(boards);
 }
 
 function addNewBoard() {
@@ -151,6 +149,13 @@ function deleteTask(e) {
   boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1);
 }
 
+function storeIndex(e) {
+  const dialog = document.querySelector('.dialog-edit-task');
+  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+
+  dialog.setAttribute('data-index', indexOfTask);
+}
+
 export { 
   getBoards, 
   getBoardsTotal, 
@@ -161,5 +166,6 @@ export {
   deleteBoard,
   addNewTask,
   getTasks,
-  proceedTask
+  proceedTask,
+  storeIndex
 };
