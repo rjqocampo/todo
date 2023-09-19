@@ -63,11 +63,11 @@ function createCards(arrList) {
     const span = document.createElement('span');
     const h5 = document.createElement('h5');
 
+    li.setAttribute('data-index', index);
     h4.textContent = item.title;
     divFooter.classList.add('task-footer');
     divFooterContainer.classList.add('task-footer__container');
     h5.textContent = item.dueDate;
-    li.setAttribute('data-index', index);
 
     if (item.priority === 'low') {
       img.setAttribute('src', 'assets/images/flag.svg');
@@ -147,22 +147,30 @@ function displayBoardEditValues() {
 }
 
 function displayReadTaskValues(e) {
-  console.log(getTasks());
-  console.log(e.target.closest('li').getAttribute('data-index'));
-
   const tasks = getTasks();
   const index = e.target.closest('li').getAttribute('data-index');
 
+  const dialog = document.querySelector('.dialog-read-task');
   const h5 = document.querySelector('.dialog-read-task h5');
   const p = document.querySelector('.dialog-read-task p');
   const h6 = document.querySelector('.dialog-read-task h6');
   const img = document.querySelector('.dialog-read-task__info img');
   const span = document.querySelector('.dialog-read-task span');
+  const button = document.querySelector('.dialog-read-task__buttons > button');
   
+  dialog.setAttribute('data-index', index);
   h5.textContent = tasks[index].title;
   p.textContent = tasks[index].description;
   h6.textContent = tasks[index].dueDate;
   span.textContent = tasks[index].priority;
+
+  if (tasks[index].status === 'todo') {
+    button.textContent = 'Start Task';
+  } else if (tasks[index].status === 'doing') {
+    button.textContent = 'Complete Task';
+  } else {
+    button.textContent = 'INVISIBLE';
+  }
 
   if (tasks[index].priority === 'low') {
     img.setAttribute('src', 'assets/images/flag.svg')

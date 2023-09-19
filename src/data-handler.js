@@ -129,6 +129,28 @@ function setActiveBoard(e) {
   activeBoard = boards[index];
 }
 
+function proceedTask(e) {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+  const task = boards[indexOfActiveBoard].tasks[indexOfTask];
+  const statusOfTask = boards[indexOfActiveBoard].tasks[indexOfTask].status;
+
+  if (statusOfTask === 'todo') {
+    task.status = 'doing';
+  } else if (statusOfTask === 'doing') {
+    task.status = 'done';
+  } else if (statusOfTask === 'done') {
+    deleteTask(e);
+  }
+}
+
+function deleteTask(e) {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+
+  boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1);
+}
+
 export { 
   getBoards, 
   getBoardsTotal, 
@@ -138,5 +160,6 @@ export {
   editBoard, 
   deleteBoard,
   addNewTask,
-  getTasks
+  getTasks,
+  proceedTask
 };
