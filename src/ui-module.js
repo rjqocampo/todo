@@ -31,10 +31,12 @@ function toggleHeaderButtons() {
 }
 
 function spanDatePicker() {
-  const inputDate = document.querySelector('input[type="date"]');
+  const inputFieldsDate = document.querySelectorAll('input[type="date"]');
 
-  inputDate.addEventListener('click', () => {
-    inputDate.showPicker();
+  inputFieldsDate.forEach((input) => {
+    input.addEventListener('click', () => {
+      input.showPicker();
+    })
   })
 }
 

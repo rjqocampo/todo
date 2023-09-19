@@ -27,6 +27,20 @@ const buttonDeleteBoard = document.querySelector('.button-delete-board');
 const buttonOpenDialogAddTask = document.querySelector('.button-open-add-task');
 const buttonAddTask = document.querySelector('#button-add-task');
 const buttonProceedTask = document.querySelector('#button-proceed-task');
+const buttonOpenDialogEditTask = document.querySelector('#button-open-edit-task');
+const buttonEditTask = document.querySelector('#button-edit-task');
+
+buttonEditTask.addEventListener('click', () => {
+  if (!formCheckTasks('edit-task')) {
+    console.log('Invalid form');
+    return;
+  }
+})
+
+buttonOpenDialogEditTask.addEventListener('click', (e) => {
+  closeDialog('read-task');
+  showDialog('edit-task');
+})
 
 buttonProceedTask.addEventListener('click', (e) => {
   proceedTask(e);

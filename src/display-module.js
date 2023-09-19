@@ -168,10 +168,10 @@ function displayReadTaskValues(e) {
     button.textContent = 'Start Task';
     button.classList.remove('button-proceed-task--delete');
   } else if (tasks[index].status === 'doing') {
-    button.textContent = 'Finish Task';
+    button.textContent = 'Complete Task';
     button.classList.remove('button-proceed-task--delete');
   } else {
-    button.textContent = 'Remove Task';
+    button.textContent = 'Delete Task';
     button.classList.add('button-proceed-task--delete');
   }
 

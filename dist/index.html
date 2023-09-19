@@ -200,7 +200,7 @@
         <div class="dialog-read-task__buttons">
           <button type="button" id="button-proceed-task"></button>
           <div>
-            <button type="button">
+            <button type="button" id="button-open-edit-task">
               <img src="assets/images/edit.svg" alt="Edit icon">
             </button>
             <button type="button" class="button-close-dialog">
@@ -208,7 +208,58 @@
             </button>
           </div>
         </div>
+      </dialog>
 
+      <dialog class="dialog-edit-task">
+        <div>
+          <h6>Edit Task</h6>
+          <div>
+            <button type="button" class="button-delete-task">
+              <img src="assets/images/trash.svg" alt="Trashcan icon">
+            </button>
+            <button type="button" class="button-close-dialog">
+              <img src="assets/images/x.svg" alt="Close icon">
+            </button>
+          </div>
+        </div>
+        <form autocomplete="off">
+          <ul>
+            <li class="container-input-edit-task-title">
+              <div>
+                <label for="input-edit-task-title">Title</label>
+                <span></span>
+              </div>
+              <input type="text" id="input-edit-task-title" minlength="5" maxlength="50" placeholder="e.g. Take a Coffee Break" required>
+            </li>
+            <li class="container-input-edit-task-description">
+              <div>
+                <label for="input-edit-task-description">Description</label>
+                <span></span>
+              </div>
+              <textarea rows="7" id="input-edit-task-description" minlength="5" maxlength="200" placeholder="e.g. Taking regular breaks is very important as it prevents mental fatigue and resets your focus. It also aids your brain in retaining information. So enjoy your break!" required></textarea>
+            </li>
+            <li  class="container-input-edit-task-due-date">
+              <div>
+                <label for="input-edit-task-due-date">Due Date</label>
+                <span></span>
+              </div>
+              <input type="date" id="input-edit-task-due-date" required>
+            </li>
+            <li>
+              <div>
+                <label for="input-edit-task-priority">Priority</label>
+              </div>
+              <select id="input-edit-task-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </li>
+            <li>
+              <button type="button" id="button-edit-task">Confirm Edit</button>
+            </li>
+          </ul>
+        </form>
       </dialog>
     </div>
   </body>

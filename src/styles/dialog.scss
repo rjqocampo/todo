@@ -94,7 +94,8 @@ body {
         }
       }
     }
-    .dialog-add-task {
+    .dialog-add-task,
+    .dialog-edit-task {
       background-color: index.$theme-dark;
       border: none;
       border-radius: 10px;;
@@ -150,7 +151,7 @@ body {
                 margin: 4px;
               }
               span {
-                color: #ff5c5c;
+                color: index.$theme-red;
                 font-size: 0.8rem;
                 margin: 4px;
               }
@@ -330,6 +331,11 @@ body {
             padding: 10px;
             img {
               @include index.icon-size(20px);
+            }
+          }
+          button:last-child {
+            img {
+              scale: 120%;
             }
           }
         }
