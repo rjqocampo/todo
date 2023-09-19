@@ -30,6 +30,9 @@ const buttonProceedTask = document.querySelector('#button-proceed-task');
 
 buttonProceedTask.addEventListener('click', (e) => {
   proceedTask(e);
+  closeDialog('read-task');
+  removeTasks();
+  displayTasks();
 })
 
 buttonAddTask.addEventListener('click', () => {

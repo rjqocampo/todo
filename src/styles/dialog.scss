@@ -298,6 +298,7 @@ body {
         align-items: center;
         grid-template-columns: 1fr 90px;
         gap: 10px;
+
         button {
           color: index.$font-white;
           font-weight: bold;
@@ -307,13 +308,16 @@ body {
           height: 40px;
           cursor: pointer;
 
-          transition: all 0.2s;
+          transition: filter 0.2s;
           &:hover {
             filter: brightness(120%);
           }
           &:focus {
             outline: none;
           }
+        }
+        .button-proceed-task--delete {
+          background-color: rgb(202, 54, 54);
         }
         div {
           display: flex;

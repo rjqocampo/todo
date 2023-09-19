@@ -166,10 +166,13 @@ function displayReadTaskValues(e) {
 
   if (tasks[index].status === 'todo') {
     button.textContent = 'Start Task';
+    button.classList.remove('button-proceed-task--delete');
   } else if (tasks[index].status === 'doing') {
-    button.textContent = 'Complete Task';
+    button.textContent = 'Finish Task';
+    button.classList.remove('button-proceed-task--delete');
   } else {
-    button.textContent = 'INVISIBLE';
+    button.textContent = 'Remove Task';
+    button.classList.add('button-proceed-task--delete');
   }
 
   if (tasks[index].priority === 'low') {
