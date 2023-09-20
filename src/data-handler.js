@@ -1,4 +1,5 @@
 import { factoryBoard, factoryTask } from "./factory";
+import { format, isToday, isThisWeek } from "date-fns";
 
 let activeBoard = null;
 
@@ -9,14 +10,14 @@ const boards = [
       {
         title: 'Build UI for Project',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-30',
+        dueDate: '2023-09-20',
         priority: 'low',
         status: 'todo',
       },
       {
         title: 'Restructure Code into Modules',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-28',
+        dueDate: '2023-09-21',
         priority: 'medium',
         status: 'todo',
       },
@@ -35,20 +36,57 @@ const boards = [
       {
         title: 'Create Figma prototype',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-10-01',
+        dueDate: '2023-09-20',
         priority: 'high',
         status: 'todo',
       },
       {
         title: 'Make environments for development and production',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-10-03',
+        dueDate: '2023-09-20',
+        priority: 'low',
+        status: 'done',
+      },
+    ]
+  },
+  {
+    title: 'Etch-a-Sketch Project',
+    tasks: [
+      {
+        title: 'Create Wireframe',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-23',
+        priority: 'high',
+        status: 'todo',
+      },
+      {
+        title: 'Add animation',
+        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-21',
         priority: 'low',
         status: 'done',
       },
     ]
   },
 ]
+
+function getDueToday() {
+  const arr = [];
+
+  boards.forEach((board) => {
+    const dueTasks = board.tasks.filter((task) => {
+      return isToday(new Date(task.dueDate));
+    })
+
+    board.tasks = dueTasks;
+
+    if (board.tasks.length !== 0) {
+      arr.push(board);
+    }
+  })
+
+  return arr;
+}
 
 function getTasks() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
@@ -210,5 +248,6 @@ export {
   editTask,
   getTasksTotal,
   deleteTask,
-  setActiveBoardToNull
+  setActiveBoardToNull,
+  getDueToday
 };

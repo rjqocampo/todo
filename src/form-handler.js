@@ -52,11 +52,7 @@ function formCheckTasks(str) {
     if (inputDate.validity.valueMissing) {
       spanInputDate.textContent = 'This field is required';
       return false;
-    } else if (inputDate.validity.tooShort) {
-      spanInputDate.textContent = 'Input is too short';
-      return false;
     } else {
-      spanInputDate.textContent = '';
       return true;
     }
   };

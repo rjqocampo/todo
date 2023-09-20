@@ -1,4 +1,4 @@
-import { getActiveBoard } from "./data-handler";
+import { getActiveBoard, getDueToday } from "./data-handler";
 import { displayReadTaskValues } from "./display-module";
 
 function createCards(arrList) {
@@ -80,6 +80,25 @@ function createBoardColumn(columnName) {
   divColumn.appendChild(ul);
 }
 
+function showDueMain() {
+  const boards = getDueToday();
+
+  const main = document.querySelector('main');
+  const divDue = document.createElement('div');
+  const divHeader = document.createElement('div');
+  const divContainer = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const h3 = document.createElement('h3');
+  const divHr = document.createElement('div');
+  const button = document.createElement('button');
+  const p = document.createElement('p');
+  const img = document.createElement('img');
+  const ul = document.createElement('ul');
+
+  divDue.classList.add('due-page');
+  divHeader.classList.add('due-page__header');
+}
+
 function showBoardMain() {
   createBoardColumn('todo');
   createBoardColumn('doing');
@@ -143,5 +162,6 @@ export {
   toggleHeaderButtons, 
   createCards,
   showBoardMain,
-  closeMain
+  closeMain,
+  showDueMain
 };

@@ -34,7 +34,8 @@ import {
   closeDialog, 
   exitDialog, 
   toggleHeaderButtons, 
-  closeMain 
+  closeMain,
+  showDueMain
 } from './ui-module';
 import { 
   formCheckBoards, 
@@ -68,6 +69,8 @@ buttonDueToday.addEventListener('click', () => {
   toggleHeaderButtons();
   displayDueHeader('today');
   closeMain();
+
+  showDueMain();
 })
 
 buttonDueThisWeek.addEventListener('click', () => {

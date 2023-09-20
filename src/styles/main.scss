@@ -112,7 +112,7 @@ body {
 
         grid-column: 1 / span 3;
         &__header {
-          padding: 30px 40px;
+          padding: 30px 40px 0px 40px;
 
           display: flex;
           justify-content: space-between;
@@ -167,7 +167,7 @@ body {
           padding: 40px;
 
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
           gap: 25px;
           li {
             color: index.$font-white;
@@ -178,10 +178,6 @@ body {
             box-shadow: 1px 1px 10px index.$card-shadow;
             height: min-content;
 
-            transition: all 0.3s;
-            &:hover {
-              transform: translateY(-4px);
-            }
             h4 {
               font-size: 1rem;
               margin-bottom: 10px;
