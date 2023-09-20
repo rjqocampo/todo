@@ -1,5 +1,5 @@
 import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks } from "./data-handler";
-import { toggleHeaderButtons, showDialog } from "./ui-module";
+import { toggleHeaderButtons, createCards, showBoardPage } from "./ui-module";
 
 function displayBoards() {
   const ul = document.querySelector('.boards-list > ul');
@@ -24,6 +24,8 @@ function displayBoards() {
     li.addEventListener('click', (e) => {
       setActiveBoard(e);
       displayActiveBoard();
+      removeColumn();
+      showBoardPage();
       removeTasks();
       displayTasks();
     })
@@ -49,64 +51,7 @@ function displayTasks() {
   createCards(tasks);
 }
 
-function createCards(arrList) {
-  const ulTodo = document.querySelector('.list-todo');
-  const ulDoing = document.querySelector('.list-doing');
-  const ulDone = document.querySelector('.list-done');
 
-  arrList.forEach((item, index) => {
-    const li = document.createElement('li');
-    const h4 = document.createElement('h4');
-    const divFooter = document.createElement('div');
-    const divFooterContainer = document.createElement('div');
-    const img = document.createElement('img');
-    const span = document.createElement('span');
-    const h5 = document.createElement('h5');
-
-    li.setAttribute('data-index', index);
-    h4.textContent = item.title;
-    divFooter.classList.add('task-footer');
-    divFooterContainer.classList.add('task-footer__container');
-    h5.textContent = item.dueDate;
-
-    if (item.priority === 'low') {
-      img.setAttribute('src', 'assets/images/flag.svg');
-      span.classList.add('task-footer__prio--low');
-      span.textContent = 'low';
-    } else if (item.priority === 'medium') {
-      img.setAttribute('src', 'assets/images/flag-purple.svg');
-      span.classList.add('task-footer__prio--medium');
-      span.textContent = 'medium';
-    } else if (item.priority === 'high') {
-      img.setAttribute('src', 'assets/images/flag-orange.svg');
-      span.classList.add('task-footer__prio--high');
-      span.textContent = 'high';
-    }
-
-    li.appendChild(h4);
-    li.appendChild(divFooter);
-    divFooter.appendChild(divFooterContainer);
-    divFooterContainer.appendChild(img);
-    divFooterContainer.appendChild(span);
-    divFooter.appendChild(h5);
-
-    if (item.status === 'todo') {
-      li.classList.add('todo');
-      ulTodo.appendChild(li);
-    } else if (item.status === 'doing') {
-      li.classList.add('doing');
-      ulDoing.appendChild(li);
-    } else if (item.status === 'done') {
-      li.classList.add('done');
-      ulDone.appendChild(li);
-    }
-
-    li.addEventListener('click', (e) => {
-      showDialog('read-task');
-      displayReadTaskValues(e, 'li');
-    })
-  })
-}
 
 function displayBoardsTotal() {
   const span = document.querySelector('.board-total');
@@ -119,6 +64,14 @@ function removeBoards() {
   
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild);
+  }
+}
+
+function removeColumn() {
+  const main = document.querySelector('main');
+
+  while (main.firstChild) {
+    main.removeChild(main.firstChild)
   }
 }
 
