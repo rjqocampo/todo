@@ -116,6 +116,57 @@ function showDueMain() {
     button.appendChild(p);
     button.appendChild(img);
     divPage.appendChild(ul);
+
+    createDueCards(board.tasks, ul);
+  })
+}
+
+function createDueCards(tasks, ul) {
+
+  tasks.forEach((task) => {
+    const li = document.createElement('li');
+    const h4 = document.createElement('h4');
+    const divFooter = document.createElement('div');
+    const divFooterContainer = document.createElement('div');
+    const img = document.createElement('img');
+    const span = document.createElement('span');
+    const h5 = document.createElement('h5');
+
+    h4.textContent = task.title;
+    divFooter.classList.add('task-footer');
+    divFooterContainer.classList.add('task-footer__container');
+    h5.textContent = task.dueDate;
+
+    if (task.priority === 'low') {
+      img.setAttribute('src', 'assets/images/flag.svg');
+      span.classList.add('task-footer__prio--low');
+      span.textContent = 'low';
+    } else if (task.priority === 'medium') {
+      img.setAttribute('src', 'assets/images/flag-purple.svg');
+      span.classList.add('task-footer__prio--medium');
+      span.textContent = 'medium';
+    } else if (task.priority === 'high') {
+      img.setAttribute('src', 'assets/images/flag-orange.svg');
+      span.classList.add('task-footer__prio--high');
+      span.textContent = 'high';
+    }
+
+    li.appendChild(h4);
+    li.appendChild(divFooter);
+    divFooter.appendChild(divFooterContainer);
+    divFooterContainer.appendChild(img);
+    divFooterContainer.appendChild(span);
+    divFooter.appendChild(h5);
+
+    if (task.status === 'todo') {
+      li.classList.add('todo');
+    } else if (task.status === 'doing') {
+      li.classList.add('doing');
+    } else if (task.status === 'done') {
+      li.classList.add('done');
+    }
+
+    ul.appendChild(li);
   })
 }
 

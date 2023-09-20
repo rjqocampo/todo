@@ -17,14 +17,14 @@ const boards = [
       {
         title: 'Restructure Code into Modules',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
+        dueDate: '2023-09-20',
         priority: 'medium',
         status: 'todo',
       },
       {
         title: 'Make project responsive to all devices',
         description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-        dueDate: '2023-09-26',
+        dueDate: '2023-09-20',
         priority: 'high',
         status: 'doing',
       },
@@ -62,7 +62,7 @@ const boards = [
       {
         title: 'Add animation',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
+        dueDate: '2023-09-20',
         priority: 'low',
         status: 'done',
       },
@@ -85,6 +85,7 @@ function getDueToday() {
     }
   })
 
+  console.table(arr);
   return arr;
 }
 
