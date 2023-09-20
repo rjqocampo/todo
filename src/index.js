@@ -14,7 +14,8 @@ import {
   displayEditBoardValues, 
   displayActiveBoard,
   displayEditTaskValues,
-  displayReadTaskValues
+  displayReadTaskValues,
+  displayTasksTotal
 } from './display-module';
 import { 
   addNewBoard, 
@@ -23,7 +24,8 @@ import {
   addNewTask, 
   proceedTask, 
   storeIndex,
-  editTask
+  editTask,
+  deleteTask
 } from './data-handler';
 import { showDialog, closeDialog, exitDialog } from './ui-module';
 import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
@@ -39,6 +41,15 @@ const buttonAddTask = document.querySelector('#button-add-task');
 const buttonProceedTask = document.querySelector('#button-proceed-task');
 const buttonOpenDialogEditTask = document.querySelector('#button-open-edit-task');
 const buttonEditTask = document.querySelector('#button-edit-task');
+const buttonDeleteTask = document.querySelector('.button-delete-task');
+
+buttonDeleteTask.addEventListener('click', (e) => {
+  deleteTask(e);
+  closeDialog('edit-task');
+  removeTasks();
+  displayTasksTotal();
+  displayTasks();
+})
 
 buttonEditTask.addEventListener('click', (e) => {
   if (!formCheckTasks('edit-task')) {
@@ -48,6 +59,7 @@ buttonEditTask.addEventListener('click', (e) => {
   editTask(e);
   closeDialog('edit-task');
   removeTasks();
+  displayTasksTotal();
   displayTasks();
   showDialog('read-task');
   displayReadTaskValues(e, 'dialog');
@@ -64,6 +76,7 @@ buttonProceedTask.addEventListener('click', (e) => {
   proceedTask(e);
   closeDialog('read-task');
   removeTasks();
+  displayTasksTotal();
   displayTasks();
 })
 
@@ -76,6 +89,7 @@ buttonAddTask.addEventListener('click', () => {
   clearInputFields();
   closeDialog('add-task');
   removeTasks();
+  displayTasksTotal();
   displayTasks();
 })
 

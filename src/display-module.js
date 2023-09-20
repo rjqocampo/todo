@@ -1,4 +1,4 @@
-import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks } from "./data-handler";
+import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks, getTasksTotal } from "./data-handler";
 import { toggleHeaderButtons, createCards, showBoardPage } from "./ui-module";
 
 function displayBoards() {
@@ -26,6 +26,7 @@ function displayBoards() {
       displayActiveBoard();
       removeColumn();
       showBoardPage();
+      displayTasksTotal();
       removeTasks();
       displayTasks();
     })
@@ -51,12 +52,22 @@ function displayTasks() {
   createCards(tasks);
 }
 
-
-
 function displayBoardsTotal() {
   const span = document.querySelector('.board-total');
 
   span.textContent = getBoardsTotal();
+}
+
+function displayTasksTotal() {
+  const { todo, doing, done } = getTasksTotal();
+  
+  const columnTodo = document.querySelector('.column__header-todo h3');
+  const columnDoing = document.querySelector('.column__header-doing h3');
+  const columnDone = document.querySelector('.column__header-done h3');
+
+  columnTodo.textContent = `TODO (${todo})`;
+  columnDoing.textContent = `DOING (${doing})`;
+  columnDone.textContent=  `DONE (${done})`;
 }
 
 function removeBoards() {
@@ -166,5 +177,6 @@ export {
   displayEditBoardValues,
   displayActiveBoard,
   displayEditTaskValues,
-  displayReadTaskValues
+  displayReadTaskValues,
+  displayTasksTotal
  };

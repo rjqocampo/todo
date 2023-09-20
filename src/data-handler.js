@@ -70,6 +70,16 @@ function getActiveBoard() {
   return activeBoard;
 }
 
+function getTasksTotal() {
+  const tasks = getTasks();
+
+  const todo = tasks.filter((task) => task.status === 'todo').length;
+  const doing = tasks.filter((task) => task.status === 'doing').length;
+  const done = tasks.filter((task) => task.status === 'done').length;
+
+  return { todo, doing, done };
+}
+
 function addNewTask() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
 
@@ -193,5 +203,7 @@ export {
   getTasks,
   proceedTask,
   storeIndex,
-  editTask
+  editTask,
+  getTasksTotal,
+  deleteTask
 };
