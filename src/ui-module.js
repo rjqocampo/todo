@@ -126,6 +126,7 @@ function showDueMain() {
 
     button.addEventListener('click', (e) => {
       console.log('click');
+
       setActiveBoard(e, 'div');
       displayActiveBoard();
       removeColumn();

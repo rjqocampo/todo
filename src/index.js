@@ -69,7 +69,6 @@ buttonDueToday.addEventListener('click', () => {
   toggleHeaderButtons();
   displayDueHeader('today');
   closeMain();
-
   showDueMain();
 })
 
