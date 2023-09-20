@@ -82,21 +82,41 @@ function createBoardColumn(columnName) {
 
 function showDueMain() {
   const boards = getDueToday();
-
   const main = document.querySelector('main');
-  const divDue = document.createElement('div');
-  const divHeader = document.createElement('div');
-  const divContainer = document.createElement('div');
-  const h2 = document.createElement('h2');
-  const h3 = document.createElement('h3');
-  const divHr = document.createElement('div');
-  const button = document.createElement('button');
-  const p = document.createElement('p');
-  const img = document.createElement('img');
-  const ul = document.createElement('ul');
 
-  divDue.classList.add('due-page');
-  divHeader.classList.add('due-page__header');
+  boards.forEach((board) => {
+    const divPage = document.createElement('div');
+    const divHeader = document.createElement('div');
+    const divContainer = document.createElement('div');
+    const h2 = document.createElement('h2');
+    const h3 = document.createElement('h3');
+    const divHr = document.createElement('div');
+    const button = document.createElement('button');
+    const p = document.createElement('p');
+    const img = document.createElement('img');
+    const ul = document.createElement('ul');
+
+    divPage.classList.add('due-board');
+    divHeader.classList.add('due-board__header');
+    h2.textContent = 'BOARD';
+    h3.textContent = board.title;
+    divHr.classList.add('hr');
+    p.textContent = 'SEE BOARD';
+    img.setAttribute('src', 'assets/images/arrow-right.svg');
+    img.setAttribute('alt', 'Right arrow icon');
+
+
+    main.appendChild(divPage);
+    divPage.appendChild(divHeader);
+    divHeader.appendChild(divContainer);
+    divContainer.appendChild(h2);
+    divContainer.appendChild(h3);
+    divHeader.appendChild(divHr);
+    divHeader.appendChild(button);
+    button.appendChild(p);
+    button.appendChild(img);
+    divPage.appendChild(ul);
+  })
 }
 
 function showBoardMain() {
