@@ -15,7 +15,8 @@ import {
   displayActiveBoard,
   displayEditTaskValues,
   displayReadTaskValues,
-  displayTasksTotal
+  displayTasksTotal,
+  displayDueHeader
 } from './display-module';
 import { 
   addNewBoard, 
@@ -25,9 +26,10 @@ import {
   proceedTask, 
   storeIndex,
   editTask,
-  deleteTask
+  deleteTask,
+  setActiveBoardToNull
 } from './data-handler';
-import { showDialog, closeDialog, exitDialog } from './ui-module';
+import { showDialog, closeDialog, exitDialog, toggleHeaderButtons } from './ui-module';
 import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
 
 const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
@@ -42,6 +44,26 @@ const buttonProceedTask = document.querySelector('#button-proceed-task');
 const buttonOpenDialogEditTask = document.querySelector('#button-open-edit-task');
 const buttonEditTask = document.querySelector('#button-edit-task');
 const buttonDeleteTask = document.querySelector('.button-delete-task');
+const buttonDueToday = document.querySelector('.due-buttons__today');
+const buttonDueThisWeek = document.querySelector('.due-buttons__this-week');
+
+// buttonsDue.forEach((button) => {
+//   button.addEventListener('click', () => {
+//     displayDueHeader(Today);
+//   })
+// })
+
+buttonDueToday.addEventListener('click', () => {
+  setActiveBoardToNull();
+  toggleHeaderButtons();
+  displayDueHeader('today');
+})
+
+buttonDueThisWeek.addEventListener('click', () => {
+  setActiveBoardToNull();
+  toggleHeaderButtons();
+  displayDueHeader('this week');
+})
 
 buttonDeleteTask.addEventListener('click', (e) => {
   deleteTask(e);

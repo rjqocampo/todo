@@ -46,6 +46,18 @@ function displayActiveBoard() {
   toggleHeaderButtons();
 }
 
+function displayDueHeader(dueWhen) {
+  const dueHeader = document.querySelector('header > h2');
+ 
+  if (dueWhen === 'today') {
+    dueHeader.textContent = 'Today';
+  } else if (dueWhen === 'this week') {
+    dueHeader.textContent = 'This Week';
+  }
+
+  console.log('click');
+}
+
 function displayTasks() {
   const tasks = getTasks();
 
@@ -178,5 +190,6 @@ export {
   displayActiveBoard,
   displayEditTaskValues,
   displayReadTaskValues,
-  displayTasksTotal
+  displayTasksTotal,
+  displayDueHeader
  };

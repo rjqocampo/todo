@@ -162,6 +162,10 @@ function setActiveBoard(e) {
   activeBoard = boards[index];
 }
 
+function setActiveBoardToNull() {
+  activeBoard = null;
+}
+
 function proceedTask(e) {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
   const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
@@ -205,5 +209,6 @@ export {
   storeIndex,
   editTask,
   getTasksTotal,
-  deleteTask
+  deleteTask,
+  setActiveBoardToNull
 };
