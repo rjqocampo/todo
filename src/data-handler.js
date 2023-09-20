@@ -36,14 +36,14 @@ const boards = [
       {
         title: 'Create Figma prototype',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-21',
         priority: 'high',
         status: 'todo',
       },
       {
         title: 'Make environments for development and production',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-22',
         priority: 'low',
         status: 'done',
       },
@@ -55,7 +55,7 @@ const boards = [
       {
         title: 'Create Wireframe',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-23',
+        dueDate: '2023-09-20',
         priority: 'high',
         status: 'todo',
       },
@@ -73,12 +73,13 @@ const boards = [
 function getDueToday() {
   const arr = [];
 
-  boards.forEach((board) => {
+  boards.forEach((board, index) => {
     const dueTasks = board.tasks.filter((task) => {
-      return isToday(new Date(task.dueDate));
+      return task.status !== 'done' && isToday(new Date(task.dueDate));
     })
 
     board.tasks = dueTasks;
+    board.index = index;
 
     if (board.tasks.length !== 0) {
       arr.push(board);
@@ -195,9 +196,9 @@ function deleteBoard() {
   console.log(boards);
 }
 
-function setActiveBoard(e) {
-  const index = e.target.closest('li').getAttribute('data-index');
-
+function setActiveBoard(e, dataIndexHolder) {
+  const index = e.target.closest(dataIndexHolder).getAttribute('data-index');
+  console.log(index);
   activeBoard = boards[index];
 }
 

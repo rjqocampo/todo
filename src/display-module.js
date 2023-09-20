@@ -22,7 +22,7 @@ function displayBoards() {
     button.appendChild(p)
 
     li.addEventListener('click', (e) => {
-      setActiveBoard(e);
+      setActiveBoard(e, 'li');
       displayActiveBoard();
       removeColumn();
       showBoardMain();
@@ -191,5 +191,6 @@ export {
   displayEditTaskValues,
   displayReadTaskValues,
   displayTasksTotal,
-  displayDueHeader
+  displayDueHeader,
+  removeColumn
  };

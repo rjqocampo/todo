@@ -1,5 +1,12 @@
-import { getActiveBoard, getDueToday } from "./data-handler";
-import { displayReadTaskValues } from "./display-module";
+import { getActiveBoard, getDueToday, setActiveBoard } from "./data-handler";
+import { 
+  displayReadTaskValues, 
+  displayActiveBoard, 
+  removeColumn, 
+  displayTasksTotal, 
+  removeTasks, 
+  displayTasks
+} from "./display-module";
 
 function createCards(arrList) {
   const ulTodo = document.querySelector('.list-todo');
@@ -96,6 +103,7 @@ function showDueMain() {
     const img = document.createElement('img');
     const ul = document.createElement('ul');
 
+    divHeader.setAttribute('data-index', board.index);
     divPage.classList.add('due-board');
     divHeader.classList.add('due-board__header');
     h2.textContent = 'BOARD';
@@ -104,7 +112,6 @@ function showDueMain() {
     p.textContent = 'SEE BOARD';
     img.setAttribute('src', 'assets/images/arrow-right.svg');
     img.setAttribute('alt', 'Right arrow icon');
-
 
     main.appendChild(divPage);
     divPage.appendChild(divHeader);
@@ -117,12 +124,22 @@ function showDueMain() {
     button.appendChild(img);
     divPage.appendChild(ul);
 
+    button.addEventListener('click', (e) => {
+      console.log('click');
+      setActiveBoard(e, 'div');
+      displayActiveBoard();
+      removeColumn();
+      showBoardMain();
+      displayTasksTotal();
+      removeTasks();
+      displayTasks();
+    })
+
     createDueCards(board.tasks, ul);
   })
 }
 
 function createDueCards(tasks, ul) {
-
   tasks.forEach((task) => {
     const li = document.createElement('li');
     const h4 = document.createElement('h4');
