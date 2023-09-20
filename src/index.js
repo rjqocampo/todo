@@ -69,7 +69,7 @@ buttonDueToday.addEventListener('click', () => {
   toggleHeaderButtons();
   displayDueHeader('today');
   closeMain();
-  showDueMain();
+  showDueMain('today');
 })
 
 buttonDueThisWeek.addEventListener('click', () => {
@@ -77,6 +77,7 @@ buttonDueThisWeek.addEventListener('click', () => {
   toggleHeaderButtons();
   displayDueHeader('this week');
   closeMain();
+  showDueMain('this week');
 })
 
 buttonDeleteTask.addEventListener('click', (e) => {

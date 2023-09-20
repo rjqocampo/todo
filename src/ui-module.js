@@ -1,4 +1,4 @@
-import { getActiveBoard, getDueToday, setActiveBoard } from "./data-handler";
+import { getActiveBoard, getDueTasks, setActiveBoard } from "./data-handler";
 import { 
   displayReadTaskValues, 
   displayActiveBoard, 
@@ -87,8 +87,14 @@ function createBoardColumn(columnName) {
   divColumn.appendChild(ul);
 }
 
-function showDueMain() {
-  const boards = getDueToday();
+function showDueMain(dueWhen) {
+  let boards = null;
+
+  if (dueWhen === 'today') {
+    boards = getDueTasks('today');
+  } else if (dueWhen === 'this week') {
+    boards = getDueTasks('this week');
+  }
   const main = document.querySelector('main');
 
   boards.forEach((board) => {

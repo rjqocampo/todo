@@ -17,14 +17,14 @@ const boards = [
       {
         title: 'Restructure Code into Modules',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-21',
         priority: 'medium',
         status: 'todo',
       },
       {
         title: 'Make project responsive to all devices',
         description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-23',
         priority: 'high',
         status: 'doing',
       },
@@ -36,7 +36,7 @@ const boards = [
       {
         title: 'Create Figma prototype',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-23',
         priority: 'high',
         status: 'todo',
       },
@@ -55,14 +55,14 @@ const boards = [
       {
         title: 'Create Wireframe',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-28',
         priority: 'high',
         status: 'todo',
       },
       {
         title: 'Add animation',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-29',
         priority: 'low',
         status: 'done',
       },
@@ -70,14 +70,18 @@ const boards = [
   },
 ]
 
-function getDueToday() {
+function getDueTasks(dueWhen) {
   const copyOfBoards = boards.slice();
 
   const arr = [];
 
   copyOfBoards.forEach((board, index) => {
     const dueTasks = board.tasks.filter((task) => {
-      return task.status !== 'done' && isToday(new Date(task.dueDate));
+      if (dueWhen === 'today') {
+        return task.status !== 'done' && isToday(new Date(task.dueDate));
+      } else if (dueWhen === 'this week') {
+        return task.status !== 'done' && isThisWeek(new Date(task.dueDate));
+      }
     })
 
     if (dueTasks.length !== 0) {
@@ -255,5 +259,5 @@ export {
   getTasksTotal,
   deleteTask,
   setActiveBoardToNull,
-  getDueToday
+  getDueTasks
 };
