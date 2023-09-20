@@ -29,8 +29,18 @@ import {
   deleteTask,
   setActiveBoardToNull
 } from './data-handler';
-import { showDialog, closeDialog, exitDialog, toggleHeaderButtons } from './ui-module';
-import { formCheckBoards, formCheckTasks, clearInputFields } from './form-handler';
+import { 
+  showDialog, 
+  closeDialog, 
+  exitDialog, 
+  toggleHeaderButtons, 
+  closeMain 
+} from './ui-module';
+import { 
+  formCheckBoards, 
+  formCheckTasks, 
+  clearInputFields 
+} from './form-handler';
 
 const buttonsDialogClose = document.querySelectorAll('.button-close-dialog');
 const buttonOpenDialogCreateBoard = document.querySelector('.button-open-create-board');
@@ -57,12 +67,14 @@ buttonDueToday.addEventListener('click', () => {
   setActiveBoardToNull();
   toggleHeaderButtons();
   displayDueHeader('today');
+  closeMain();
 })
 
 buttonDueThisWeek.addEventListener('click', () => {
   setActiveBoardToNull();
   toggleHeaderButtons();
   displayDueHeader('this week');
+  closeMain();
 })
 
 buttonDeleteTask.addEventListener('click', (e) => {
@@ -123,6 +135,7 @@ buttonDeleteBoard.addEventListener('click', () => {
   clearInputFields();
   closeDialog('edit-board');
   displayActiveBoard();
+  closeMain();
 })
 
 buttonEditBoard.addEventListener('click', () => {

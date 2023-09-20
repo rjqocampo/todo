@@ -80,10 +80,18 @@ function createBoardColumn(columnName) {
   divColumn.appendChild(ul);
 }
 
-function showBoardPage() {
+function showBoardMain() {
   createBoardColumn('todo');
   createBoardColumn('doing');
   createBoardColumn('done');
+}
+
+function closeMain() {
+  const main = document.querySelector('main');
+
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
 }
 
 function showDialog(str) {
@@ -134,5 +142,6 @@ export {
   exitDialog, 
   toggleHeaderButtons, 
   createCards,
-  showBoardPage
+  showBoardMain,
+  closeMain
 };

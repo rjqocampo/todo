@@ -1,5 +1,5 @@
 import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks, getTasksTotal } from "./data-handler";
-import { toggleHeaderButtons, createCards, showBoardPage } from "./ui-module";
+import { toggleHeaderButtons, createCards, showBoardMain } from "./ui-module";
 
 function displayBoards() {
   const ul = document.querySelector('.boards-list > ul');
@@ -25,7 +25,7 @@ function displayBoards() {
       setActiveBoard(e);
       displayActiveBoard();
       removeColumn();
-      showBoardPage();
+      showBoardMain();
       displayTasksTotal();
       removeTasks();
       displayTasks();

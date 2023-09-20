@@ -105,6 +105,68 @@ body {
           };
         }
       }
+      
+      .due-page {
+        display: flex;
+        flex-direction: column;
+
+        grid-column: 1 / span 3;
+        &__header {
+          padding: 30px 40px;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: end;
+          div {
+            h2 {
+              color: index.$font-gray;
+              font-size: 0.7rem;
+              letter-spacing: 2px;
+              font-weight: bold;
+              line-height: 0.5rem;
+            }
+            h3 {
+              color: index.$font-white;
+              font-size: 1.3rem;
+              white-space: nowrap;
+            }
+          }
+          .hr {
+            border-bottom: 2px solid index.$theme-gray;
+            width: 100%;
+            margin: 0px 50px;
+            transform: translateY(-13px);
+
+            justify-self: center;
+          }
+          button {
+            @include index.button-styling();
+            background-color: index.$theme-purple;
+            border-radius: 50px;
+            padding: 4px 12px 3px 20px;
+
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            transition: all 0.3s;
+            &:hover {
+              filter: brightness(125%);
+            }
+            p {
+              color: index.$font-white;
+              font-size: 0.8rem;
+              white-space: nowrap;
+            }
+            img {
+              @include index.icon-size(20px);
+            }
+          }
+        }
+        ul {
+          
+        }
+      }
     }
   }
 }
