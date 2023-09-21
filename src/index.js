@@ -27,7 +27,8 @@ import {
   storeIndex,
   editTask,
   deleteTask,
-  setActiveBoardToNull
+  setActiveBoardToNull,
+  toggleSidebar
 } from './data-handler';
 import { 
   showDialog, 
@@ -57,12 +58,13 @@ const buttonEditTask = document.querySelector('#button-edit-task');
 const buttonDeleteTask = document.querySelector('.button-delete-task');
 const buttonDueToday = document.querySelector('.due-buttons__today');
 const buttonDueThisWeek = document.querySelector('.due-buttons__this-week');
+const buttonsSidebar = document.querySelectorAll('.button-sidebar');
 
-// buttonsDue.forEach((button) => {
-//   button.addEventListener('click', () => {
-//     displayDueHeader(Today);
-//   })
-// })
+buttonsSidebar.forEach((button) => {
+  button.addEventListener('click', () => {
+    toggleSidebar();
+  })
+})
 
 buttonDueToday.addEventListener('click', () => {
   setActiveBoardToNull();

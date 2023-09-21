@@ -2,6 +2,7 @@ import { factoryBoard, factoryTask } from "./factory";
 import { format, isToday, isThisWeek } from "date-fns";
 
 let activeBoard = null;
+let sidebar = true;
 
 const boards = [
   {
@@ -69,6 +70,15 @@ const boards = [
     ]
   },
 ]
+
+function toggleSidebar() {
+  sidebar = sidebar ? false : true;
+  console.log(sidebar);
+}
+
+function getSidebar() {
+  return sidebar;
+}
 
 function getDueTasks(dueWhen) {
   const copyOfBoards = boards.slice();
@@ -259,5 +269,7 @@ export {
   getTasksTotal,
   deleteTask,
   setActiveBoardToNull,
-  getDueTasks
+  getDueTasks,
+  toggleSidebar,
+  getSidebar
 };

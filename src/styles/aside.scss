@@ -35,8 +35,10 @@ body {
             display: flex;
             align-items: center;
             gap: 10px;
+
             img {
               @include index.icon-size(20px);
+              transform: translateY(-1px);
             }
             button {
               @include index.button-styling();
@@ -57,6 +59,10 @@ body {
             li {
               padding: 10px 0px;
               list-style: none;
+              img {
+                @include index.icon-size(22px);
+                transform: translateY(-2px);
+              }
               button {
                 @include index.button-styling();
                 padding: 0;
@@ -97,6 +103,7 @@ body {
         }
       }
       div:last-child {
+        justify-content: center;
         align-self: end;
 
         display: grid;
@@ -141,23 +148,26 @@ body {
             }
           }
         }
-        .hide {
+        .button-sidebar {
           @include index.button-styling();
           background-color: index.$theme-gray;
           border-radius: 8px;
           padding: 10px 20px;
           margin: 25px 0px;
+          width: max-content;
 
 
           display: flex;
+          justify-content: center;
           align-items: center;
-          &:hover img{
-            transform: translateX(-5px)
+
+          transition: all 0.4s;
+          &:hover  {
+            transform: translateX(-5px);
           }
           img {
-            transition: all 0.2s;
-            @include index.icon-size(25px);
-
+            @include index.icon-size(17px);
+            transform: translateY(-1px);
           }
           p {
             transition: all 0.4s;
@@ -166,6 +176,8 @@ body {
             letter-spacing: 1px;
             color: index.$font-white;
             margin-left: 5px;
+
+            align-self: end;
           }
         }
         .github {
