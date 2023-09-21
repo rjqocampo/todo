@@ -23,6 +23,7 @@ function createCards(arrList) {
     const h5 = document.createElement('h5');
 
     li.setAttribute('data-index', index);
+
     h4.textContent = item.title;
     divFooter.classList.add('task-footer');
     divFooterContainer.classList.add('task-footer__container');
@@ -259,6 +260,19 @@ function toggleHeaderButtons() {
   })
 }
 
+function toggleFocus(e) {
+  const buttons = document.querySelectorAll('.button-render');
+  const button = e.target.closest('button');
+  
+
+  buttons.forEach((button) => {
+    button.classList.remove('button-render--focus');
+  })
+
+  button.classList.add('button-render--focus');
+  console.log(button);
+}
+
 function spanDatePicker() {
   const inputFieldsDate = document.querySelectorAll('input[type="date"]');
 
@@ -280,5 +294,6 @@ export {
   showBoardMain,
   closeMain,
   showDueMain,
-  showSidebar
+  showSidebar,
+  toggleFocus
 };

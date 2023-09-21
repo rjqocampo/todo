@@ -42,7 +42,8 @@ import {
   toggleHeaderButtons, 
   closeMain,
   showDueMain,
-  showSidebar
+  showSidebar,
+  toggleFocus
 } from './ui-module';
 import { 
   formCheckBoards, 
@@ -73,20 +74,22 @@ buttonsSidebar.forEach((button) => {
   })
 })
 
-buttonDueToday.addEventListener('click', () => {
+buttonDueToday.addEventListener('click', (e) => {
   setActiveBoardToNull();
   toggleHeaderButtons();
   displayDueHeader('today');
   closeMain();
   showDueMain('today');
+  toggleFocus(e);
 })
 
-buttonDueThisWeek.addEventListener('click', () => {
+buttonDueThisWeek.addEventListener('click', (e) => {
   setActiveBoardToNull();
   toggleHeaderButtons();
   displayDueHeader('this week');
   closeMain();
   showDueMain('this week');
+  toggleFocus(e);
 })
 
 buttonDeleteTask.addEventListener('click', (e) => {

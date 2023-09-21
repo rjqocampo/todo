@@ -1,5 +1,5 @@
 import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks, getTasksTotal } from "./data-handler";
-import { toggleHeaderButtons, createCards, showBoardMain } from "./ui-module";
+import { toggleHeaderButtons, createCards, showBoardMain, toggleFocus } from "./ui-module";
 
 function displayBoards() {
   const ul = document.querySelector('.boards-list > ul');
@@ -11,7 +11,7 @@ function displayBoards() {
     const img = document.createElement('img');
 
     li.setAttribute('data-index', `${index}`);
-
+    button.classList.add('button-render');
     img.setAttribute('src', 'assets/images/feather.svg');
     img.setAttribute('alt', 'Feather Icon');
     p.textContent = board;
@@ -29,6 +29,7 @@ function displayBoards() {
       displayTasksTotal();
       removeTasks();
       displayTasks();
+      toggleFocus(e);
     })
   })
 }

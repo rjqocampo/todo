@@ -8,6 +8,36 @@ $border-dark: #474747;
 $card-shadow: #1a1a1a;
 $theme-red: #ff5c5c;
 
+@mixin button-focus($top, $left) {
+  &::after {
+    display: inline-block;
+    position: relative;
+    top: $top;
+    left: $left;
+    content: '';
+    height: 6px;
+    width: 6px;
+    background-color: aqua;
+
+    animation-duration: 2s;
+    animation-name: glow;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    border-radius: 50px;
+  }
+  @keyframes glow {
+    from {
+      transform: scale(100%);
+      opacity: 0.4;
+    }
+
+    to {
+      transform: scale(120%);
+      opacity: 1;
+    }
+  }
+}
 
 @mixin icon-size($pixel) {
   height: $pixel;
@@ -82,7 +112,7 @@ body {
   background-color: $theme-darker;
   #content {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 320px 1fr;
   grid-template-rows: 100px 1fr;
   }
 }
