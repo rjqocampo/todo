@@ -4,6 +4,7 @@ body {
   #content {
     .dialog-create-board,
     .dialog-edit-board {
+      width: min(380px, 100%);
       background-color: index.$theme-dark;
       border: none;
       border-radius: 10px;;
@@ -69,6 +70,7 @@ body {
           caret-color: index.$font-white;
           height: 35px;
           padding: 10px;
+          width: 100%;
           &::placeholder {
             font-size: 0.8rem;
             padding: 5px;
@@ -96,6 +98,7 @@ body {
     }
     .dialog-add-task,
     .dialog-edit-task {
+      width: min(380px, 100%);
       background-color: index.$theme-dark;
       border: none;
       border-radius: 10px;;
@@ -164,6 +167,7 @@ body {
               caret-color: index.$font-white;
               height: 35px;
               padding: 10px;
+              width: 100%;
               &::placeholder {
                 font-size: 0.8rem;
                 padding: 5px;
@@ -232,6 +236,7 @@ body {
       }
     }
     .dialog-read-task {
+      width: min(380px, 100%);
       background-color: index.$theme-dark;
       border: none;
       border-radius: 10px;;
@@ -246,14 +251,14 @@ body {
       h5 {
         color: index.$font-white;
         font-weight: bold;
-        width: 350px;
+        // width: 350px;
         margin: 20px 0px 5px 0px;
       }
 
       p {
         color: index.$font-gray;
         font-size: 0.8rem;
-        width: 350px;
+        // width: 350px;
         line-height: 25px;
         margin: 12px 0px;
       }

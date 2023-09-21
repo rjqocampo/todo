@@ -3,7 +3,12 @@ import './styles/aside.scss';
 import './styles/header.scss';
 import './styles/main.scss';
 import './styles/dialog.scss';
-import './styles/breakpoints.scss';
+import './styles/breakpoints-main.scss';
+import './styles/breakpoints-header.scss';
+import './styles/breakpoints-aside.scss';
+import './styles/breakpoints-index.scss';
+
+
 
 import { 
   displayBoards, 

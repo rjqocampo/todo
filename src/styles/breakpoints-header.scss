@@ -1,0 +1,49 @@
+@use 'index';
+
+@media all and (max-width: 768px) {
+
+body {
+  #content {
+    #header--sidebar-hide {
+      padding: 25px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      grid-column: 1;
+    }
+    header {
+      display: none;
+      h2 {
+        font-size: 1.4rem;
+      }
+      div {
+        .button-open-add-task {
+          padding: 12px;
+          p {
+            display: none;
+          }
+          img {
+            @include index.icon-size(15px);
+          }
+        }
+        .button-open-edit-board {
+          padding: 12px;
+          img {
+            @include index.icon-size(15px);
+
+          }
+        }
+        .button-sidebar {
+          padding: 12px;
+          img {
+            @include index.icon-size(15px);
+          }
+        }
+      }
+    }
+  }
+}
+  
+}
