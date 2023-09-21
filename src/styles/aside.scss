@@ -2,20 +2,30 @@
 
 body {
   #content {
+    #aside--sidebar-hide {
+      display: none;
+    }
     aside {
-      height: 100vh;
+      height: max(100%, 100vh);
       background-color: index.$theme-dark;
       border-right: 1px solid index.$border-dark;
   
+      grid-column: 1 / 2;
       grid-row: 1 / 3;
-      display: grid;
-      grid-template-rows: 1.5fr 1fr;
-      justify-content: center;
-      div:first-child {
+
+      display: flex;
+      flex-direction: column;
+      .aside-top {
+        margin-bottom: 100px;
+        flex: 0;
+
+        display: grid;
+        justify-content: center;
+      
         .title {
           color: index.$font-white;
           font-weight: bold;
-          margin: 20px 0px;
+          margin: 35px 0px 35px;
 
           display: flex;
           align-items: center;
@@ -28,6 +38,13 @@ body {
           }
         }
         .due {
+          h3 {
+            color: index.$font-gray;
+            font-size: 0.7rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+          }
           li {
             list-style: none;
             padding: 10px 0px;
@@ -48,6 +65,7 @@ body {
           }
         }
         .boards-list {
+          display: grid;
           h3 {
             color: index.$font-gray;
             font-size: 0.7rem;
@@ -80,7 +98,7 @@ body {
             @include index.button-styling();
             margin: 5px 8px;
             padding: 10px 0px;
-            border-radius: 10px;;
+            border-radius: 10px;
 
             display: flex;
             align-items: center;
@@ -102,11 +120,12 @@ body {
           }
         }
       }
-      div:last-child {
+      .aside-bottom {
         justify-content: center;
-        align-self: end;
+        flex: 1;
 
         display: grid;
+        align-content: start;
         .night-mode {
           display: grid;
           grid-template-columns: 25px 55px 25px;
@@ -155,8 +174,7 @@ body {
           padding: 10px 20px;
           margin: 25px 0px;
           width: max-content;
-
-
+          
           display: flex;
           justify-content: center;
           align-items: center;
@@ -176,8 +194,6 @@ body {
             letter-spacing: 1px;
             color: index.$font-white;
             margin-left: 5px;
-
-            align-self: end;
           }
         }
         .github {
@@ -207,5 +223,8 @@ body {
         }
       }
     }
+    // .sidebar-hide {
+    //   display: none;
+    // }
   }
 }

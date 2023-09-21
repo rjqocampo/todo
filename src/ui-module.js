@@ -1,4 +1,4 @@
-import { getActiveBoard, getDueTasks, setActiveBoard } from "./data-handler";
+import { getActiveBoard, getDueTasks, setActiveBoard, getSidebar } from "./data-handler";
 import { 
   displayReadTaskValues, 
   displayActiveBoard, 
@@ -200,6 +200,27 @@ function showBoardMain() {
   createBoardColumn('done');
 }
 
+function showSidebar() {
+  const aside = document.querySelector('aside');
+  const header = document.querySelector('header');
+  const main = document.querySelector('main');
+  const buttonSidebarHeader = document.querySelector('.button-sidebar-header');
+
+  if (getSidebar()) {
+    console.log('sidebar on');
+    aside.removeAttribute('id', 'aside--sidebar-hide');
+    header.removeAttribute('id', 'header--sidebar-hide');
+    main.removeAttribute('id', 'main--sidebar-hide');
+    buttonSidebarHeader.removeAttribute('id', 'button--sidebar-hide')
+  } else {
+    console.log('sidebar off');
+    aside.setAttribute('id', 'aside--sidebar-hide')
+    header.setAttribute('id', 'header--sidebar-hide')
+    main.setAttribute('id', 'main--sidebar-hide')
+    buttonSidebarHeader.setAttribute('id', 'button--sidebar-hide')
+  }
+}
+
 function closeMain() {
   const main = document.querySelector('main');
 
@@ -258,5 +279,6 @@ export {
   createCards,
   showBoardMain,
   closeMain,
-  showDueMain
+  showDueMain,
+  showSidebar
 };

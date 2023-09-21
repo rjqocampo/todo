@@ -36,7 +36,8 @@ import {
   exitDialog, 
   toggleHeaderButtons, 
   closeMain,
-  showDueMain
+  showDueMain,
+  showSidebar
 } from './ui-module';
 import { 
   formCheckBoards, 
@@ -63,6 +64,7 @@ const buttonsSidebar = document.querySelectorAll('.button-sidebar');
 buttonsSidebar.forEach((button) => {
   button.addEventListener('click', () => {
     toggleSidebar();
+    showSidebar();
   })
 })
 

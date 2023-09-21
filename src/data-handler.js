@@ -29,6 +29,69 @@ const boards = [
         priority: 'high',
         status: 'doing',
       },
+      {
+        title: 'Build UI for Project',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-20',
+        priority: 'low',
+        status: 'todo',
+      },
+      {
+        title: 'Restructure Code into Modules',
+        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-21',
+        priority: 'medium',
+        status: 'todo',
+      },
+      {
+        title: 'Make project responsive to all devices',
+        description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
+        dueDate: '2023-09-23',
+        priority: 'high',
+        status: 'doing',
+      },
+      {
+        title: 'Build UI for Project',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-20',
+        priority: 'low',
+        status: 'todo',
+      },
+      {
+        title: 'Restructure Code into Modules',
+        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-21',
+        priority: 'medium',
+        status: 'todo',
+      },
+      {
+        title: 'Make project responsive to all devices',
+        description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
+        dueDate: '2023-09-23',
+        priority: 'high',
+        status: 'doing',
+      },
+      {
+        title: 'Build UI for Project',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-20',
+        priority: 'low',
+        status: 'todo',
+      },
+      {
+        title: 'Restructure Code into Modules',
+        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-21',
+        priority: 'medium',
+        status: 'todo',
+      },
+      {
+        title: 'Make project responsive to all devices',
+        description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
+        dueDate: '2023-09-23',
+        priority: 'high',
+        status: 'doing',
+      },
     ]
   },
   {
@@ -37,7 +100,7 @@ const boards = [
       {
         title: 'Create Figma prototype',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-23',
+        dueDate: '2023-09-21',
         priority: 'high',
         status: 'todo',
       },
@@ -56,7 +119,26 @@ const boards = [
       {
         title: 'Create Wireframe',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-28',
+        dueDate: '2023-09-21',
+        priority: 'high',
+        status: 'todo',
+      },
+      {
+        title: 'Add animation',
+        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-29',
+        priority: 'low',
+        status: 'done',
+      },
+    ]
+  },
+  {
+    title: 'Tic tac toe Project',
+    tasks: [
+      {
+        title: 'Create Wireframe',
+        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+        dueDate: '2023-09-21',
         priority: 'high',
         status: 'todo',
       },
