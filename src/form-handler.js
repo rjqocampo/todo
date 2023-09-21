@@ -36,6 +36,7 @@ function formCheckTasks(str) {
   }
 
   function checkTextArea() {
+    console.log('description')
     if (textArea.validity.valueMissing) {
       spanTextArea.textContent = 'This field is required';
       return false;
@@ -49,18 +50,34 @@ function formCheckTasks(str) {
   }
 
   function checkInputDate() {
+    console.log('date')
+
     if (inputDate.validity.valueMissing) {
       spanInputDate.textContent = 'This field is required';
       return false;
     } else {
+      spanInputDate.textContent = '';
       return true;
     }
   };
 
-  if (checkInput() && checkTextArea() && checkInputDate()) {
+  function checkAll() {
+    const inputIsValid = checkInput();
+    const textAreaIsValid = checkTextArea();
+    const dateIsValid = checkInputDate();
+
+    if (inputIsValid && textAreaIsValid && dateIsValid) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  if (checkAll()) {
     return true;
-  } else 
+  } else {
     return false;
+  }
 }
 
 function clearInputFields() {
