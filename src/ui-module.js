@@ -262,8 +262,7 @@ function toggleHeaderButtons() {
 
 function toggleFocus(e) {
   const buttons = document.querySelectorAll('.button-render');
-  const button = e.target.closest('button');
-  
+  const button = e.target.closest('li').firstChild;
 
   buttons.forEach((button) => {
     button.classList.remove('button-render--focus');
