@@ -1,16 +1,18 @@
 @media all and (max-width: 768px) {
 
-body {
-  #content {
-    #aside--sidebar-hide {
-      display: none;
-    }
-    aside {
-      grid-column: 1;
-
-      justify-content: center;
-      .aside-top {
-        margin-bottom: 50px;
+:root {
+  body {
+    #content {
+      #aside--sidebar-hide {
+        display: none;
+      }
+      aside {
+        grid-column: 1;
+  
+        justify-content: center;
+        .aside-top {
+          margin-bottom: 50px;
+        }
       }
     }
   }

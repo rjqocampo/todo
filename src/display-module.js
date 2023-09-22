@@ -11,7 +11,7 @@ function displayBoards() {
     const p = document.createElement('p');
     const img = document.createElement('img');
 
-    li.setAttribute('data-index', `${index}`);
+    li.setAttribute('data-board', `${index}`);
     button.classList.add('button-render');
     img.setAttribute('src', 'assets/images/feather.svg');
     img.setAttribute('alt', 'Feather Icon');
@@ -124,18 +124,18 @@ function displayEditBoardValues() {
   input.value = getActiveBoard().title;
 }
 
-function displayReadTaskValues(e, indexHolder) {
+function displayReadTaskValues(e, str, indexHolder) {
   const tasks = getTasks();
   const index = e.target.closest(indexHolder).getAttribute('data-index');
 
-  const dialog = document.querySelector('.dialog-read-task');
-  const h4 = document.querySelector('.dialog-read-task h4');
-  const h5 = document.querySelector('.dialog-read-task h5');
-  const p = document.querySelector('.dialog-read-task p');
-  const h6 = document.querySelector('.dialog-read-task h6');
-  const img = document.querySelector('.dialog-read-task__info img');
-  const span = document.querySelector('.dialog-read-task span');
-  const button = document.querySelector('.dialog-read-task__buttons > button');
+  const dialog = document.querySelector(`.dialog-${str}`);
+  const h4 = document.querySelector(`.dialog-${str} h4`);
+  const h5 = document.querySelector(`.dialog-${str} h5`);
+  const p = document.querySelector(`.dialog-${str} p`);
+  const h6 = document.querySelector(`.dialog-${str} h6`);
+  const img = document.querySelector(`.dialog-${str}__info img`);
+  const span = document.querySelector(`.dialog-${str} span`);
+  const button = document.querySelector(`.dialog-${str}__buttons > button`);
   
   dialog.setAttribute('data-index', index);
   h4.textContent = tasks[index].status.toUpperCase();
@@ -151,9 +151,14 @@ function displayReadTaskValues(e, indexHolder) {
   } else if (tasks[index].status === 'doing') {
     button.textContent = 'Complete Task';
     button.classList.remove('button-proceed-task--delete');
-  } else {
+  } else if (tasks[index].status === 'done') {
     button.textContent = 'Delete Task';
     button.classList.add('button-proceed-task--delete');
+  }
+  
+  if (str === 'read-due-task') {
+    button.textContent = 'Open Board';
+    button.classList.remove('button-proceed-task--delete');
   }
 
   if (tasks[index].priority === 'low') {

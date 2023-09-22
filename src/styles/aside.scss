@@ -185,7 +185,7 @@ body {
               background: #fff;
             }
             &:checked {
-              background: index.$theme-purple;
+              background: var(--theme-one);
             }
           }
         }

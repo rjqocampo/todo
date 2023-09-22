@@ -350,5 +350,116 @@ body {
         }
       }
     }
+    .dialog-read-due-task {
+      width: min(380px, 100%);
+      background-color: var(--theme-two);
+      border: none;
+      border-radius: 10px;;
+      padding: 10px 25px;
+      &[open] {
+        display: grid;
+      }
+      &::backdrop {
+        background-color: black;
+        opacity: 0.6;
+      }
+      &__header {
+        margin: 20px 0px 5px 0px;
+        h4 {
+          color: var(--font-two);
+          font-size: 0.7rem;
+          font-weight: bold;
+          letter-spacing: 2px;
+        }
+        h5 {
+          color: var(--font-one);
+          font-weight: bold;
+        }
+      }
+      p {
+        color: var(--font-two);
+        font-size: 0.8rem;
+        line-height: 25px;
+        margin: 12px 0px;
+      }
+      &__info {
+        margin: 15px 0px 10px 0px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        h6 {
+          color: var(--font-one);
+          font-size: 0.8rem;
+          width: max-content;
+          background-color: var(--backdrop-three);
+          padding: 4px 15px;
+          border-radius: 70px;
+  
+          display: flex;
+          align-items: center;
+        }
+        div {
+          width: max-content;
+          background-color: var(--backdrop-three);
+          padding: 4px 15px;
+          border-radius: 70px;
+  
+          display: flex;
+          align-items: start;
+          gap: 10px;
+          img {
+            @include index.icon-size(15px);
+            transform: translateY(1px);
+          }
+          span {
+            color: var(--font-one);
+            font-size: 0.8rem;
+          }
+        }
+      }
+      &__buttons {
+        margin: 20px 0px;
+
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 45px;
+        gap: 10px;
+
+        button {
+          color: white;
+          font-weight: bold;
+          background-color: var(--theme-one);
+          border: none;
+          border-radius: 50px;
+          height: 40px;
+          cursor: pointer;
+
+          transition: filter 0.2s;
+          &:hover {
+            filter: brightness(120%);
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+        .button-proceed-task--delete {
+          background-color: rgb(202, 54, 54);
+        }
+        div {
+          button {
+            padding: 10px;
+            svg {
+              @include index.icon-size(20px);
+            }
+          }
+          .button-close-dialog {
+            svg {
+              scale: 120%;
+            }
+          }
+        }
+      }
+    }
   }
 }

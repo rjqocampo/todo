@@ -1,48 +1,49 @@
 @use 'index';
 
 @media all and (max-width: 768px) {
-
-body {
-  #content {
-    #main--sidebar-hide {
-      display: grid;
-
-      grid-column: 1;
-    }
-    main {
-      display: none;
-      .due-board {
-        &__header {
-          padding: 10px 20px 10px 20px;
-
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          div {
-            h2 {
-              font-size: 0.6rem;
-              line-height: 0.5rem;
+:root {
+  body {
+    #content {
+      #main--sidebar-hide {
+        display: grid;
+  
+        grid-column: 1;
+      }
+      main {
+        display: none;
+        .due-board {
+          &__header {
+            padding: 10px 20px 10px 20px;
+  
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            div {
+              h2 {
+                font-size: 0.6rem;
+                line-height: 0.5rem;
+              }
+              h3 {
+                font-size: 1.1rem;
+                white-space: wrap;
+              }
             }
-            h3 {
-              font-size: 1.1rem;
-              white-space: wrap;
-            }
-          }
-          .hr {
-            display: none;
-          }
-          button {
-            padding: 5px;
-            p {
+            .hr {
               display: none;
             }
-            img {
-              @include index.icon-size(25px);
+            button {
+              padding: 5px;
+              p {
+                display: none;
+              }
+              img {
+                @include index.icon-size(25px);
+              }
             }
           }
-        }
-        ul {
-          padding: 10px;
+          ul {
+            padding: 10px;
+          }
         }
       }
     }

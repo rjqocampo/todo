@@ -11,77 +11,14 @@ const boards = [
       {
         title: 'Build UI for Project',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
+        dueDate: '2023-09-25',
         priority: 'low',
         status: 'todo',
       },
       {
         title: 'Restructure Code into Modules',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
-        priority: 'medium',
-        status: 'todo',
-      },
-      {
-        title: 'Make project responsive to all devices',
-        description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-        dueDate: '2023-09-23',
-        priority: 'high',
-        status: 'doing',
-      },
-      {
-        title: 'Build UI for Project',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
-        priority: 'low',
-        status: 'todo',
-      },
-      {
-        title: 'Restructure Code into Modules',
-        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
-        priority: 'medium',
-        status: 'todo',
-      },
-      {
-        title: 'Make project responsive to all devices',
-        description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-        dueDate: '2023-09-23',
-        priority: 'high',
-        status: 'doing',
-      },
-      {
-        title: 'Build UI for Project',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
-        priority: 'low',
-        status: 'todo',
-      },
-      {
-        title: 'Restructure Code into Modules',
-        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
-        priority: 'medium',
-        status: 'todo',
-      },
-      {
-        title: 'Make project responsive to all devices',
-        description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-        dueDate: '2023-09-23',
-        priority: 'high',
-        status: 'doing',
-      },
-      {
-        title: 'Build UI for Project',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-20',
-        priority: 'low',
-        status: 'todo',
-      },
-      {
-        title: 'Restructure Code into Modules',
-        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
+        dueDate: '2023-09-22',
         priority: 'medium',
         status: 'todo',
       },
@@ -100,7 +37,7 @@ const boards = [
       {
         title: 'Create Figma prototype',
         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
+        dueDate: '2023-09-23',
         priority: 'high',
         status: 'todo',
       },
@@ -108,44 +45,6 @@ const boards = [
         title: 'Make environments for development and production',
         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
         dueDate: '2023-09-22',
-        priority: 'low',
-        status: 'done',
-      },
-    ]
-  },
-  {
-    title: 'Etch-a-Sketch Project',
-    tasks: [
-      {
-        title: 'Create Wireframe',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
-        priority: 'high',
-        status: 'todo',
-      },
-      {
-        title: 'Add animation',
-        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-29',
-        priority: 'low',
-        status: 'done',
-      },
-    ]
-  },
-  {
-    title: 'Tic tac toe Project',
-    tasks: [
-      {
-        title: 'Create Wireframe',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-21',
-        priority: 'high',
-        status: 'todo',
-      },
-      {
-        title: 'Add animation',
-        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-29',
         priority: 'low',
         status: 'done',
       },
@@ -171,12 +70,18 @@ function parseDate(date) {
 }
 
 function getDueTasks(dueWhen) {
+  // map the array first and store the index by adding a property
+  // then filter the array with the conditions
+  // make new arrays, do not mutate
   const copyOfBoards = boards.slice();
 
   const arr = [];
 
   copyOfBoards.forEach((board, index) => {
-    const dueTasks = board.tasks.filter((task) => {
+    const indexedTasks = board.tasks.map((task, index) => {
+      return {...task, index};
+    })
+    const dueTasks = indexedTasks.filter((task, index) => {
       if (dueWhen === 'today') {
         return task.status !== 'done' && isToday(new Date(task.dueDate));
       } else if (dueWhen === 'this week') {
@@ -305,8 +210,8 @@ function deleteBoard() {
 }
 
 function setActiveBoard(e, dataIndexHolder) {
-  const index = e.target.closest(dataIndexHolder).getAttribute('data-index');
-  // console.log(index);
+  const index = e.target.closest(dataIndexHolder).getAttribute('data-board');
+  console.log(index);
   activeBoard = boards[index];
 }
 
@@ -343,6 +248,14 @@ function storeIndex(e) {
   dialog.setAttribute('data-index', indexOfTask);
 }
 
+function storeBoardIndex(e) {
+  const dialog = document.querySelector('.dialog-read-due-task');
+  const indexOfBoard = e.target.closest('li').getAttribute('data-board');
+
+  dialog.setAttribute('data-board', indexOfBoard);
+
+}
+
 export { 
   getBoards, 
   getBoardsTotal, 
@@ -362,5 +275,6 @@ export {
   getDueTasks,
   toggleSidebar,
   getSidebar,
-  parseDate
+  parseDate,
+  storeBoardIndex
 };

@@ -1,8 +1,10 @@
 @media all and (max-width: 768px) {
-
-body {
-  #content {
-  grid-template-columns: 1fr;
+:root {
+  
+  body {
+    #content {
+    grid-template-columns: 1fr;
+    }
   }
 }
 

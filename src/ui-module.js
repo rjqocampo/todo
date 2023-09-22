@@ -1,4 +1,4 @@
-import { getActiveBoard, getDueTasks, setActiveBoard, getSidebar, parseDate } from "./data-handler";
+import { getActiveBoard, getDueTasks, setActiveBoard, getSidebar, parseDate, storeBoardIndex } from "./data-handler";
 import { 
   displayReadTaskValues, 
   displayActiveBoard, 
@@ -64,7 +64,7 @@ function createCards(arrList) {
 
     li.addEventListener('click', (e) => {
       showDialog('read-task');
-      displayReadTaskValues(e, 'li');
+      displayReadTaskValues(e, 'read-task', 'li');
     })
   })
 }
@@ -111,7 +111,7 @@ function showDueMain(dueWhen) {
     const img = document.createElement('img');
     const ul = document.createElement('ul');
 
-    divHeader.setAttribute('data-index', board.index);
+    divHeader.setAttribute('data-board', board.index);
     divPage.classList.add('due-board');
     divHeader.classList.add('due-board__header');
     h2.textContent = 'BOARD';
@@ -133,8 +133,6 @@ function showDueMain(dueWhen) {
     divPage.appendChild(ul);
 
     button.addEventListener('click', (e) => {
-      console.log('click');
-
       setActiveBoard(e, 'div');
       displayActiveBoard();
       removeColumn();
@@ -144,11 +142,11 @@ function showDueMain(dueWhen) {
       displayTasks();
     })
 
-    createDueCards(board.tasks, ul);
+    createDueCards(board.tasks, ul, board.index);
   })
 }
 
-function createDueCards(tasks, ul) {
+function createDueCards(tasks, parentNode, indexOfBoard) {
   tasks.forEach((task) => {
     const li = document.createElement('li');
     const h4 = document.createElement('h4');
@@ -162,6 +160,8 @@ function createDueCards(tasks, ul) {
     divFooter.classList.add('task-footer');
     divFooterContainer.classList.add('task-footer__container');
     h5.textContent = task.dueDate;
+    li.setAttribute('data-index', task.index);
+    li.setAttribute('data-board', indexOfBoard);
 
     if (task.priority === 'low') {
       img.setAttribute('src', 'assets/images/fill-1.svg');
@@ -192,7 +192,14 @@ function createDueCards(tasks, ul) {
       li.classList.add('done');
     }
 
-    ul.appendChild(li);
+    parentNode.appendChild(li);
+
+    li.addEventListener('click', (e) => {
+      showDialog('read-due-task');
+      setActiveBoard(e, 'li');
+      displayReadTaskValues(e, 'read-due-task', 'li');
+      storeBoardIndex(e);
+    })
   })
 }
 

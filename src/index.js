@@ -19,7 +19,8 @@ import {
   displayEditTaskValues,
   displayReadTaskValues,
   displayTasksTotal,
-  displayDueHeader
+  displayDueHeader,
+  removeColumn
 } from './display-module';
 import { 
   addNewBoard, 
@@ -31,7 +32,8 @@ import {
   editTask,
   deleteTask,
   setActiveBoardToNull,
-  toggleSidebar
+  toggleSidebar,
+  setActiveBoard
 } from './data-handler';
 import { 
   showDialog, 
@@ -42,7 +44,8 @@ import {
   showDueMain,
   showSidebar,
   toggleFocus,
-  toggleDarkMode
+  toggleDarkMode,
+  showBoardMain
 } from './ui-module';
 import { 
   formCheckBoards, 
@@ -66,6 +69,17 @@ const buttonDueToday = document.querySelector('.due-buttons__today');
 const buttonDueThisWeek = document.querySelector('.due-buttons__this-week');
 const buttonsSidebar = document.querySelectorAll('.button-sidebar');
 const buttonDarkMode = document.querySelector('.night-mode input');
+const buttonOpenBoard = document.querySelector('#button-open-board');
+
+buttonOpenBoard.addEventListener('click', (e) => {
+  setActiveBoard(e, 'dialog');
+  displayActiveBoard();
+  removeColumn();
+  showBoardMain();
+  displayTasksTotal();
+  displayTasks();
+  closeDialog('read-due-task');
+})
 
 buttonDarkMode.addEventListener('click', () => {
   toggleDarkMode();
@@ -115,7 +129,7 @@ buttonEditTask.addEventListener('click', (e) => {
   displayTasksTotal();
   displayTasks();
   showDialog('read-task');
-  displayReadTaskValues(e, 'dialog');
+  displayReadTaskValues(e, 'read-task', 'dialog');
 })
 
 buttonOpenDialogEditTask.addEventListener('click', (e) => {
