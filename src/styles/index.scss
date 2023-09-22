@@ -120,9 +120,11 @@ $theme-red: #ff5c5c;
     --theme-one: #8570fc;
     --theme-two: #37363e; // dark
     --theme-three: #29292e; // darker
-    --theme-four: #414146;  // gray
-    --theme-five: #ff5c5c; // red
+    // --theme-four: #414146;  // gray
+    // --theme-five: #ff5c5c; // red
     --backdrop-one: #414146;
+    --backdrop-two: #414146;
+
 
     --font-one: #f0f0f0; // white
     --font-two: #9e9e9e; // gray
@@ -132,12 +134,14 @@ $theme-red: #ff5c5c;
     --create-board-bg: #37363e;
     --create-board-hover: #29292e;
 
+    --border: #474747;
   }
   &.light {
     --theme-one: #8570fc;
     --theme-two: #d4cdfc;
     --theme-three: #29292e; // darker
     --backdrop-one: #77709b;
+    --backdrop-two: #c2bee0;
 
     --font-one: #2b2b2b;
     --font-two: #414141;
@@ -146,6 +150,9 @@ $theme-red: #ff5c5c;
     --create-board: #ffffff;
     --create-board-bg: #77709b;
     --create-board-hover: #5b5577;
+
+    --border: #474747;
+
 
   }
   body {

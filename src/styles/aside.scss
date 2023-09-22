@@ -205,16 +205,16 @@ body {
           &:hover  {
             filter: brightness(125%);
           }
-          img {
-            @include index.icon-size(17px);
-            transform: translateY(-1px);
+          svg {
+            @include index.icon-size(19px);
+            color: white;
           }
           p {
             transition: all 0.4s;
             font-size: 0.8rem;
             font-weight: bold;
             letter-spacing: 1px;
-            color: index.$font-white;
+            color: white;
             margin-left: 5px;
           }
         }

@@ -7,18 +7,17 @@ body {
     }
     header {
       padding: 0px 35px;
-      background-color: index.$theme-dark;
-      border-bottom: 1px solid index.$border-dark;
+      background-color: var(--theme-two);
+      border-bottom: 1px solid var(--border);
 
       grid-column: 2 / 3;
-      // grid-column: 1 / 3;
       grid-row: 1 / 2;  
       display: flex;
       justify-content: space-between;
       align-items: center;
       h2 {
         font-size: 1.8rem;
-        color: index.$font-white;
+        color: var(--font-one);
       }
       div {
         display: flex;
@@ -39,43 +38,45 @@ body {
         .button-open-add-task {
           padding: 0px 22px;
           border-radius: 25px;
-          background-color: index.$theme-purple;
+          background-color: var(--theme-one);
 
           display: flex;
           align-items: center;
           gap: 5px;
           p {
-            color: index.$font-white;
+            color: white;
             font-weight: bold;
             font-size: 1rem;
           }
-          img {
+          svg {
             @include index.icon-size(20px);
+            color: white;
           }
         }
         .button-open-edit-board {
           padding: 12px;
-          background-color: index.$theme-gray;
+          background-color: var(--backdrop-two);
           border-radius: 50px;
 
           @include index.flex-center();
-          img {
+          svg {
             @include index.icon-size(20px);
+            color: var(--font-one);
           }
         }
         .button-sidebar {
           display: none;
           padding: 12px;
-          background-color: index.$theme-gray;
+          background-color: var(--backdrop-two);
           border-radius: 50px;
-          img {
+          svg {
             @include index.icon-size(20px);
+            color: var(--font-one);
             transform: scale(105%);
           }
         }
         #button--sidebar-hide {
           @include index.flex-center();
-        
         }
       }
     }
