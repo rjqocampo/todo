@@ -1,5 +1,5 @@
 import { factoryBoard, factoryTask } from "./factory";
-import { format, isToday, isThisWeek } from "date-fns";
+import { isToday, isThisWeek } from "date-fns";
 
 let activeBoard = null;
 let sidebar = true;
@@ -160,6 +160,14 @@ function toggleSidebar() {
 
 function getSidebar() {
   return sidebar;
+}
+
+function parseDate(date) {
+  if (isToday(new Date(date))) {
+    return 'today';
+  } else {
+    return date.split('-').slice(1).join('/');
+  }
 }
 
 function getDueTasks(dueWhen) {
@@ -353,5 +361,6 @@ export {
   setActiveBoardToNull,
   getDueTasks,
   toggleSidebar,
-  getSidebar
+  getSidebar,
+  parseDate
 };

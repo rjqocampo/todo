@@ -1,4 +1,4 @@
-import { getActiveBoard, getDueTasks, setActiveBoard, getSidebar } from "./data-handler";
+import { getActiveBoard, getDueTasks, setActiveBoard, getSidebar, parseDate } from "./data-handler";
 import { 
   displayReadTaskValues, 
   displayActiveBoard, 
@@ -27,7 +27,8 @@ function createCards(arrList) {
     h4.textContent = item.title;
     divFooter.classList.add('task-footer');
     divFooterContainer.classList.add('task-footer__container');
-    h5.textContent = item.dueDate;
+    
+    h5.textContent = `due ${parseDate(item.dueDate)}`;
 
     if (item.priority === 'low') {
       img.setAttribute('src', 'assets/images/flag.svg');
@@ -36,7 +37,7 @@ function createCards(arrList) {
     } else if (item.priority === 'medium') {
       img.setAttribute('src', 'assets/images/flag-purple.svg');
       span.classList.add('task-footer__prio--medium');
-      span.textContent = 'medium';
+      span.textContent = 'med';
     } else if (item.priority === 'high') {
       img.setAttribute('src', 'assets/images/flag-orange.svg');
       span.classList.add('task-footer__prio--high');

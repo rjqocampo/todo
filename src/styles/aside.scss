@@ -8,7 +8,7 @@ body {
     aside {
       height: max(100%, 100vh);
       background-color: var(--theme-two);
-      border-right: 1px solid index.$border-dark;
+      border-right: 1px solid var(--border);
       
       grid-column: 1 / 2;
       grid-row: 1 / 3;
