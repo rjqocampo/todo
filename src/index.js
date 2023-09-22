@@ -8,8 +8,6 @@ import './styles/breakpoints-header.scss';
 import './styles/breakpoints-aside.scss';
 import './styles/breakpoints-index.scss';
 
-
-
 import { 
   displayBoards, 
   displayTasks,
@@ -43,7 +41,8 @@ import {
   closeMain,
   showDueMain,
   showSidebar,
-  toggleFocus
+  toggleFocus,
+  toggleDarkMode
 } from './ui-module';
 import { 
   formCheckBoards, 
@@ -66,6 +65,11 @@ const buttonDeleteTask = document.querySelector('.button-delete-task');
 const buttonDueToday = document.querySelector('.due-buttons__today');
 const buttonDueThisWeek = document.querySelector('.due-buttons__this-week');
 const buttonsSidebar = document.querySelectorAll('.button-sidebar');
+const buttonDarkMode = document.querySelector('.night-mode input');
+
+buttonDarkMode.addEventListener('click', () => {
+  toggleDarkMode();
+})
 
 buttonsSidebar.forEach((button) => {
   button.addEventListener('click', () => {

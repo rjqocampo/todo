@@ -271,6 +271,20 @@ function toggleFocus(e) {
   button.classList.add('button-render--focus');
 }
 
+function toggleDarkMode() {
+  console.log('dark mode');
+
+  const root = document.documentElement;
+
+  root.className = root.className === 'dark' ? 'light' : 'dark';
+  console.log(root);
+}
+
+function setDarkMode() {
+  const root = document.documentElement;
+  root.className = 'dark';
+}
+
 function spanDatePicker() {
   const inputFieldsDate = document.querySelectorAll('input[type="date"]');
 
@@ -282,6 +296,7 @@ function spanDatePicker() {
 }
 
 spanDatePicker();
+setDarkMode();
 
 export { 
   showDialog, 
@@ -293,5 +308,6 @@ export {
   closeMain,
   showDueMain,
   showSidebar,
-  toggleFocus
+  toggleFocus,
+  toggleDarkMode
 };
