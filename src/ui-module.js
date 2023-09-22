@@ -170,7 +170,7 @@ function createDueCards(tasks, parentNode, indexOfBoard) {
     } else if (task.priority === 'medium') {
       img.setAttribute('src', 'assets/images/fill-2.svg');
       span.classList.add('task-footer__prio--medium');
-      span.textContent = 'medium';
+      span.textContent = 'med';
     } else if (task.priority === 'high') {
       img.setAttribute('src', 'assets/images/fill-3.svg');
       span.classList.add('task-footer__prio--high');
