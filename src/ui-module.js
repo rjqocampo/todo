@@ -262,14 +262,13 @@ function toggleHeaderButtons() {
 
 function toggleFocus(e) {
   const buttons = document.querySelectorAll('.button-render');
-  const button = e.target.closest('li').firstChild;
+  const button = e.target.closest('li').children[0];
 
   buttons.forEach((button) => {
     button.classList.remove('button-render--focus');
   })
 
   button.classList.add('button-render--focus');
-  console.log(button);
 }
 
 function spanDatePicker() {
