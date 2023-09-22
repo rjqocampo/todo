@@ -3,7 +3,7 @@ function formCheckBoards(str) {
   const span = document.querySelector(`.dialog-${str} span`)
 
   if (input.validity.valueMissing) {
-    span.textContent = 'This field is required';
+    span.textContent = '*This field is required';
     return false;
   } else if (input.validity.tooShort) {
     span.textContent = 'Input is too short';
@@ -24,7 +24,7 @@ function formCheckTasks(str) {
 
   function checkInput() {
     if (input.validity.valueMissing) {
-      spanInput.textContent = 'This field is required';
+      spanInput.textContent = '*This field is required';
       return false;
     } else if (input.validity.tooShort) {
       spanInput.textContent = 'Input is too short';
@@ -38,7 +38,7 @@ function formCheckTasks(str) {
   function checkTextArea() {
     console.log('description')
     if (textArea.validity.valueMissing) {
-      spanTextArea.textContent = 'This field is required';
+      spanTextArea.textContent = '*This field is required';
       return false;
     } else if (textArea.validity.tooShort) {
       spanTextArea.textContent = 'Input is too short';
@@ -53,7 +53,7 @@ function formCheckTasks(str) {
     console.log('date')
 
     if (inputDate.validity.valueMissing) {
-      spanInputDate.textContent = 'This field is required';
+      spanInputDate.textContent = '*This field is required';
       return false;
     } else {
       spanInputDate.textContent = '';

@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { getBoards, getBoardsTotal, setActiveBoard, getActiveBoard, getTasks, getTasksTotal } from "./data-handler";
 import { toggleHeaderButtons, createCards, showBoardMain, toggleFocus } from "./ui-module";
 
@@ -128,6 +129,7 @@ function displayReadTaskValues(e, indexHolder) {
   const index = e.target.closest(indexHolder).getAttribute('data-index');
 
   const dialog = document.querySelector('.dialog-read-task');
+  const h4 = document.querySelector('.dialog-read-task h4');
   const h5 = document.querySelector('.dialog-read-task h5');
   const p = document.querySelector('.dialog-read-task p');
   const h6 = document.querySelector('.dialog-read-task h6');
@@ -136,10 +138,12 @@ function displayReadTaskValues(e, indexHolder) {
   const button = document.querySelector('.dialog-read-task__buttons > button');
   
   dialog.setAttribute('data-index', index);
+  h4.textContent = tasks[index].status.toUpperCase();
   h5.textContent = tasks[index].title;
   p.textContent = tasks[index].description;
-  h6.textContent = tasks[index].dueDate;
-  span.textContent = tasks[index].priority;
+
+  const date = format(new Date(tasks[index].dueDate), 'PPP');
+  h6.textContent = `Due on ${date}`;
 
   if (tasks[index].status === 'todo') {
     button.textContent = 'Start Task';
@@ -153,11 +157,14 @@ function displayReadTaskValues(e, indexHolder) {
   }
 
   if (tasks[index].priority === 'low') {
-    img.setAttribute('src', 'assets/images/flag.svg')
+    img.setAttribute('src', 'assets/images/fill-1.svg')
+    span.textContent = 'Low Priority';
   } else if (tasks[index].priority === 'medium') {
-    img.setAttribute('src', 'assets/images/flag-purple.svg')
+    img.setAttribute('src', 'assets/images/fill-2.svg')
+    span.textContent = 'Medium Priority';
   } else if (tasks[index].priority === 'high') {
-    img.setAttribute('src', 'assets/images/flag-orange.svg')
+    img.setAttribute('src', 'assets/images/fill-3.svg')
+    span.textContent = 'High Priority';
   }
 }
 

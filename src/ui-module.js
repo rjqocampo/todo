@@ -31,15 +31,15 @@ function createCards(arrList) {
     h5.textContent = `due ${parseDate(item.dueDate)}`;
 
     if (item.priority === 'low') {
-      img.setAttribute('src', 'assets/images/flag.svg');
+      img.setAttribute('src', 'assets/images/fill-1.svg');
       span.classList.add('task-footer__prio--low');
       span.textContent = 'low';
     } else if (item.priority === 'medium') {
-      img.setAttribute('src', 'assets/images/flag-purple.svg');
+      img.setAttribute('src', 'assets/images/fill-2.svg');
       span.classList.add('task-footer__prio--medium');
       span.textContent = 'med';
     } else if (item.priority === 'high') {
-      img.setAttribute('src', 'assets/images/flag-orange.svg');
+      img.setAttribute('src', 'assets/images/fill-3.svg');
       span.classList.add('task-footer__prio--high');
       span.textContent = 'high';
     }
@@ -164,15 +164,15 @@ function createDueCards(tasks, ul) {
     h5.textContent = task.dueDate;
 
     if (task.priority === 'low') {
-      img.setAttribute('src', 'assets/images/flag.svg');
+      img.setAttribute('src', 'assets/images/fill-1.svg');
       span.classList.add('task-footer__prio--low');
       span.textContent = 'low';
     } else if (task.priority === 'medium') {
-      img.setAttribute('src', 'assets/images/flag-purple.svg');
+      img.setAttribute('src', 'assets/images/fill-2.svg');
       span.classList.add('task-footer__prio--medium');
       span.textContent = 'medium';
     } else if (task.priority === 'high') {
-      img.setAttribute('src', 'assets/images/flag-orange.svg');
+      img.setAttribute('src', 'assets/images/fill-3.svg');
       span.classList.add('task-footer__prio--high');
       span.textContent = 'high';
     }

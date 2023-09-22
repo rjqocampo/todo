@@ -5,7 +5,7 @@ body {
     .dialog-create-board,
     .dialog-edit-board {
       width: min(380px, 100%);
-      background-color: index.$theme-dark;
+      background-color: var(--theme-two);
       border: none;
       border-radius: 10px;;
       padding: 10px 25px;
@@ -19,7 +19,7 @@ body {
         justify-content: space-between;
         align-items: center;
         h6 {
-          color: index.$font-white;
+          color: var(--font-one);
           font-weight: bold;
           padding: 10px 0px;
         }
@@ -29,7 +29,7 @@ body {
           button {
             background-color: transparent;
             border: none;
-            background-color: index.$theme-gray;
+            background-color: var(--backdrop-two);
             border-radius: 50px;
             padding: 5px;
             cursor: pointer;
@@ -41,8 +41,9 @@ body {
             &:hover {
               filter: brightness(120%);
             }
-            img {
+            svg {
               @include index.icon-size(20px);
+              color: var(--font-one);
             }
           }
         }
@@ -51,7 +52,7 @@ body {
         display: grid;
         div {
           label {
-            color: index.$font-white;
+            color: var(--font-one);
             font-size: 0.8rem;
             margin: 4px;
           }
@@ -63,11 +64,12 @@ body {
         }
 
         input {
-          color: index.$font-white;
-          background-color: index.$theme-dark;
-          border: 1px solid index.$theme-gray;
+          color: var(--font-one);
+          font-size: 0.9rem;
+          background-color: var(--theme-two);
+          border: 1px solid var(--border);
           border-radius: 5px;
-          caret-color: index.$font-white;
+          caret-color: var(--font-one);
           height: 35px;
           padding: 10px;
           width: 100%;
@@ -80,9 +82,9 @@ body {
           }
         }
         button {
-          color: index.$font-white;
+          color: white;
           font-weight: bold;
-          background-color: index.$theme-purple;
+          background-color: var(--theme-one);
           border: none;
           border-radius: 50px;
           padding: 5px 0px;
@@ -99,7 +101,7 @@ body {
     .dialog-add-task,
     .dialog-edit-task {
       width: min(380px, 100%);
-      background-color: index.$theme-dark;
+      background-color: var(--theme-two);
       border: none;
       border-radius: 10px;;
       padding: 10px 25px;
@@ -113,7 +115,7 @@ body {
         justify-content: space-between;
         align-items: center;
         h6 {
-          color: index.$font-white;
+          color: var(--font-one);
           font-weight: bold;
           padding: 10px 0px;
         }
@@ -123,7 +125,7 @@ body {
           button {
             background-color: transparent;
             border: none;
-            background-color: index.$theme-gray;
+            background-color: var(--backdrop-two);
             border-radius: 50px;
             padding: 5px;
             cursor: pointer;
@@ -135,8 +137,9 @@ body {
             &:hover {
               filter: brightness(120%);
             }
-            img {
+            svg {
               @include index.icon-size(20px);
+              color: var(--font-one);
             }
           }
         }
@@ -149,22 +152,23 @@ body {
             list-style: none;
             div {
               label {
-                color: index.$font-white;
+                color: var(--font-one);
                 font-size: 0.8rem;
                 margin: 4px;
               }
               span {
-                color: index.$theme-red;
+                color: var(--font-three);
                 font-size: 0.8rem;
                 margin: 4px;
               }
             }
             input {
-              color: index.$font-white;
-              background-color: index.$theme-dark;
-              border: 1px solid index.$theme-gray;
+              color: var(--font-one);
+              font-size: 0.9rem;
+              background-color: var(--theme-two);
+              border: 1px solid var(--border);
               border-radius: 5px;
-              caret-color: index.$font-white;
+              caret-color: var(--font-one);
               height: 35px;
               padding: 10px;
               width: 100%;
@@ -178,11 +182,11 @@ body {
             }
             textarea {
               font-size: 0.9rem;
-              color: index.$font-white;
-              background-color: index.$theme-dark;
-              border: 1px solid index.$theme-gray;
+              color: var(--font-one);
+              background-color: var(--theme-two);
+              border: 1px solid var(--border);
               border-radius: 5px;
-              caret-color: index.$font-white;
+              caret-color: var(--font-one);
               padding: 10px;
               resize: vertical;
               width: 100%;
@@ -199,14 +203,14 @@ body {
               width: 100%;
               cursor: pointer;
               &::-webkit-calendar-picker-indicator {
-                filter: invert(1);
+                filter: var(--date-picker);
               }
             }
             select {
               font-size: 0.8rem;
-              color: index.$font-white;
-              background-color: index.$theme-dark;
-              border: 1px solid index.$theme-gray;
+              color: var(--font-one);
+              background-color: var(--theme-two);
+              border: 1px solid var(--border);
               border-radius: 5px;
               padding: 10px;
               width: 100%;
@@ -216,9 +220,9 @@ body {
               }
             }
             button {
-              color: index.$font-white;
+              color: white;
               font-weight: bold;
-              background-color: index.$theme-purple;
+              background-color: var(--theme-one);
               border: none;
               border-radius: 50px;
               padding: 5px 0px;
@@ -237,7 +241,7 @@ body {
     }
     .dialog-read-task {
       width: min(380px, 100%);
-      background-color: index.$theme-dark;
+      background-color: var(--theme-two);
       border: none;
       border-radius: 10px;;
       padding: 10px 25px;
@@ -248,17 +252,22 @@ body {
         background-color: black;
         opacity: 0.6;
       }
-      h5 {
-        color: index.$font-white;
-        font-weight: bold;
-        // width: 350px;
+      &__header {
         margin: 20px 0px 5px 0px;
+        h4 {
+          color: var(--font-two);
+          font-size: 0.7rem;
+          font-weight: bold;
+          letter-spacing: 2px;
+        }
+        h5 {
+          color: var(--font-one);
+          font-weight: bold;
+        }
       }
-
       p {
-        color: index.$font-gray;
+        color: var(--font-two);
         font-size: 0.8rem;
-        // width: 350px;
         line-height: 25px;
         margin: 12px 0px;
       }
@@ -269,10 +278,10 @@ body {
         flex-direction: column;
         gap: 10px;
         h6 {
-          color: index.$font-white;
+          color: var(--font-one);
           font-size: 0.8rem;
           width: max-content;
-          background-color: index.$theme-gray;
+          background-color: var(--backdrop-three);
           padding: 4px 15px;
           border-radius: 70px;
   
@@ -280,19 +289,20 @@ body {
           align-items: center;
         }
         div {
-          width: min-content;
-          background-color: index.$theme-gray;
+          width: max-content;
+          background-color: var(--backdrop-three);
           padding: 4px 15px;
           border-radius: 70px;
   
           display: flex;
-          align-items: center;
+          align-items: start;
           gap: 10px;
           img {
             @include index.icon-size(15px);
+            transform: translateY(1px);
           }
           span {
-            color: index.$font-white;
+            color: var(--font-one);
             font-size: 0.8rem;
           }
         }
@@ -302,13 +312,13 @@ body {
 
         display: grid;
         align-items: center;
-        grid-template-columns: 1fr 90px;
+        grid-template-columns: 1fr 45px 45px;
         gap: 10px;
 
         button {
-          color: index.$font-white;
+          color: white;
           font-weight: bold;
-          background-color: index.$theme-purple;
+          background-color: var(--theme-one);
           border: none;
           border-radius: 50px;
           height: 40px;
@@ -326,20 +336,14 @@ body {
           background-color: rgb(202, 54, 54);
         }
         div {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-
           button {
-            display: flex;
-            align-items: center;
             padding: 10px;
-            img {
+            svg {
               @include index.icon-size(20px);
             }
           }
-          button:last-child {
-            img {
+          .button-close-dialog {
+            svg {
               scale: 120%;
             }
           }
