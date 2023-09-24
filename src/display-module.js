@@ -30,7 +30,7 @@ function displayBoards() {
       displayTasksTotal();
       removeTasks();
       displayTasks();
-      toggleFocus(e);
+      toggleFocus();
     })
   })
 }

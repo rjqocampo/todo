@@ -140,6 +140,7 @@ function showDueMain(dueWhen) {
       displayTasksTotal();
       removeTasks();
       displayTasks();
+      toggleFocus();
     })
 
     createDueCards(board.tasks, ul, board.index);
@@ -268,15 +269,29 @@ function toggleHeaderButtons() {
   })
 }
 
-function toggleFocus(e) {
+function toggleFocus() {
   const buttons = document.querySelectorAll('.button-render');
-  const button = e.target.closest('li').children[0];
+  const buttonsPara = document.querySelectorAll('.button-render > p');
+  const header = document.querySelector('header > h2');
+  // console.log(Array.from(buttons)[0].textContent);
+  console.log(buttonsPara);
+  console.log(header);
+  
+  // const button = e.target.closest('li').children[0];
 
   buttons.forEach((button) => {
     button.classList.remove('button-render--focus');
   })
 
-  button.classList.add('button-render--focus');
+  const similarNameButton = Array.from(buttonsPara).find((button) => {
+    console.log(button.textContent);
+    return button.textContent === header.textContent;
+  })
+
+  similarNameButton.parentNode.classList.add('button-render--focus');
+
+  // console.log(header.textContent);
+  // console.log(similarNameButton);
 }
 
 function toggleDarkMode() {

@@ -79,6 +79,7 @@ buttonOpenBoard.addEventListener('click', (e) => {
   displayTasksTotal();
   displayTasks();
   closeDialog('read-due-task');
+  toggleFocus();
 })
 
 buttonDarkMode.addEventListener('click', () => {
