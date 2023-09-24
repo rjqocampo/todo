@@ -52,27 +52,143 @@ const boards = [
   },
 ]
 
-function toggleSidebar() {
-  sidebar = sidebar ? false : true;
-  console.log(sidebar);
+// function initializeLocalStorage() {
+//   if (localStorage.getItem('boards')) {
+//     console.log('local not empty')
+//   } else {
+//     console.log('local empty')
+//   }
+//   console.log(localStorage.getItem('boards'));
+// }
+
+function checkExistingBoards() {
+
 }
 
-function getSidebar() {
-  return sidebar;
-}
+// function addNewBoard() {
+//   const input = document.querySelector('#input-create-board-title');  
+//   const newBoard = factoryBoard(input.value);
 
-function parseDate(date) {
-  if (isToday(new Date(date))) {
-    return 'today';
-  } else {
-    return date.split('-').slice(1).join('/');
+//   boards.unshift(newBoard);
+//   console.log(boards);
+// }
+
+function addNewBoard() {
+  const input = document.querySelector('#input-create-board-title');  
+  const newBoard = factoryBoard(input.value);
+  let currentData = null;
+  let newData = null;
+
+  if (localStorage.getItem('boards')) { // checks if boards is empty. if empty, initialize an array
+    currentData = JSON.parse(localStorage.getItem('boards'));
+  } else if (!localStorage.getItem('boards')) {
+    localStorage.setItem('boards', []);
   }
+
+  if (currentData) {
+    newData = [newBoard].concat(currentData);
+  } else if (!currentData) {
+    newData = [newBoard];
+  }
+  localStorage.setItem('boards', JSON.stringify(newData));
+}
+
+function editBoard() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const input = document.querySelector('#input-edit-board-title');
+  const newBoard = getActiveBoard();
+
+  newBoard.title = input.value;
+
+  activeBoard = newBoard; // to display updated board after editing
+
+  boards.splice(indexOfActiveBoard, 1, newBoard);
+  console.log(boards[indexOfActiveBoard]);
+  console.log(boards);
+}
+
+function deleteBoard() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  
+  activeBoard = null; // to display no board after deleting
+
+  boards.splice(indexOfActiveBoard, 1);
+  console.log(boards);
+}
+
+function getBoards() {
+  return boards.map((board) => {
+    return board.title;
+  })
+}
+
+function getBoardsTotal() {
+  return boards.length;
+}
+
+function getActiveBoard() {
+  return activeBoard;
+}
+
+function addNewTask() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+
+  const inputTitle = document.querySelector('#input-add-task-title');
+  const inputDescription = document.querySelector('#input-add-task-description');
+  const inputDate = document.querySelector('#input-add-task-due-date');
+  const inputPriority = document.querySelector('#input-add-task-priority');
+
+  const newTask = factoryTask(
+    inputTitle.value,
+    inputDescription.value,
+    inputDate.value,
+    inputPriority.value
+  );
+  
+  boards[indexOfActiveBoard].tasks.unshift(newTask);
+
+  console.log(boards);
+}
+
+function editTask(e) {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+  const newTask = boards[indexOfActiveBoard].tasks[indexOfTask];
+
+  const inputTitle = document.querySelector('#input-edit-task-title');
+  const inputDescription = document.querySelector('#input-edit-task-description');
+  const inputDate = document.querySelector('#input-edit-task-due-date');
+  const inputPriority = document.querySelector('#input-edit-task-priority');
+  const inputStatus = document.querySelector('#input-edit-task-status');
+
+  newTask.title = inputTitle.value;
+  newTask.description = inputDescription.value;
+  newTask.dueDate = inputDate.value;
+  newTask.priority = inputPriority.value;
+  newTask.status = inputStatus.value;
+
+  console.log(indexOfActiveBoard);
+  console.log(indexOfTask);
+  console.log(newTask);
+
+  boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1, newTask);
+  console.log(boards[indexOfActiveBoard]);
+}
+
+function deleteTask(e) {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+
+  boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1);
+}
+
+function getTasks() {
+  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+
+  return boards[indexOfActiveBoard].tasks;
 }
 
 function getDueTasks(dueWhen) {
-  // map the array first and store the index by adding a property
-  // then filter the array with the conditions
-  // make new arrays, do not mutate
   const copyOfBoards = boards.slice();
 
   const arr = [];
@@ -103,26 +219,6 @@ function getDueTasks(dueWhen) {
   return arr;
 }
 
-function getTasks() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-
-  return boards[indexOfActiveBoard].tasks;
-}
-
-function getBoards() {
-  return boards.map((board) => {
-    return board.title;
-  })
-}
-
-function getBoardsTotal() {
-  return boards.length;
-}
-
-function getActiveBoard() {
-  return activeBoard;
-}
-
 function getTasksTotal() {
   const tasks = getTasks();
 
@@ -131,92 +227,6 @@ function getTasksTotal() {
   const done = tasks.filter((task) => task.status === 'done').length;
 
   return { todo, doing, done };
-}
-
-function addNewTask() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-
-  const inputTitle = document.querySelector('#input-add-task-title');
-  const inputDescription = document.querySelector('#input-add-task-description');
-  const inputDate = document.querySelector('#input-add-task-due-date');
-  const inputPriority = document.querySelector('#input-add-task-priority');
-
-  const newTask = factoryTask(
-    inputTitle.value,
-    inputDescription.value,
-    inputDate.value,
-    inputPriority.value
-  );
-  
-  boards[indexOfActiveBoard].tasks.unshift(newTask);
-
-  console.log(boards);
-}
-
-function addNewBoard() {
-  const input = document.querySelector('#input-create-board-title');  
-  const newBoard = factoryBoard(input.value);
-
-  boards.unshift(newBoard);
-  console.log(boards);
-}
-
-function editBoard() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-  const input = document.querySelector('#input-edit-board-title');
-  const newBoard = getActiveBoard();
-
-  newBoard.title = input.value;
-
-  activeBoard = newBoard; // to display updated board after editing
-
-  boards.splice(indexOfActiveBoard, 1, newBoard);
-  console.log(boards[indexOfActiveBoard]);
-  console.log(boards);
-}
-
-function editTask(e) {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
-  const newTask = boards[indexOfActiveBoard].tasks[indexOfTask];
-
-  const inputTitle = document.querySelector('#input-edit-task-title');
-  const inputDescription = document.querySelector('#input-edit-task-description');
-  const inputDate = document.querySelector('#input-edit-task-due-date');
-  const inputPriority = document.querySelector('#input-edit-task-priority');
-  const inputStatus = document.querySelector('#input-edit-task-status');
-
-  newTask.title = inputTitle.value;
-  newTask.description = inputDescription.value;
-  newTask.dueDate = inputDate.value;
-  newTask.priority = inputPriority.value;
-  newTask.status = inputStatus.value;
-
-  console.log(indexOfActiveBoard);
-  console.log(indexOfTask);
-  console.log(newTask);
-
-  boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1, newTask);
-  console.log(boards[indexOfActiveBoard]);
-}
-
-function deleteBoard() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-  
-  activeBoard = null; // to display no board after deleting
-
-  boards.splice(indexOfActiveBoard, 1);
-  console.log(boards);
-}
-
-function setActiveBoard(e, dataIndexHolder) {
-  const index = e.target.closest(dataIndexHolder).getAttribute('data-board');
-  console.log(index);
-  activeBoard = boards[index];
-}
-
-function setActiveBoardToNull() {
-  activeBoard = null;
 }
 
 function proceedTask(e) {
@@ -234,11 +244,31 @@ function proceedTask(e) {
   }
 }
 
-function deleteTask(e) {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-  const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+function setActiveBoard(e, dataIndexHolder) {
+  const index = e.target.closest(dataIndexHolder).getAttribute('data-board');
+  console.log(index);
+  activeBoard = boards[index];
+}
 
-  boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1);
+function setActiveBoardToNull() {
+  activeBoard = null;
+}
+
+function toggleSidebar() {
+  sidebar = sidebar ? false : true;
+  console.log(sidebar);
+}
+
+function getSidebar() {
+  return sidebar;
+}
+
+function parseDate(date) {
+  if (isToday(new Date(date))) {
+    return 'today';
+  } else {
+    return date.split('-').slice(1).join('/');
+  }
 }
 
 function storeIndex(e) {
@@ -253,7 +283,6 @@ function storeBoardIndex(e) {
   const indexOfBoard = e.target.closest('li').getAttribute('data-board');
 
   dialog.setAttribute('data-board', indexOfBoard);
-
 }
 
 export { 

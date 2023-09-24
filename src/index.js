@@ -83,7 +83,8 @@ buttonOpenBoard.addEventListener('click', (e) => {
 })
 
 buttonDarkMode.addEventListener('click', () => {
-  toggleDarkMode();
+  // toggleDarkMode();
+  localStorage.clear();
 })
 
 buttonsSidebar.forEach((button) => {

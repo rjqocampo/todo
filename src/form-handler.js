@@ -85,8 +85,6 @@ function clearInputFields() {
   const inputTextArea = document.querySelector('#input-add-task-description');
   const inputDate = document.querySelector('option[value="low"');
 
-  console.log(inputDate);
-
   inputFields.forEach((input) => {
     input.value = '';
   })
