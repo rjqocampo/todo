@@ -234,21 +234,14 @@ function deleteTask(e) {
 }
 
 function getTasks() {
-  // boards already has the updated tasks
   const boards = JSON.parse(localStorage.getItem('boards'));
-  console.log(boards);
+
   const indexOfActiveBoard = boards.findIndex((board) => {
-    console.log('getting tasks')
-    console.log(board.title);
-    console.log(getActiveBoard().title);
-    console.log(JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
     return JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title);
   });
-  console.log(indexOfActiveBoard);
 
-  console.log(boards[indexOfActiveBoard].tasks);
   return boards[indexOfActiveBoard].tasks;
-} 
+} // REFACTORED
 
 function getDueTasks(dueWhen) {
   const copyOfBoards = boards.slice();
@@ -279,7 +272,7 @@ function getDueTasks(dueWhen) {
   console.log(arr);
   console.log(boards);
   return arr;
-}
+} 
 
 function getTasksTotal() {
   const tasks = getTasks();

@@ -1,12 +1,23 @@
+import { getBoards } from "./data-handler";
+
 function formCheckBoards(str) {
   const input = document.querySelector(`.dialog-${str} input`);
   const span = document.querySelector(`.dialog-${str} span`)
+
+  function checkIfExisting(boardName) {
+    return getBoards().find((board) => {
+      return board === boardName;
+    })
+  }
 
   if (input.validity.valueMissing) {
     span.textContent = '*This field is required';
     return false;
   } else if (input.validity.tooShort) {
-    span.textContent = 'Input is too short';
+    span.textContent = '*Input is too short';
+    return false;
+  } else if (checkIfExisting(input.value)) {
+    span.textContent = '*Board already exists';
     return false;
   } else {
     span.textContent = '';
@@ -27,7 +38,7 @@ function formCheckTasks(str) {
       spanInput.textContent = '*This field is required';
       return false;
     } else if (input.validity.tooShort) {
-      spanInput.textContent = 'Input is too short';
+      spanInput.textContent = '*Input is too short';
       return false;
     } else {
       spanInput.textContent = '';
@@ -41,7 +52,7 @@ function formCheckTasks(str) {
       spanTextArea.textContent = '*This field is required';
       return false;
     } else if (textArea.validity.tooShort) {
-      spanTextArea.textContent = 'Input is too short';
+      spanTextArea.textContent = '*Input is too short';
       return false;
     } else {
       spanTextArea.textContent = '';
