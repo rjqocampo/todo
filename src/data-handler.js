@@ -53,6 +53,8 @@ let sidebar = true;
 // ]
 
 function initializeLocalStorage() {
+  console.log(JSON.parse(localStorage.getItem('boards')));
+
   if (localStorage.getItem('boards')) {
     return;
   } else if (!localStorage.getItem('boards')) {
@@ -105,20 +107,11 @@ function initializeLocalStorage() {
     //   },
     // ]));
   }
-  console.log(localStorage.getItem('boards'));
 }
 
 function checkExistingBoards() {
 
 }
-
-// function addNewBoard() {
-//   const input = document.querySelector('#input-create-board-title');  
-//   const newBoard = factoryBoard(input.value);
-
-//   boards.unshift(newBoard);
-//   console.log(boards);
-// }
 
 function addNewBoard() {
   const input = document.querySelector('#input-create-board-title');  
@@ -138,21 +131,7 @@ function addNewBoard() {
     newData = [newBoard];
   }
   localStorage.setItem('boards', JSON.stringify(newData));
-}
-
-// function editBoard() {
-//   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
-//   const input = document.querySelector('#input-edit-board-title');
-//   const newBoard = getActiveBoard();
-
-//   newBoard.title = input.value;
-
-//   activeBoard = newBoard; // to display updated board after editing
-
-//   boards.splice(indexOfActiveBoard, 1, newBoard);
-//   console.log(boards[indexOfActiveBoard]);
-//   console.log(boards);
-// }
+} // REFACTORED
 
 function editBoard() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
@@ -169,19 +148,16 @@ function editBoard() {
 }
 
 function deleteBoard() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
   
   activeBoard = null; // to display no board after deleting
 
   boards.splice(indexOfActiveBoard, 1);
   console.log(boards);
-}
 
-// function getBoards() {
-//   return boards.map((board) => {
-//     return board.title;
-//   })
-// }
+  localStorage.setItem('boards', JSON.stringify(boards));
+} // REFACTORED
 
 function getBoards() {
   if (localStorage.getItem('boards')) {
@@ -190,7 +166,7 @@ function getBoards() {
   } else if (!localStorage.getItem('boards')) {
     return [];
   }
-}
+} // REFACTORED
 
 function getBoardsTotal() {
   if (localStorage.getItem('boards')) {
@@ -198,11 +174,11 @@ function getBoardsTotal() {
   } else if (!localStorage.getItem('boards')) {
     return 0;
   }
-}
+} // REFACTORED
 
 function getActiveBoard() {
   return activeBoard;
-}
+} // REFACTORED
 
 function addNewTask() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
@@ -257,10 +233,11 @@ function deleteTask(e) {
 }
 
 function getTasks() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
 
   return boards[indexOfActiveBoard].tasks;
-}
+} // REFACTORED
 
 function getDueTasks(dueWhen) {
   const copyOfBoards = boards.slice();
@@ -319,10 +296,11 @@ function proceedTask(e) {
 }
 
 function setActiveBoard(e, dataIndexHolder) {
+  const boards = JSON.parse(localStorage.getItem('boards'));
   const index = e.target.closest(dataIndexHolder).getAttribute('data-board');
-  console.log(index);
+
   activeBoard = boards[index];
-}
+} // REFACTORED
 
 function setActiveBoardToNull() {
   activeBoard = null;
