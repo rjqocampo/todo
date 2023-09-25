@@ -71,14 +71,14 @@ function initializeLocalStorage() {
           {
             title: 'Restructure Code into Modules',
             description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-            dueDate: '2023-09-22',
+            dueDate: '2023-09-26',
             priority: 'medium',
             status: 'todo',
           },
           {
             title: 'Make project responsive to all devices',
             description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-            dueDate: '2023-09-23',
+            dueDate: '2023-09-27',
             priority: 'high',
             status: 'doing',
           },
@@ -90,14 +90,14 @@ function initializeLocalStorage() {
           {
             title: 'Create Figma prototype',
             description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-            dueDate: '2023-09-23',
+            dueDate: '2023-09-25',
             priority: 'high',
             status: 'todo',
           },
           {
             title: 'Make environments for development and production',
             description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-            dueDate: '2023-09-22',
+            dueDate: '2023-09-27',
             priority: 'low',
             status: 'done',
           },
@@ -227,18 +227,17 @@ function editTask(e) {
   console.log(boards[indexOfActiveBoard]);
   localStorage.setItem('boards', JSON.stringify(boards));
 
-}
+} // REFACTORED
 
 function deleteTask(e) {
   const boards = JSON.parse(localStorage.getItem('boards'));
   const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
   const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
-  // console.log(indexOfTask);
 
   boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1);
-  console.log(boards);
+
   localStorage.setItem('boards', JSON.stringify(boards));
-}
+} // REFACTORED
 
 function getTasks() {
   const boards = JSON.parse(localStorage.getItem('boards'));
@@ -251,15 +250,16 @@ function getTasks() {
 } // REFACTORED
 
 function getDueTasks(dueWhen) {
-  const copyOfBoards = boards.slice();
-
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  console.log(boards);
   const arr = [];
 
-  copyOfBoards.forEach((board, index) => {
+  boards.forEach((board, index) => {
     const indexedTasks = board.tasks.map((task, index) => {
       return {...task, index};
     })
-    const dueTasks = indexedTasks.filter((task, index) => {
+    console.log(indexedTasks);
+    const dueTasks = indexedTasks.filter((task) => {
       if (dueWhen === 'today') {
         return task.status !== 'done' && isToday(new Date(task.dueDate));
       } else if (dueWhen === 'this week') {
@@ -277,7 +277,6 @@ function getDueTasks(dueWhen) {
   })
 
   console.log(arr);
-  console.log(boards);
   return arr;
 } 
 
@@ -310,7 +309,7 @@ function proceedTask(e) {
   }
 
   localStorage.setItem('boards', JSON.stringify(boards));
-}
+} // REFACTORED
 
 function setActiveBoard(e, dataIndexHolder) {
   const boards = JSON.parse(localStorage.getItem('boards'));
@@ -325,7 +324,6 @@ function setActiveBoardToNull() {
 
 function toggleSidebar() {
   sidebar = sidebar ? false : true;
-  console.log(sidebar);
 }
 
 function getSidebar() {
