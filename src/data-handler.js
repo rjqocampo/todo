@@ -4,62 +4,109 @@ import { isToday, isThisWeek } from "date-fns";
 let activeBoard = null;
 let sidebar = true;
 
-const boards = [
-  {
-    title: 'Kanban Project',
-    tasks: [
-      {
-        title: 'Build UI for Project',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-25',
-        priority: 'low',
-        status: 'todo',
-      },
-      {
-        title: 'Restructure Code into Modules',
-        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-22',
-        priority: 'medium',
-        status: 'todo',
-      },
-      {
-        title: 'Make project responsive to all devices',
-        description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-        dueDate: '2023-09-23',
-        priority: 'high',
-        status: 'doing',
-      },
-    ]
-  },
-  {
-    title: 'Restaurant Project',
-    tasks: [
-      {
-        title: 'Create Figma prototype',
-        description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-23',
-        priority: 'high',
-        status: 'todo',
-      },
-      {
-        title: 'Make environments for development and production',
-        description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-        dueDate: '2023-09-22',
-        priority: 'low',
-        status: 'done',
-      },
-    ]
-  },
-]
+// const boards = [
+//   {
+//     title: 'Kanban Project',
+//     tasks: [
+//       {
+//         title: 'Build UI for Project',
+//         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+//         dueDate: '2023-09-25',
+//         priority: 'low',
+//         status: 'todo',
+//       },
+//       {
+//         title: 'Restructure Code into Modules',
+//         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+//         dueDate: '2023-09-22',
+//         priority: 'medium',
+//         status: 'todo',
+//       },
+//       {
+//         title: 'Make project responsive to all devices',
+//         description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
+//         dueDate: '2023-09-23',
+//         priority: 'high',
+//         status: 'doing',
+//       },
+//     ]
+//   },
+//   {
+//     title: 'Restaurant Project',
+//     tasks: [
+//       {
+//         title: 'Create Figma prototype',
+//         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+//         dueDate: '2023-09-23',
+//         priority: 'high',
+//         status: 'todo',
+//       },
+//       {
+//         title: 'Make environments for development and production',
+//         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+//         dueDate: '2023-09-22',
+//         priority: 'low',
+//         status: 'done',
+//       },
+//     ]
+//   },
+// ]
 
-// function initializeLocalStorage() {
-//   if (localStorage.getItem('boards')) {
-//     console.log('local not empty')
-//   } else {
-//     console.log('local empty')
-//   }
-//   console.log(localStorage.getItem('boards'));
-// }
+function initializeLocalStorage() {
+  if (localStorage.getItem('boards')) {
+    return;
+  } else if (!localStorage.getItem('boards')) {
+    localStorage.setItem('boards', []);
+    // localStorage.setItem('boards', JSON.stringify([
+    //   {
+    //     title: 'Kanban Project',
+    //     tasks: [
+    //       {
+    //         title: 'Build UI for Project',
+    //         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+    //         dueDate: '2023-09-25',
+    //         priority: 'low',
+    //         status: 'todo',
+    //       },
+    //       {
+    //         title: 'Restructure Code into Modules',
+    //         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+    //         dueDate: '2023-09-22',
+    //         priority: 'medium',
+    //         status: 'todo',
+    //       },
+    //       {
+    //         title: 'Make project responsive to all devices',
+    //         description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
+    //         dueDate: '2023-09-23',
+    //         priority: 'high',
+    //         status: 'doing',
+    //       },
+    //     ]
+    //   },
+    //   {
+    //     title: 'Restaurant Project',
+    //     tasks: [
+    //       {
+    //         title: 'Create Figma prototype',
+    //         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+    //         dueDate: '2023-09-23',
+    //         priority: 'high',
+    //         status: 'todo',
+    //       },
+    //       {
+    //         title: 'Make environments for development and production',
+    //         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+    //         dueDate: '2023-09-22',
+    //         priority: 'low',
+    //         status: 'done',
+    //       },
+    //     ]
+    //   },
+    // ]));
+  }
+  console.log(localStorage.getItem('boards'));
+}
 
 function checkExistingBoards() {
 
@@ -93,6 +140,20 @@ function addNewBoard() {
   localStorage.setItem('boards', JSON.stringify(newData));
 }
 
+// function editBoard() {
+//   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+//   const input = document.querySelector('#input-edit-board-title');
+//   const newBoard = getActiveBoard();
+
+//   newBoard.title = input.value;
+
+//   activeBoard = newBoard; // to display updated board after editing
+
+//   boards.splice(indexOfActiveBoard, 1, newBoard);
+//   console.log(boards[indexOfActiveBoard]);
+//   console.log(boards);
+// }
+
 function editBoard() {
   const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
   const input = document.querySelector('#input-edit-board-title');
@@ -116,14 +177,27 @@ function deleteBoard() {
   console.log(boards);
 }
 
+// function getBoards() {
+//   return boards.map((board) => {
+//     return board.title;
+//   })
+// }
+
 function getBoards() {
-  return boards.map((board) => {
-    return board.title;
-  })
+  if (localStorage.getItem('boards')) {
+    const boards = JSON.parse(localStorage.getItem('boards'));
+    return boards.map((board) => board.title); 
+  } else if (!localStorage.getItem('boards')) {
+    return [];
+  }
 }
 
 function getBoardsTotal() {
-  return boards.length;
+  if (localStorage.getItem('boards')) {
+    return JSON.parse(localStorage.getItem('boards')).length;
+  } else if (!localStorage.getItem('boards')) {
+    return 0;
+  }
 }
 
 function getActiveBoard() {
@@ -284,6 +358,8 @@ function storeBoardIndex(e) {
 
   dialog.setAttribute('data-board', indexOfBoard);
 }
+
+initializeLocalStorage();
 
 export { 
   getBoards, 
