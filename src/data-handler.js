@@ -53,64 +53,62 @@ let sidebar = true;
 // ]
 
 function initializeLocalStorage() {
-  console.log(JSON.parse(localStorage.getItem('boards')));
-
   if (localStorage.getItem('boards')) {
     return;
   } else if (!localStorage.getItem('boards')) {
-    localStorage.setItem('boards', []);
-    // localStorage.setItem('boards', JSON.stringify([
-    //   {
-    //     title: 'Kanban Project',
-    //     tasks: [
-    //       {
-    //         title: 'Build UI for Project',
-    //         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-    //         dueDate: '2023-09-25',
-    //         priority: 'low',
-    //         status: 'todo',
-    //       },
-    //       {
-    //         title: 'Restructure Code into Modules',
-    //         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-    //         dueDate: '2023-09-22',
-    //         priority: 'medium',
-    //         status: 'todo',
-    //       },
-    //       {
-    //         title: 'Make project responsive to all devices',
-    //         description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-    //         dueDate: '2023-09-23',
-    //         priority: 'high',
-    //         status: 'doing',
-    //       },
-    //     ]
-    //   },
-    //   {
-    //     title: 'Restaurant Project',
-    //     tasks: [
-    //       {
-    //         title: 'Create Figma prototype',
-    //         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-    //         dueDate: '2023-09-23',
-    //         priority: 'high',
-    //         status: 'todo',
-    //       },
-    //       {
-    //         title: 'Make environments for development and production',
-    //         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-    //         dueDate: '2023-09-22',
-    //         priority: 'low',
-    //         status: 'done',
-    //       },
-    //     ]
-    //   },
-    // ]));
+    // localStorage.setItem('boards', []);
+    localStorage.setItem('boards', JSON.stringify([
+      {
+        title: 'Kanban Project',
+        tasks: [
+          {
+            title: 'Build UI for Project',
+            description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+            dueDate: '2023-09-25',
+            priority: 'low',
+            status: 'todo',
+          },
+          {
+            title: 'Restructure Code into Modules',
+            description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+            dueDate: '2023-09-22',
+            priority: 'medium',
+            status: 'todo',
+          },
+          {
+            title: 'Make project responsive to all devices',
+            description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
+            dueDate: '2023-09-23',
+            priority: 'high',
+            status: 'doing',
+          },
+        ]
+      },
+      {
+        title: 'Restaurant Project',
+        tasks: [
+          {
+            title: 'Create Figma prototype',
+            description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+            dueDate: '2023-09-23',
+            priority: 'high',
+            status: 'todo',
+          },
+          {
+            title: 'Make environments for development and production',
+            description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
+            dueDate: '2023-09-22',
+            priority: 'low',
+            status: 'done',
+          },
+        ]
+      },
+      // {
+      //   title: 'Battleship Project',
+      //   tasks: []
+      // },
+    ]));
   }
-}
-
-function checkExistingBoards() {
-
 }
 
 function addNewBoard() {
@@ -182,7 +180,9 @@ function getActiveBoard() {
 } // REFACTORED
 
 function addNewTask() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
+  console.log(boards);
 
   const inputTitle = document.querySelector('#input-add-task-title');
   const inputDescription = document.querySelector('#input-add-task-description');
@@ -197,8 +197,8 @@ function addNewTask() {
   );
   
   boards[indexOfActiveBoard].tasks.unshift(newTask);
-
-  console.log(boards);
+  // console.log(boards);
+  localStorage.setItem('boards', JSON.stringify(boards));
 }
 
 function editTask(e) {
@@ -234,11 +234,21 @@ function deleteTask(e) {
 }
 
 function getTasks() {
+  // boards already has the updated tasks
   const boards = JSON.parse(localStorage.getItem('boards'));
-  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
+  console.log(boards);
+  const indexOfActiveBoard = boards.findIndex((board) => {
+    console.log('getting tasks')
+    console.log(board.title);
+    console.log(getActiveBoard().title);
+    console.log(JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
+    return JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title);
+  });
+  console.log(indexOfActiveBoard);
 
+  console.log(boards[indexOfActiveBoard].tasks);
   return boards[indexOfActiveBoard].tasks;
-} // REFACTORED
+} 
 
 function getDueTasks(dueWhen) {
   const copyOfBoards = boards.slice();
