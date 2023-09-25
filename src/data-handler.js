@@ -181,7 +181,7 @@ function getActiveBoard() {
 
 function addNewTask() {
   const boards = JSON.parse(localStorage.getItem('boards'));
-  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
   console.log(boards);
 
   const inputTitle = document.querySelector('#input-add-task-title');
@@ -197,12 +197,13 @@ function addNewTask() {
   );
   
   boards[indexOfActiveBoard].tasks.unshift(newTask);
-  // console.log(boards);
+
   localStorage.setItem('boards', JSON.stringify(boards));
-}
+} // REFACTORED
 
 function editTask(e) {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
   const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
   const newTask = boards[indexOfActiveBoard].tasks[indexOfTask];
 
@@ -224,13 +225,19 @@ function editTask(e) {
 
   boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1, newTask);
   console.log(boards[indexOfActiveBoard]);
+  localStorage.setItem('boards', JSON.stringify(boards));
+
 }
 
 function deleteTask(e) {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
   const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
+  // console.log(indexOfTask);
 
   boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1);
+  console.log(boards);
+  localStorage.setItem('boards', JSON.stringify(boards));
 }
 
 function getTasks() {
@@ -285,7 +292,9 @@ function getTasksTotal() {
 }
 
 function proceedTask(e) {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
+
   const indexOfTask = e.target.closest('dialog').getAttribute('data-index');
   const task = boards[indexOfActiveBoard].tasks[indexOfTask];
   const statusOfTask = boards[indexOfActiveBoard].tasks[indexOfTask].status;
@@ -295,8 +304,12 @@ function proceedTask(e) {
   } else if (statusOfTask === 'doing') {
     task.status = 'done';
   } else if (statusOfTask === 'done') {
+    console.log('proceed delete');
     deleteTask(e);
+    return;
   }
+
+  localStorage.setItem('boards', JSON.stringify(boards));
 }
 
 function setActiveBoard(e, dataIndexHolder) {
