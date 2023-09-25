@@ -134,24 +134,25 @@ function addNewBoard() {
 } // REFACTORED
 
 function editBoard() {
-  const indexOfActiveBoard = boards.findIndex((board) => board === getActiveBoard());
+  const boards = JSON.parse(localStorage.getItem('boards'));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
   const input = document.querySelector('#input-edit-board-title');
   const newBoard = getActiveBoard();
 
   newBoard.title = input.value;
 
-  activeBoard = newBoard; // to display updated board after editing
+  activeBoard = newBoard;
 
   boards.splice(indexOfActiveBoard, 1, newBoard);
-  console.log(boards[indexOfActiveBoard]);
-  console.log(boards);
-}
+
+  localStorage.setItem('boards', JSON.stringify(boards));
+} // REFACTORED
 
 function deleteBoard() {
   const boards = JSON.parse(localStorage.getItem('boards'));
   const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
   
-  activeBoard = null; // to display no board after deleting
+  activeBoard = null;
 
   boards.splice(indexOfActiveBoard, 1);
   console.log(boards);
