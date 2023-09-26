@@ -70,7 +70,7 @@ function createCards(arrList) {
 }
 
 function createBoardColumn(columnName) {
-  const main = document.querySelector('main');
+  const wrapper = document.querySelector('.main-wrapper');
   const divColumn =  document.createElement('div');
   const divHeader = document.createElement('div');
   const divColor = document.createElement('div');
@@ -82,7 +82,7 @@ function createBoardColumn(columnName) {
   h3.textContent = columnName;
   ul.classList.add(`list-${columnName}`);
 
-  main.appendChild(divColumn);
+  wrapper.appendChild(divColumn);
   divColumn.appendChild(divHeader);
   divHeader.appendChild(divColor);
   divHeader.appendChild(h3);
@@ -97,9 +97,7 @@ function createNoDuesMain(dueWhen) {
 
   div.classList.add('no-due');
 
-  // h2.textContent = '✓';
   h2.textContent = '✔';
-
 
   if (dueWhen === 'today') {
     h3.textContent = 'No due tasks today'
@@ -237,6 +235,13 @@ function createDueCards(tasks, parentNode, indexOfBoard) {
 }
 
 function showBoardMain() {
+  const main = document.querySelector('main');
+  const divWrapper = document.createElement('div');
+  
+  divWrapper.classList.add('main-wrapper');
+
+  main.appendChild(divWrapper);
+
   createBoardColumn('todo');
   createBoardColumn('doing');
   createBoardColumn('done');

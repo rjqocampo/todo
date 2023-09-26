@@ -11,6 +11,10 @@
       }
       main {
         display: none;
+        .main-wrapper {
+
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));         
+        }
         .due-board {
           &__header {
             padding: 10px 20px 10px 20px;
