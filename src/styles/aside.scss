@@ -34,14 +34,14 @@ body {
             @include index.icon-size(28px);
           }
           h1 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
           }
         }
         .due {
           h3 {
             color: var(--font-two);
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: var(--weight-one);
             letter-spacing: 3px;
             margin-bottom: 10px;
           }
@@ -78,7 +78,7 @@ body {
           h3 {
             color: var(--font-two);
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: var(--weight-one);
             letter-spacing: 3px;
             margin: 30px 0px 10px 0px;
           }
@@ -213,7 +213,7 @@ body {
           p {
             transition: all 0.4s;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: var(--weight-one);
             letter-spacing: 1px;
             color: white;
             margin-left: 5px;
@@ -222,7 +222,7 @@ body {
         .github {
           margin-bottom: 40px;
           a {
-            font-weight: 500;
+            font-weight: var(--weight-one);
             font-size: 0.65rem;
             color: var(--font-one);
             text-decoration: none;

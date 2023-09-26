@@ -32,7 +32,7 @@ body {
             h3 {
               color: var(--font-two);
               font-size: 0.8rem;
-              font-weight: 500;
+              font-weight: var(--weight-one);
               letter-spacing: 3px;
             }
             &-todo {
@@ -139,7 +139,7 @@ body {
               color: var(--font-two);
               font-size: 0.7rem;
               letter-spacing: 2px;
-              font-weight: 500;
+              font-weight: var(--weight-one);
               line-height: 0.5rem;
             }
             h3 {
@@ -263,7 +263,7 @@ body {
         }
         h3 {
           font-size: 1.2rem;
-          font-weight: 500;
+          font-weight: var(--weight-one);
           letter-spacing: 1px;
           padding: 20px;
           color: var(--font-two);

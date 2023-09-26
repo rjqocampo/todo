@@ -49,7 +49,7 @@ function initializeLocalStorage() {
           },
           {
             title: 'Implement Dynamic Content Rendering',
-            description: 'Create a user interface that dynamically updates and displays tasks, boards, and details as users interact with the system. Ensure a seamless and responsive user experience that reflects real-time changes',
+            description: 'Create a user interface that dynamically updates and displays tasks, boards, and details as users interact with the system. Ensure a seamless and responsive user experience that reflects real-time changes.',
             dueDate: format(add(new Date(), {days: 11}), 'yyyy-MM-dd'),
             priority: 'high',
             status: 'done',

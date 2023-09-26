@@ -45,7 +45,7 @@ body {
           gap: 5px;
           p {
             color: white;
-            font-weight: 500;
+            font-weight: var(--weight-one);
             font-size: 1rem;
           }
           svg {
