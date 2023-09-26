@@ -97,7 +97,7 @@ function createNoDuesMain(dueWhen) {
 
   div.classList.add('no-due');
 
-  h2.textContent = '✔';
+  h2.textContent = '✓';
 
   if (dueWhen === 'today') {
     h3.textContent = 'No due tasks today'
