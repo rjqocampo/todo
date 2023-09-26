@@ -2,7 +2,7 @@
 
 Welcome to Kanban!
 
-Kanban is a project and task management application. The goal is to help you streamline your tasks more efficiently, track due dates, what to prioritize, and also assist you in visualizing the progress of your project. It is built with HTML, CSS and Javascript.
+Kanban is a project and task management application. The goal is to help you streamline your tasks efficiently, track due dates, what to prioritize, and also assist you in visualizing the progress of your project. It is built with HTML, CSS and Javascript.
 
 Link to live project: https://rjqocampo.github.io/todo/ :point_left:
 
@@ -33,8 +33,8 @@ Link to live project: https://rjqocampo.github.io/todo/ :point_left:
 * Value of Chrome DevTools for checking layout and debugging
 * Importance of Javascript fundamentals
 * Importance of pass-by-reference and pass-by-value
-* Importance of planning and foresight for overall code quality and development experience
 * Importance of consistency in naming conventions for better readability
+* Importance of planning and foresight for overall code quality and development experience
 * Usefulness of libraries for utility
 * Usefulness of modules to structure code and better maintainability
 
@@ -46,7 +46,7 @@ Found a bug or issue in the project? [Click here](https://github.com/rjqocampo/t
 ### Prospective Updates
 * Secure data by implementing a backend
 * Custom columns where you can add and rename your own columns
-* Additional features for tasks such as adding a check list or images
+* Additional features for tasks such as adding a check list and images
 
 Looking to contribute ideas or features to the project? [Click here](https://github.com/rjqocampo/todo#contributions).
 
@@ -91,15 +91,15 @@ Utilizes local storage to save your data locally on your device.
 
 ### Dynamic HTML Rendering
 
-Utilizing webpack and the DOM, the content of the page is rendered dynamically when navigating the website. The goal is to provide a smoother user experience.
+With the help of Javascript DOM, the content of the page is rendered dynamically when navigating the website. The goal is to provide a smoother user experience.
 
 ### Mobile Responsive
 
-The website is compatible with various screen sizes, whether using a phone, tablet or computer. With the help of CSS, layout of the website will automatically adjust and adapt to the device.
+The website is compatible with various screen sizes, whether using a phone, tablet, or computer. With the help of CSS, layout of the website will automatically adjust and adapt to the device.
 
 ### Custom Form Validations
 
-The forms have custom client side validation to help direct the user with creating their boards and tasks. 
+The forms have custom client side validation to help direct the user with creating their boards and tasks with complete and correct data. 
 
 ### Light or Dark Mode
 

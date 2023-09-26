@@ -8,7 +8,7 @@ function initializeLocalStorage() {
   if (localStorage.getItem('boards')) {
     return;
   } else if (!localStorage.getItem('boards')) {
-    localStorage.setItem('boards', JSON.stringify([
+    localStorage.setItem('boards', JSON.stringify([ // Pre-made content for demonstration purposes
       {
         title: 'Kanban Project',
         tasks: [
