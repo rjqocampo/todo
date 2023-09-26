@@ -141,7 +141,7 @@ function addNewBoard() {
 
 function editBoard() {
   const boards = JSON.parse(localStorage.getItem('boards'));
-  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
   const input = document.querySelector('#input-edit-board-title');
   const newBoard = getActiveBoard();
 
@@ -156,7 +156,7 @@ function editBoard() {
 
 function deleteBoard() {
   const boards = JSON.parse(localStorage.getItem('boards'));
-  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board) === JSON.stringify(getActiveBoard()));
+  const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
   
   activeBoard = null;
 
