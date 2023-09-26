@@ -89,14 +89,46 @@ function createBoardColumn(columnName) {
   divColumn.appendChild(ul);
 }
 
+function createNoDuesMain(dueWhen) {
+  const main = document.querySelector('main');
+  const div = document.createElement('div');
+  const h2 = document.createElement('h2');
+  const h3 = document.createElement('h3');
+
+  div.classList.add('no-due');
+
+  // h2.textContent = '✓';
+  h2.textContent = '✔';
+
+
+  if (dueWhen === 'today') {
+    h3.textContent = 'No due tasks today'
+  } else if (dueWhen === 'this week') {
+    h3.textContent = 'No due tasks this week'
+  }
+
+  div.appendChild(h2);
+  div.appendChild(h3);
+  main.appendChild(div);
+}
+
 function showDueMain(dueWhen) {
   let boards = null;
 
   if (dueWhen === 'today') {
     boards = getDueTasks('today');
+    if (boards.length === 0) {
+      createNoDuesMain('today');
+    }
   } else if (dueWhen === 'this week') {
     boards = getDueTasks('this week');
+    if (boards.length === 0) {
+      createNoDuesMain('this week');
+    }
   }
+
+  console.log(boards.length);
+
   const main = document.querySelector('main');
 
   boards.forEach((board) => {
@@ -217,13 +249,11 @@ function showSidebar() {
   const buttonSidebarHeader = document.querySelector('.button-sidebar-header');
 
   if (getSidebar()) {
-    console.log('sidebar on');
     aside.removeAttribute('id', 'aside--sidebar-hide');
     header.removeAttribute('id', 'header--sidebar-hide');
     main.removeAttribute('id', 'main--sidebar-hide');
     buttonSidebarHeader.removeAttribute('id', 'button--sidebar-hide')
   } else {
-    console.log('sidebar off');
     aside.setAttribute('id', 'aside--sidebar-hide')
     header.setAttribute('id', 'header--sidebar-hide')
     main.setAttribute('id', 'main--sidebar-hide')
@@ -273,34 +303,22 @@ function toggleFocus() {
   const buttons = document.querySelectorAll('.button-render');
   const buttonsPara = document.querySelectorAll('.button-render > p');
   const header = document.querySelector('header > h2');
-  // console.log(Array.from(buttons)[0].textContent);
-  console.log(buttonsPara);
-  console.log(header);
-  
-  // const button = e.target.closest('li').children[0];
 
   buttons.forEach((button) => {
     button.classList.remove('button-render--focus');
   })
 
   const similarNameButton = Array.from(buttonsPara).find((button) => {
-    console.log(button.textContent);
     return button.textContent === header.textContent;
   })
 
   similarNameButton.parentNode.classList.add('button-render--focus');
-
-  // console.log(header.textContent);
-  // console.log(similarNameButton);
 }
 
 function toggleDarkMode() {
-  console.log('dark mode');
-
   const root = document.documentElement;
 
   root.className = root.className === 'dark' ? 'light' : 'dark';
-  console.log(root);
 }
 
 function setDarkMode() {

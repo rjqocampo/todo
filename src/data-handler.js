@@ -4,59 +4,10 @@ import { isToday, isThisWeek } from "date-fns";
 let activeBoard = null;
 let sidebar = true;
 
-// const boards = [
-//   {
-//     title: 'Kanban Project',
-//     tasks: [
-//       {
-//         title: 'Build UI for Project',
-//         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-//         dueDate: '2023-09-25',
-//         priority: 'low',
-//         status: 'todo',
-//       },
-//       {
-//         title: 'Restructure Code into Modules',
-//         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-//         dueDate: '2023-09-22',
-//         priority: 'medium',
-//         status: 'todo',
-//       },
-//       {
-//         title: 'Make project responsive to all devices',
-//         description: 'Possimus natus qui nemo nihil laudantium dolore doloremque sapiente minima vero optio quam architecto maiores magni molestias nam, cupiditate praesentium et. Voluptatibus!',
-//         dueDate: '2023-09-23',
-//         priority: 'high',
-//         status: 'doing',
-//       },
-//     ]
-//   },
-//   {
-//     title: 'Restaurant Project',
-//     tasks: [
-//       {
-//         title: 'Create Figma prototype',
-//         description: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-//         dueDate: '2023-09-23',
-//         priority: 'high',
-//         status: 'todo',
-//       },
-//       {
-//         title: 'Make environments for development and production',
-//         description: 'Reprehenderit nostrum facilis tenetur laborum voluptatibus deserunt exercitationem.',
-//         dueDate: '2023-09-22',
-//         priority: 'low',
-//         status: 'done',
-//       },
-//     ]
-//   },
-// ]
-
 function initializeLocalStorage() {
   if (localStorage.getItem('boards')) {
     return;
   } else if (!localStorage.getItem('boards')) {
-    // localStorage.setItem('boards', []);
     localStorage.setItem('boards', JSON.stringify([
       {
         title: 'Kanban Project',
@@ -129,7 +80,7 @@ function addNewBoard() {
     newData = [newBoard];
   }
   localStorage.setItem('boards', JSON.stringify(newData));
-} // REFACTORED
+}
 
 function editBoard() {
   const boards = JSON.parse(localStorage.getItem('boards'));
@@ -144,7 +95,7 @@ function editBoard() {
   boards.splice(indexOfActiveBoard, 1, newBoard);
 
   localStorage.setItem('boards', JSON.stringify(boards));
-} // REFACTORED
+}
 
 function deleteBoard() {
   const boards = JSON.parse(localStorage.getItem('boards'));
@@ -153,10 +104,9 @@ function deleteBoard() {
   activeBoard = null;
 
   boards.splice(indexOfActiveBoard, 1);
-  console.log(boards);
 
   localStorage.setItem('boards', JSON.stringify(boards));
-} // REFACTORED
+}
 
 function getBoards() {
   if (localStorage.getItem('boards')) {
@@ -165,7 +115,7 @@ function getBoards() {
   } else if (!localStorage.getItem('boards')) {
     return [];
   }
-} // REFACTORED
+}
 
 function getBoardsTotal() {
   if (localStorage.getItem('boards')) {
@@ -173,16 +123,15 @@ function getBoardsTotal() {
   } else if (!localStorage.getItem('boards')) {
     return 0;
   }
-} // REFACTORED
+}
 
 function getActiveBoard() {
   return activeBoard;
-} // REFACTORED
+}
 
 function addNewTask() {
   const boards = JSON.parse(localStorage.getItem('boards'));
   const indexOfActiveBoard = boards.findIndex((board) => JSON.stringify(board.title) === JSON.stringify(getActiveBoard().title));
-  console.log(boards);
 
   const inputTitle = document.querySelector('#input-add-task-title');
   const inputDescription = document.querySelector('#input-add-task-description');
@@ -199,7 +148,7 @@ function addNewTask() {
   boards[indexOfActiveBoard].tasks.unshift(newTask);
 
   localStorage.setItem('boards', JSON.stringify(boards));
-} // REFACTORED
+}
 
 function editTask(e) {
   const boards = JSON.parse(localStorage.getItem('boards'));
@@ -219,15 +168,10 @@ function editTask(e) {
   newTask.priority = inputPriority.value;
   newTask.status = inputStatus.value;
 
-  console.log(indexOfActiveBoard);
-  console.log(indexOfTask);
-  console.log(newTask);
-
   boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1, newTask);
-  console.log(boards[indexOfActiveBoard]);
-  localStorage.setItem('boards', JSON.stringify(boards));
 
-} // REFACTORED
+  localStorage.setItem('boards', JSON.stringify(boards));
+}
 
 function deleteTask(e) {
   const boards = JSON.parse(localStorage.getItem('boards'));
@@ -237,7 +181,7 @@ function deleteTask(e) {
   boards[indexOfActiveBoard].tasks.splice(indexOfTask, 1);
 
   localStorage.setItem('boards', JSON.stringify(boards));
-} // REFACTORED
+}
 
 function getTasks() {
   const boards = JSON.parse(localStorage.getItem('boards'));
@@ -247,18 +191,18 @@ function getTasks() {
   });
 
   return boards[indexOfActiveBoard].tasks;
-} // REFACTORED
+}
 
 function getDueTasks(dueWhen) {
   const boards = JSON.parse(localStorage.getItem('boards'));
-  console.log(boards);
+
   const arr = [];
 
   boards.forEach((board, index) => {
     const indexedTasks = board.tasks.map((task, index) => {
       return {...task, index};
     })
-    console.log(indexedTasks);
+
     const dueTasks = indexedTasks.filter((task) => {
       if (dueWhen === 'today') {
         return task.status !== 'done' && isToday(new Date(task.dueDate));
@@ -276,7 +220,6 @@ function getDueTasks(dueWhen) {
     }
   })
 
-  console.log(arr);
   return arr;
 } 
 
@@ -303,20 +246,19 @@ function proceedTask(e) {
   } else if (statusOfTask === 'doing') {
     task.status = 'done';
   } else if (statusOfTask === 'done') {
-    console.log('proceed delete');
     deleteTask(e);
     return;
   }
 
   localStorage.setItem('boards', JSON.stringify(boards));
-} // REFACTORED
+}
 
 function setActiveBoard(e, dataIndexHolder) {
   const boards = JSON.parse(localStorage.getItem('boards'));
   const index = e.target.closest(dataIndexHolder).getAttribute('data-board');
 
   activeBoard = boards[index];
-} // REFACTORED
+}
 
 function setActiveBoardToNull() {
   activeBoard = null;

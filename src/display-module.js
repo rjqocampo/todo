@@ -56,8 +56,6 @@ function displayDueHeader(dueWhen) {
   } else if (dueWhen === 'this week') {
     dueHeader.textContent = 'This Week';
   }
-
-  console.log('click');
 }
 
 function displayTasks() {
