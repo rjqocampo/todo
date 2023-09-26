@@ -103,7 +103,7 @@ The forms have custom client side validation to help direct the user with creati
 
 ### Light or Dark Mode
 
-Toggle light or dark mode to your preference and reduce eye strain.
+Toggle light or dark mode to help reduce eye strain and enhance user experience during extended usage.
 
 # Contributions
 

@@ -12,6 +12,12 @@
         justify-content: center;
         .aside-top {
           margin-bottom: 50px;
+          .boards-list {
+            display: grid;
+            .button-open-create-board {
+              width: max(160px);
+            }
+          }
         }
       }
     }
