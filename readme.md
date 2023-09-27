@@ -2,7 +2,7 @@
 
 Welcome to Kanban!
 
-Kanban is a simple todo application. The goal is to help you categorize your projects, streamline your tasks, track due dates, show what to prioritize, and also assist you in visualizing the progress of your project. It is built with HTML, CSS and Javascript.
+Kanban is a todo application that aims to help you manage your projects and tasks more efficiently. The objectives are to help you categorize your projects, streamline your tasks, track due dates, show what to prioritize, and also assist you in visualizing the progress of your project. It is built with HTML, CSS and Javascript.
 
 Link to live project: https://rjqocampo.github.io/todo/ :point_left:
 
@@ -105,10 +105,6 @@ The forms have custom client side validation to help direct the user with creati
 
 Toggle light or dark mode to help reduce eye strain and enhance user experience during extended usage.
 
-# Contributions
-
-I owe my learnings to the open source community. It's an amazing place to learn, inspire and create.  So I welcome any contributions from the community that can help enhance this project. 
-
 # Usage
 The application provides pre-made boards and tasks for demonstration purposes.
 
@@ -120,6 +116,10 @@ The header will display the active content. If you're on a board, it will give y
 
 ### Main Section
 At the main section, the tasks will be displayed relative to the active content. Clicking on a task will show more details and additional options such as proceeding with the task or editing the task.
+
+# Contributions
+
+I owe my learnings to the open source community. It's an amazing place to learn, inspire and create.  So I welcome any contributions from the community that can help enhance this project. 
 
 ### Contribute
 
