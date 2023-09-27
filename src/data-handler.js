@@ -31,7 +31,7 @@ function initializeLocalStorage() {
             description: 'Ensure that the Kanban project is accessible and responsive on various devices, including desktops, tablets, and smartphones. Implement responsive design practices to provide an optimal user experience across different screen sizes.',
             dueDate: format(add(new Date(), {days: 4}), 'yyyy-MM-dd'),
             priority: 'medium',
-            status: 'doing',
+            status: 'done',
           },
           {
             title: 'Local Storage Implementation',
