@@ -2,7 +2,7 @@
 
 Welcome to Kanban!
 
-Kanban is a project and task management application. The goal is to help you streamline your tasks efficiently, track due dates, what to prioritize, and also assist you in visualizing the progress of your project. It is built with HTML, CSS and Javascript.
+Kanban is a simple todo application. The goal is to help you categorize your projects, streamline your tasks, track due dates, show what to prioritize, and also assist you in visualizing the progress of your project. It is built with HTML, CSS and Javascript.
 
 Link to live project: https://rjqocampo.github.io/todo/ :point_left:
 
@@ -89,7 +89,7 @@ Easily identify tasks that are due today or within the current week.
 ### Local Storage Implementation
 Utilizes local storage to save your data locally on your device.
 
-### Dynamic HTML Rendering
+### Dynamic UI and Content Rendering
 
 With the help of Javascript DOM, the content of the page is rendered dynamically when navigating the website. The goal is to provide a smoother user experience.
 
@@ -108,6 +108,18 @@ Toggle light or dark mode to help reduce eye strain and enhance user experience 
 # Contributions
 
 I owe my learnings to the open source community. It's an amazing place to learn, inspire and create.  So I welcome any contributions from the community that can help enhance this project. 
+
+# Usage
+The application provides pre-made boards and tasks for demonstration purposes.
+
+### Sidebar Section
+Use the sidebar to display due tasks or the corresponding board. You can also create your board here. Additional features such as Toggle Dark Mode or Hide Side Bar can be seen at the bottom of the sidebar. 
+
+### Header Section
+The header will display the active content. If you're on a board, it will give you the option to add a task or edit the current displayed board.
+
+### Main Section
+At the main section, the tasks will be displayed relative to the active content. Clicking on a task will show more details and additional options such as proceeding with the task or editing the task.
 
 ### Contribute
 
