@@ -125,7 +125,7 @@ function showDueMain(dueWhen) {
     }
   }
 
-  console.log(boards.length);
+  console.log(boards);
 
   const main = document.querySelector('main');
 
@@ -190,7 +190,7 @@ function createDueCards(tasks, parentNode, indexOfBoard) {
     h4.textContent = task.title;
     divFooter.classList.add('task-footer');
     divFooterContainer.classList.add('task-footer__container');
-    h5.textContent = task.dueDate;
+    h5.textContent = `due ${task.dueDate.split('-').slice(1).join('/')}`;
     li.setAttribute('data-index', task.index);
     li.setAttribute('data-board', indexOfBoard);
 
